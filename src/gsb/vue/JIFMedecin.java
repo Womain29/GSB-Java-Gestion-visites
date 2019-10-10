@@ -1,8 +1,8 @@
 /*
- * Créé le 22 mars 2012
+ * Cr?? le 22 mars 2012
  *
- * TODO Pour changer le modèle de ce fichier généré, allez à :
- * Fenêtre - Préférences - Java - Style de code - Modèles de code
+ * TODO Pour changer le mod?le de ce fichier g?n?r?, allez ? :
+ * Fen?tre - Pr?f?rences - Java - Style de code - Mod?les de code
  */
 package gsb.vue;
 
@@ -49,17 +49,17 @@ public class JIFMedecin extends JInternalFrame  {
     protected JTextField JTspecialite;
 	
     public JIFMedecin() {
-    	p = new JPanel();  // panneau principal de la fenêtre
+    	p = new JPanel();  // panneau principal de la fen?tre
         pBoutons = new JPanel();    // panneau supportant les boutons
         pTexte = new JPanel(new GridLayout(9,2));
     	
     	 JLcode = new JLabel("Code");
          JLnom = new JLabel("Nom");
-         JLprenom = new JLabel("Prénom");
+         JLprenom = new JLabel("Pr?nom");
          JLadresse = new JLabel("Adresse rue");
          JLcp = new JLabel("Code postal");
          JLville = new JLabel("Ville");
-         JLtelephone = new JLabel("Téléphone");
+         JLtelephone = new JLabel("T?l?phone");
          JLpotentiel = new JLabel("potentiel");
          JLspecialite = new JLabel("ASpecialite");
          
@@ -93,7 +93,7 @@ public class JIFMedecin extends JInternalFrame  {
          pTexte.add(JLspecialite);
          pTexte.add(JTspecialite);
 		
-        // mise en forme de la fenêtre
+        // mise en forme de la fen?tre
 
          p.add(pTexte);
          p.add(pBoutons);
@@ -103,7 +103,7 @@ public class JIFMedecin extends JInternalFrame  {
 	}
     
     public void remplirText(Medecin unMedecin) 	
-    {  // méthode qui permet de remplir les zones de texte à partir des valeurs passées en paramètres
+    {  // m?thode qui permet de remplir les zones de texte ? partir des valeurs pass?es en param?tres
         JTcode.setText(unMedecin.getCodeMed());        
         JTnom.setText(unMedecin.getNom());
         JTprenom.setText(unMedecin.getPrenom());
@@ -116,7 +116,7 @@ public class JIFMedecin extends JInternalFrame  {
      }
      
       public void viderText() 	
-    {  // méthode qui permet de vider les zones de texte 
+    {  // m?thode qui permet de vider les zones de texte 
         JTcode.setText("");        
         JTnom.setText("");
         JTprenom.setText("");

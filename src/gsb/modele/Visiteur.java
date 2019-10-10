@@ -1,4 +1,4 @@
-/* Créé le 10 Octobre 2019
+/* Cr?? le 10 Octobre 2019
 */
 package gsb.modele;
 /**
@@ -37,7 +37,7 @@ public class Visiteur {
 		return matricule;
 	}
 	/**
-	 * @param matricule à définir.
+	 * @param matricule ? d?finir.
 	 */
 	public void setMatricule(String matricule) {
 		this.matricule = matricule;
@@ -50,7 +50,7 @@ public class Visiteur {
 		return nom;
 	}
 	/**
-	 * @param nom à définir.
+	 * @param nom ? d?finir.
 	 */
 	public void setNom(String nom) {
 		this.nom = nom;
@@ -63,7 +63,7 @@ public class Visiteur {
 		return prenom;
 	}
 	/**
-	 * @param prenom à définir.
+	 * @param prenom ? d?finir.
 	 */
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
@@ -76,7 +76,7 @@ public class Visiteur {
 		return login;
 	}
 	/**
-	 * @param login à définir.
+	 * @param login ? d?finir.
 	 */
 	public void setLogin(String login) {
 		this.login = login;
@@ -89,7 +89,7 @@ public class Visiteur {
 		return mdp;
 	}
 	/**
-	 * @param mdp à définir.
+	 * @param mdp ? d?finir.
 	 */
 	public void setMdp(String mdp) {
 		this.mdp = mdp;
@@ -102,7 +102,7 @@ public class Visiteur {
 		return adresse;
 	}
 	/**
-	 * @param adresse à définir.
+	 * @param adresse ? d?finir.
 	 */
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
@@ -115,7 +115,7 @@ public class Visiteur {
 		return telephone;
 	}
 	/**
-	 * @param telephone à définir.
+	 * @param telephone ? d?finir.
 	 */
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;

@@ -1,8 +1,8 @@
 /*
- * Créé le 3 mars 2015
+ * Cr?? le 3 mars 2015
  *
- * TODO Pour changer le modèle de ce fichier généré, allez à :
- * Fenêtre - Préférences - Java - Style de code - Modèles de code
+ * TODO Pour changer le mod?le de ce fichier g?n?r?, allez ? :
+ * Fen?tre - Pr?f?rences - Java - Style de code - Mod?les de code
  */
 package gsb.tests;
 
@@ -15,8 +15,8 @@ import java.util.HashMap;
 /**
  * @author Isabelle
  * 3 mars 2015
- * TODO Pour changer le modèle de ce commentaire de type généré, allez à :
- * Fenêtre - Préférences - Java - Style de code - Modèles de code
+ * TODO Pour changer le mod?le de ce commentaire de type g?n?r?, allez ? :
+ * Fen?tre - Pr?f?rences - Java - Style de code - Mod?les de code
  */
 public class MedecinDaoTestRetournerDictionnaire {
 

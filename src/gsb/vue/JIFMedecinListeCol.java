@@ -1,8 +1,8 @@
 /*
- * Créé le 3 mars 2015
+ * Cr?? le 3 mars 2015
  *
- * TODO Pour changer le modèle de ce fichier généré, allez à :
- * Fenêtre - Préférences - Java - Style de code - Modèles de code
+ * TODO Pour changer le mod?le de ce fichier g?n?r?, allez ? :
+ * Fen?tre - Pr?f?rences - Java - Style de code - Mod?les de code
  */
 package gsb.vue;
 
@@ -26,8 +26,8 @@ import javax.swing.JTextField;
 /**
  * @author Isabelle
  * 3 mars 2015
- * TODO Pour changer le modèle de ce commentaire de type généré, allez à :
- * Fenêtre - Préférences - Java - Style de code - Modèles de code
+ * TODO Pour changer le mod?le de ce commentaire de type g?n?r?, allez ? :
+ * Fen?tre - Pr?f?rences - Java - Style de code - Mod?les de code
  */
 public class JIFMedecinListeCol extends JInternalFrame implements ActionListener {
 
@@ -46,7 +46,7 @@ public class JIFMedecinListeCol extends JInternalFrame implements ActionListener
 	public JIFMedecinListeCol(MenuPrincipal uneFenetreContainer) {
 
 		fenetreContainer = uneFenetreContainer;
-		// récupération des données Medecin dans la collection
+		// r?cup?ration des donn?es Medecin dans la collection
 		lesMedecins = MedecinDao.retournerCollectionDesMedecins();
 
 		int nbLignes = lesMedecins.size();
@@ -55,7 +55,7 @@ public class JIFMedecinListeCol extends JInternalFrame implements ActionListener
 		
 		
 
-		p = new JPanel(); // panneau principal de la fenêtre
+		p = new JPanel(); // panneau principal de la fen?tre
 
 		int i=0;
 		String[][] data = new String[nbLignes][4] ;
@@ -76,13 +76,13 @@ public class JIFMedecinListeCol extends JInternalFrame implements ActionListener
 		pSaisie = new JPanel();
 		JTcodeMedecin = new JTextField(20);
 		JTcodeMedecin.setMaximumSize(JTcodeMedecin.getPreferredSize());
-		JBafficherFiche = new JButton("Afficher Fiche médecin");
+		JBafficherFiche = new JButton("Afficher Fiche m?decin");
 		JBafficherFiche.addActionListener(this);
 		pSaisie.add(JTcodeMedecin);
 		pSaisie.add(JBafficherFiche);
 		p.add(pSaisie);
 		
-		// mise en forme de la fenêtre
+		// mise en forme de la fen?tre
 		Container contentPane = getContentPane();
 		contentPane.add(p);
 	}

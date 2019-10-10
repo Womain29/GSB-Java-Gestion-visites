@@ -1,16 +1,16 @@
 /*
- * Créé le 22 févr. 2015
+ * Cr?? le 22 f?vr. 2015
  *
- * TODO Pour changer le modèle de ce fichier généré, allez à :
- * Fenêtre - Préférences - Java - Style de code - Modèles de code
+ * TODO Pour changer le mod?le de ce fichier g?n?r?, allez ? :
+ * Fen?tre - Pr?f?rences - Java - Style de code - Mod?les de code
  */
 package gsb.modele;
 
 /**
  * @author Isabelle
- * 22 févr. 2015
- * TODO Pour changer le modèle de ce commentaire de type généré, allez à :
- * Fenêtre - Préférences - Java - Style de code - Modèles de code
+ * 22 f?vr. 2015
+ * TODO Pour changer le mod?le de ce commentaire de type g?n?r?, allez ? :
+ * Fen?tre - Pr?f?rences - Java - Style de code - Mod?les de code
  */
 public class Medecin {
 	protected String codeMed ;
@@ -50,7 +50,7 @@ public class Medecin {
 		return codeMed;
 	}
 	/**
-	 * @param codeMed codeMed à définir.
+	 * @param codeMed codeMed ? d?finir.
 	 */
 	public void setCodeMed(String codeMed) {
 		this.codeMed = codeMed;
@@ -62,7 +62,7 @@ public class Medecin {
 		return nom;
 	}
 	/**
-	 * @param nom nom à définir.
+	 * @param nom nom ? d?finir.
 	 */
 	public void setNom(String nom) {
 		this.nom = nom;
@@ -74,7 +74,7 @@ public class Medecin {
 		return prenom;
 	}
 	/**
-	 * @param prenom prenom à définir.
+	 * @param prenom prenom ? d?finir.
 	 */
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
@@ -86,7 +86,7 @@ public class Medecin {
 		return adresse;
 	}
 	/**
-	 * @param adresse adresse à définir.
+	 * @param adresse adresse ? d?finir.
 	 */
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
@@ -98,7 +98,7 @@ public class Medecin {
 		return laLocalite;
 	}
 	/**
-	 * @param laLocalite laLocalite à définir.
+	 * @param laLocalite laLocalite ? d?finir.
 	 */
 	public void setLaLocalite(Localite laLocalite) {
 		this.laLocalite = laLocalite;
@@ -110,7 +110,7 @@ public class Medecin {
 		return telephone;
 	}
 	/**
-	 * @param telephone telephone à définir.
+	 * @param telephone telephone ? d?finir.
 	 */
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
@@ -122,7 +122,7 @@ public class Medecin {
 		return potentiel;
 	}
 	/**
-	 * @param potentiel potentiel à définir.
+	 * @param potentiel potentiel ? d?finir.
 	 */
 	public void setPotentiel(String potentiel) {
 		this.potentiel = potentiel;
@@ -134,7 +134,7 @@ public class Medecin {
 		return specialite;
 	}
 	/**
-	 * @param specialite specialite à définir.
+	 * @param specialite specialite ? d?finir.
 	 */
 	public void setSpecialite(String specialite) {
 		this.specialite = specialite;

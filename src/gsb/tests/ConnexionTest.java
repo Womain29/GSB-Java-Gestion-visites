@@ -1,8 +1,8 @@
 /*
- * Créé le 23 févr. 2015
+ * Cr?? le 23 f?vr. 2015
  *
- * TODO Pour changer le modèle de ce fichier généré, allez à :
- * Fenêtre - Préférences - Java - Style de code - Modèles de code
+ * TODO Pour changer le mod?le de ce fichier g?n?r?, allez ? :
+ * Fen?tre - Pr?f?rences - Java - Style de code - Mod?les de code
  */
 package gsb.tests;
 
@@ -16,9 +16,9 @@ import java.sql.Statement;
 
 /**
  * @author Isabelle
- * 23 févr. 2015
- * TODO Pour changer le modèle de ce commentaire de type généré, allez à :
- * Fenêtre - Préférences - Java - Style de code - Modèles de code
+ * 23 f?vr. 2015
+ * TODO Pour changer le mod?le de ce commentaire de type g?n?r?, allez ? :
+ * Fen?tre - Pr?f?rences - Java - Style de code - Mod?les de code
  */
 public class ConnexionTest {
 
@@ -26,7 +26,7 @@ public class ConnexionTest {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Raccord de méthode auto-généré
+		// TODO Raccord de m?thode auto-g?n?r?
 		ResultSet resultat = ConnexionMySql
 				.execReqSelection("select * from LOCALITE");
 		try {

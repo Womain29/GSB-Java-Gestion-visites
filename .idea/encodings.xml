@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/gsb/modele/Localite.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/gsb/modele/Medecin.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/gsb/modele/Medicament.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/gsb/modele/Visiteur.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/gsb/modele/dao/LocaliteDao.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/gsb/modele/dao/MedecinDao.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/gsb/service/MedecinService.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/gsb/tests/Application.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/gsb/tests/ConnexionTest.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/gsb/tests/MedecinDaoTestRetournerDictionnaire.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/gsb/tests/MedecinServiceTest.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/gsb/vue/JIFMedecin.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/gsb/vue/JIFMedecinCons.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/gsb/vue/JIFMedecinFiche.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/gsb/vue/JIFMedecinListeCol.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/gsb/vue/JIFMedecinListeDic.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/gsb/vue/MenuPrincipal.java" charset="windows-1252" />
+  </component>
+</project>

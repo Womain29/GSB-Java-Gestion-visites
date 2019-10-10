@@ -1,4 +1,4 @@
-/* Créé le 10 Octobre 2019
+/* Cr?? le 10 Octobre 2019
 */
 package gsb.modele;
 
@@ -34,7 +34,7 @@ public class Medicament {
 		return depotLegal;
 	}
 	/**
-	 * @param depotLegal à définir.
+	 * @param depotLegal ? d?finir.
 	 */
 	public void setDepotLegal(String depotLegal) {
 		this.depotLegal = depotLegal;
@@ -47,7 +47,7 @@ public class Medicament {
 		return nomCommercial;
 	}
 	/**
-	 * @param nomCommercial à définir.
+	 * @param nomCommercial ? d?finir.
 	 */
 	public void setNomCommercial(String nomCommercial) {
 		this.nomCommercial = nomCommercial;
@@ -60,7 +60,7 @@ public class Medicament {
 		return composition;
 	}
 	/**
-	 * @param composition à définir.
+	 * @param composition ? d?finir.
 	 */
 	public void setComposition(String composition) {
 		this.composition = composition;
@@ -73,7 +73,7 @@ public class Medicament {
 		return effets;
 	}
 	/**
-	 * @param effets à définir.
+	 * @param effets ? d?finir.
 	 */
 	public void setEffets(String effets) {
 		this.effets = effets;
@@ -86,7 +86,7 @@ public class Medicament {
 		return contreIndication;
 	}
 	/**
-	 * @param contreIndication à définir.
+	 * @param contreIndication ? d?finir.
 	 */
 	public void setContreIndication(String contreIndication) {
 		this.contreIndication = contreIndication;
@@ -99,7 +99,7 @@ public class Medicament {
 		return prixEchantillion;
 	}
 	/**
-	 * @param prixEchantillion à définir.
+	 * @param prixEchantillion ? d?finir.
 	 */
 	public void setPrixEchantillion(int prixEchantillion) {
 		this.prixEchantillion = prixEchantillion;
