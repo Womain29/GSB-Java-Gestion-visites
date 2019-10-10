@@ -28,5 +28,112 @@ public class Visiteur {
 		this.telephone = telephone;
 		this.dateEntrer = dateEntrer;
 		this.prime = prime;
+	}
+	
+	/**
+	 * @return Renvoie matricule.
+	 */
+	public String getMatricule() {
+		return matricule;
+	}
+	/**
+	 * @param matricule à définir.
+	 */
+	public void setMatricule(String matricule) {
+		this.matricule = matricule;
+	}
+	
+	/**
+	 * @return Renvoie nom.
+	 */
+	public String getNom() {
+		return nom;
+	}
+	/**
+	 * @param nom à définir.
+	 */
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+	
+	/**
+	 * @return Renvoie prenom.
+	 */
+	public String getPrenom() {
+		return prenom;
+	}
+	/**
+	 * @param prenom à définir.
+	 */
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+	
+	/**
+	 * @return Renvoie login.
+	 */
+	public String getLogin() {
+		return login;
+	}
+	/**
+	 * @param login à définir.
+	 */
+	public void setLogin(String login) {
+		this.login = login;
+	}
+	
+	/**
+	 * @return Renvoie mdp.
+	 */
+	public String getMdp() {
+		return mdp;
+	}
+	/**
+	 * @param mdp à définir.
+	 */
+	public void setMdp(String mdp) {
+		this.mdp = mdp;
+	}
+	
+	/**
+	 * @return Renvoie adresse.
+	 */
+	public String getAdresse() {
+		return adresse;
+	}
+	/**
+	 * @param adresse à définir.
+	 */
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
+	}
+	
+	/**
+	 * @return Renvoie telephone.
+	 */
+	public String getTelephone() {
+		return telephone;
+	}
+	/**
+	 * @param telephone à définir.
+	 */
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+
+	public String getDateEntrer() {
+		return dateEntrer;
+	}
+
+	public void setDateEntrer(String dateEntrer) {
+		this.dateEntrer = dateEntrer;
+	}
+
+	public int getPrime() {
+		return prime;
+	}
+
+	public void setPrime(int prime) {
+		this.prime = prime;
 	}	
 }
