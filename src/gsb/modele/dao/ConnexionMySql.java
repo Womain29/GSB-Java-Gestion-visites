@@ -2,10 +2,10 @@ package gsb.modele.dao;
 
 
 /*
- * Créé le 23 sept. 2014
+ * Crï¿½ï¿½ le 23 sept. 2014
  *
- * TODO Pour changer le modèle de ce fichier généré, allez à :
- * Fenêtre - Préférences - Java - Style de code - Modèles de code
+ * TODO Pour changer le modï¿½le de ce fichier gï¿½nï¿½rï¿½, allez ï¿½ :
+ * Fenï¿½tre - Prï¿½fï¿½rences - Java - Style de code - Modï¿½les de code
  */
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -15,8 +15,8 @@ import java.sql.Statement;
 /**
  * @author Isabelle
  * 23 sept. 2014
- * TODO Pour changer le modèle de ce commentaire de type généré, allez à :
- * Fenêtre - Préférences - Java - Style de code - Modèles de code
+ * TODO Pour changer le modï¿½le de ce commentaire de type gï¿½nï¿½rï¿½, allez ï¿½ :
+ * Fenï¿½tre - Prï¿½fï¿½rences - Java - Style de code - Modï¿½les de code
  */
 public class ConnexionMySql { // DAO = Data Access Object
 	
@@ -27,26 +27,26 @@ public class ConnexionMySql { // DAO = Data Access Object
 	}
 	
 	/**
-	 * methode qui permet la connexion à la base de données
-	 * le fait que la méthode soit static permet d'éviter d'instancier dans une classe un objet ConnexioMySql
-	 * pour utiliser cette méthode écrire : ConnexionMySql.connecterBd()
+	 * methode qui permet la connexion ï¿½ la base de donnï¿½es
+	 * le fait que la mï¿½thode soit static permet d'ï¿½viter d'instancier dans une classe un objet ConnexioMySql
+	 * pour utiliser cette mï¿½thode ï¿½crire : ConnexionMySql.connecterBd()
 	 */
 	public static void connecterBd(){
-		//connexion à la base de donnée à partir de jdbc
-		String url = "jdbc:mysql://192.168.60.62:3306/gsb"; // url : chaine de connexion
+		//connexion ï¿½ la base de donnï¿½e ï¿½ partir de jdbc
+		String url = "jdbc:mysql://192.178.1.13:3306/gsbJava"; // url : chaine de connexion
 		// try permet d'essayer de lancer la connexion
 		try {Class.forName("com.mysql.jdbc.Driver"); 
-			cnx = DriverManager.getConnection(url,"usergsb","password"); 
+			cnx = DriverManager.getConnection(url,"admindbppe","password"); 
 		} 
-		// si la connexion echoue un message d'erreur est affiché
+		// si la connexion echoue un message d'erreur est affichï¿½
         catch(Exception e) {  System.out.println("Echec lors de la connexion");  } 
 
 	}
 	
 	/**
-	 * @param laRequete requête SQL de type SELECT
-	 * @return un curseur qui contient les lignes obtenues lors de l'exécution de la requête, null sinon
-	 * pour utiliser cette méthode écrire : ConnexionMySql.execReqSelection(uneRequete) où uneRequête est de type String
+	 * @param laRequete requï¿½te SQL de type SELECT
+	 * @return un curseur qui contient les lignes obtenues lors de l'exï¿½cution de la requï¿½te, null sinon
+	 * pour utiliser cette mï¿½thode ï¿½crire : ConnexionMySql.execReqSelection(uneRequete) oï¿½ uneRequï¿½te est de type String
 	 */
 	public static ResultSet execReqSelection(String laRequete){ 
 		connecterBd();
@@ -60,9 +60,9 @@ public class ConnexionMySql { // DAO = Data Access Object
 	}
 	
 	/**
-	 * @param laRequete requête SQL de type INSERT, UPDATE ou DELETE
-	 * @return 1 si la MAJ s'est bien déroulée, 0 sinon
-	 * pour utiliser cette méthode écrire : ConnexionMySql.execReqMaj(uneRequete) où uneRequête est de type String
+	 * @param laRequete requï¿½te SQL de type INSERT, UPDATE ou DELETE
+	 * @return 1 si la MAJ s'est bien dï¿½roulï¿½e, 0 sinon
+	 * pour utiliser cette mï¿½thode ï¿½crire : ConnexionMySql.execReqMaj(uneRequete) oï¿½ uneRequï¿½te est de type String
 	 */
 	public static int execReqMaj(String laRequete){
 		connecterBd();
@@ -73,14 +73,14 @@ public class ConnexionMySql { // DAO = Data Access Object
         s.close();}
 		catch (Exception er) {
 			er.printStackTrace(); 
-			System.out.println("echec requête : "+laRequete); }
+			System.out.println("echec requï¿½te : "+laRequete); }
 		return nbMaj;       
 	}
 	
 	/**
-	 * attention : tant que la connexion n'est pas fermée, 
-	 * les MAJ ne sont pas effectives, on reste en mode déconnecté
-	 * pour utiliser cette méthode écrire : ConnexionMySql.fermerConnexionBd()
+	 * attention : tant que la connexion n'est pas fermï¿½e, 
+	 * les MAJ ne sont pas effectives, on reste en mode dï¿½connectï¿½
+	 * pour utiliser cette mï¿½thode ï¿½crire : ConnexionMySql.fermerConnexionBd()
 	 */
 	public static void fermerConnexionBd(){
 		try{cnx.close();}
