@@ -1,4 +1,4 @@
-/* Cr?? le 10 Octobre 2019
+/* Créé le 10 Octobre 2019
 */
 package gsb.modele;
 /**
@@ -37,7 +37,7 @@ public class Visiteur {
 		return matricule;
 	}
 	/**
-	 * @param matricule ? d?finir.
+	 * @param matricule à définir.
 	 */
 	public void setMatricule(String matricule) {
 		this.matricule = matricule;
@@ -50,7 +50,7 @@ public class Visiteur {
 		return nom;
 	}
 	/**
-	 * @param nom ? d?finir.
+	 * @param nom à définir.
 	 */
 	public void setNom(String nom) {
 		this.nom = nom;
@@ -63,7 +63,7 @@ public class Visiteur {
 		return prenom;
 	}
 	/**
-	 * @param prenom ? d?finir.
+	 * @param prenom à définir.
 	 */
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
@@ -76,7 +76,7 @@ public class Visiteur {
 		return login;
 	}
 	/**
-	 * @param login ? d?finir.
+	 * @param login à définir.
 	 */
 	public void setLogin(String login) {
 		this.login = login;
@@ -89,7 +89,7 @@ public class Visiteur {
 		return mdp;
 	}
 	/**
-	 * @param mdp ? d?finir.
+	 * @param mdp à définir.
 	 */
 	public void setMdp(String mdp) {
 		this.mdp = mdp;
@@ -102,7 +102,7 @@ public class Visiteur {
 		return adresse;
 	}
 	/**
-	 * @param adresse ? d?finir.
+	 * @param adresse à définir.
 	 */
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
@@ -115,24 +115,34 @@ public class Visiteur {
 		return telephone;
 	}
 	/**
-	 * @param telephone ? d?finir.
+	 * @param telephone à définir.
 	 */
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
-
+	
+	/**
+	 * @return Renvoie dateEntrer.
+	 */
 	public String getDateEntrer() {
 		return dateEntrer;
 	}
-
+	/**
+	 * @param dateEntrer à définir.
+	 */
 	public void setDateEntrer(String dateEntrer) {
 		this.dateEntrer = dateEntrer;
 	}
-
+	
+	/**
+	 * @return Renvoie prime.
+	 */
 	public int getPrime() {
 		return prime;
 	}
-
+	/**
+	 * @param prime à définir.
+	 */
 	public void setPrime(int prime) {
 		this.prime = prime;
 	}	
