@@ -3,7 +3,7 @@
 package gsb.modele;
 /**
  * @author Gwendal
- * 10/10/2019
+ * 15/10/2019
  * 
  */
 public class Visiteur {
