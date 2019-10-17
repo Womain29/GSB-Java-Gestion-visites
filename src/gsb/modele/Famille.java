@@ -17,5 +17,29 @@ public class Famille {
 		this.libelleFamille = libelleFamille;
 	}
 	
+	/**
+	 * @return Renvoie codeFamille.
+	 */
+	public String getCodeFamille() {
+		return codeFamille;
+	}
+	/**
+	 * @param codeFamille à définir.
+	 */
+	public void setCodeFamille(String codeFamille) {
+		this.codeFamille = codeFamille;
+	}
 	
+	/**
+	 * @return Renvoie libelleFamille.
+	 */
+	public String getLibelleFamille() {
+		return libelleFamille;
+	}
+	/**
+	 * @param libelleFamille à définir.
+	 */
+	public void setLibelleFamille(String libelleFamille) {
+		this.libelleFamille = libelleFamille;
+	}
 }
