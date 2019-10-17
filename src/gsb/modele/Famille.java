@@ -9,5 +9,13 @@ package gsb.modele;
 
 public class Famille {
 	
+	protected String codeFamille;
+	protected String libelleFamille;
+	
+	public Famille(String codeFamille, String libelleFamille) {
+		this.codeFamille = codeFamille;
+		this.libelleFamille = libelleFamille;
+	}
+	
 	
 }
