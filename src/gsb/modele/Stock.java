@@ -8,5 +8,9 @@ package gsb.modele;
  */
 
 public class Stock {
-
+	
+	protected String depotLegal;
+	protected String matricule;
+	protected int qteStock;
+	
 }
