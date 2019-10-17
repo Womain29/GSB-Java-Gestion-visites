@@ -2,6 +2,8 @@
 package gsb.modele.dao;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import gsb.modele.Medicament;
 import gsb.modele.Famille;
@@ -32,4 +34,19 @@ public class MedicamentDao {
 		return unMedicament;
 	}
 	
+	public static ArrayList<Medicament> rechercherTousLesMed(){
+		ArrayList<Medicament> collectionDesMedicaments = new ArrayList<Medicament>();
+		ResultSet reqSelection = ConnexionMySql.execReqSelection("select DEPOTLEGAL from MEDICAMENT");
+		try{
+		while (reqSelection.next()) {
+			String depotLegal = reqSelection.getString(1);
+		    collectionDesMedicaments.add(MedicamentDao.rechercher(depotLegal));
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("erreur retournerCollectionDesMedicaments()");
+		}
+		return collectionDesMedicaments;
+	}
 }
