@@ -107,4 +107,16 @@ public class Medicament {
 		this.prixEchantillion = prixEchantillion;
 	}
 	
+	/**
+	 * @return Renvoie uneFamille.
+	 */
+	public Famille getUneFamille() {
+		return uneFamille;
+	}
+	/**
+	 * @param uneFamille à définir.
+	 */
+	public void setUneFamille(Famille uneFamille) {
+		this.uneFamille = uneFamille;
+	}
 }
