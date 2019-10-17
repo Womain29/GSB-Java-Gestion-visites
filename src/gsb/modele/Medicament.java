@@ -17,14 +17,16 @@ public class Medicament {
 	protected String effets;
 	protected String contreIndication;
 	protected float prixEchantillion;
+	protected Famille uneFamille;
 	
-	public Medicament(String depotLegal, String nomCommercial, String composition, String effets, String contreIndication, float prixEchantillion) {
+	public Medicament(String depotLegal, String nomCommercial, String composition, String effets, String contreIndication, float prixEchantillion, Famille uneFamille) {
 		this.depotLegal = depotLegal;
 		this.nomCommercial = nomCommercial;
 		this.composition = composition;
 		this.effets = effets;
 		this.contreIndication = contreIndication;
 		this.prixEchantillion = prixEchantillion;
+		this.uneFamille = uneFamille;
 	}
 	
 	/**
@@ -104,4 +106,5 @@ public class Medicament {
 	public void setPrixEchantillion(float prixEchantillion) {
 		this.prixEchantillion = prixEchantillion;
 	}
+	
 }
