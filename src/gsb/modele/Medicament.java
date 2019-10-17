@@ -1,10 +1,10 @@
-/* Cr?? le 10 Octobre 2019
+/* Créé le 10 Octobre 2019
 */
 package gsb.modele;
 
 /**
  * @author Gwendal
- * 10/10/2019
+ * 17/10/2019
  * 
  */
 
@@ -16,9 +16,9 @@ public class Medicament {
 	protected String composition;
 	protected String effets;
 	protected String contreIndication;
-	protected int prixEchantillion;
+	protected float prixEchantillion;
 	
-	public Medicament(String depotLegal, String nomCommercial, String composition, String effets, String contreIndication, int prixEchantillion) {
+	public Medicament(String depotLegal, String nomCommercial, String composition, String effets, String contreIndication, float prixEchantillion) {
 		this.depotLegal = depotLegal;
 		this.nomCommercial = nomCommercial;
 		this.composition = composition;
@@ -34,7 +34,7 @@ public class Medicament {
 		return depotLegal;
 	}
 	/**
-	 * @param depotLegal ? d?finir.
+	 * @param depotLegal à définir.
 	 */
 	public void setDepotLegal(String depotLegal) {
 		this.depotLegal = depotLegal;
@@ -47,7 +47,7 @@ public class Medicament {
 		return nomCommercial;
 	}
 	/**
-	 * @param nomCommercial ? d?finir.
+	 * @param nomCommercial à définir.
 	 */
 	public void setNomCommercial(String nomCommercial) {
 		this.nomCommercial = nomCommercial;
@@ -60,7 +60,7 @@ public class Medicament {
 		return composition;
 	}
 	/**
-	 * @param composition ? d?finir.
+	 * @param composition à définir.
 	 */
 	public void setComposition(String composition) {
 		this.composition = composition;
@@ -73,7 +73,7 @@ public class Medicament {
 		return effets;
 	}
 	/**
-	 * @param effets ? d?finir.
+	 * @param effets à définir.
 	 */
 	public void setEffets(String effets) {
 		this.effets = effets;
@@ -86,7 +86,7 @@ public class Medicament {
 		return contreIndication;
 	}
 	/**
-	 * @param contreIndication ? d?finir.
+	 * @param contreIndication à définir.
 	 */
 	public void setContreIndication(String contreIndication) {
 		this.contreIndication = contreIndication;
@@ -95,13 +95,13 @@ public class Medicament {
 	/**
 	 * @return Renvoie prixEchantillion.
 	 */
-	public int getPrixEchantillion() {
+	public float getPrixEchantillion() {
 		return prixEchantillion;
 	}
 	/**
-	 * @param prixEchantillion ? d?finir.
+	 * @param prixEchantillion à définir.
 	 */
-	public void setPrixEchantillion(int prixEchantillion) {
+	public void setPrixEchantillion(float prixEchantillion) {
 		this.prixEchantillion = prixEchantillion;
 	}
 }
