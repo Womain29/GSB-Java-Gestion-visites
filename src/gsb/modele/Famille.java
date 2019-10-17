@@ -41,5 +41,5 @@ public class Famille {
 	 */
 	public void setLibelleFamille(String libelleFamille) {
 		this.libelleFamille = libelleFamille;
-	}
+	} 
 }
