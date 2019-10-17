@@ -13,4 +13,9 @@ public class Stock {
 	protected String matricule;
 	protected int qteStock;
 	
+	public Stock(String depotLegal, String matricule, int qteStock) {
+		this.depotLegal = depotLegal;
+		this.matricule = matricule;
+		this.qteStock = qteStock;
+	}
 }
