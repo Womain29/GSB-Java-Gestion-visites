@@ -17,8 +17,23 @@ public class Visiteur {
 	protected String telephone;
 	protected String dateEntrer;
 	protected int prime;
+	protected Unite unite;
+
+	/**
+	 *
+	 * @param matricule
+	 * @param nom
+	 * @param prenom
+	 * @param login
+	 * @param mdp
+	 * @param adresse
+	 * @param telephone
+	 * @param dateEntrer
+	 * @param prime
+	 * @param unite
+	 */
 	
-	public Visiteur(String matricule, String nom, String prenom, String login, String mdp, String adresse, String telephone, String dateEntrer, int prime) {
+	public Visiteur(String matricule, String nom, String prenom, String login, String mdp, String adresse, String telephone, String dateEntrer, int prime, Unite unite) {
 		this.matricule = matricule;
 		this.nom = nom;
 		this.prenom= prenom;
@@ -28,6 +43,7 @@ public class Visiteur {
 		this.telephone = telephone;
 		this.dateEntrer = dateEntrer;
 		this.prime = prime;
+		this.unite = unite;
 	}
 	
 	/**
@@ -145,5 +161,21 @@ public class Visiteur {
 	 */
 	public void setPrime(int prime) {
 		this.prime = prime;
-	}	
+	}
+
+	/**
+	 *
+	 * @return l'unite du visiteur
+	 */
+	public Unite getUnite() {
+		return unite;
+	}
+
+	/**
+	 *
+	 * @param unite
+	 */
+	public void setUnite(Unite unite) {
+		this.unite = unite;
+	}
 }
