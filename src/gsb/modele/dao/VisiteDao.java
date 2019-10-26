@@ -19,7 +19,7 @@ public class VisiteDao {
     /**
      *
      * @param uneReference chaine de caracteres
-     * @return un objet Visite
+     * @return un objet Visite ou null
      */
     public static Visite rechercher(String uneReference) {
         Visite uneVisite = null;
@@ -39,6 +39,33 @@ public class VisiteDao {
         catch (SQLException e) {
             e.printStackTrace();
         }
+        ConnexionMySql.fermerConnexionBd();
+
         return uneVisite;
+    }
+
+    /**
+     *
+     * @param uneVisite un objet visite
+     * @return 0 si la requete a echouee et 1 si la requete a reussi
+     */
+    public static int creer(Visite uneVisite) {
+        int result = 0;
+        String reference = uneVisite.getReference();
+        String date = uneVisite.getDateVisite();
+        String unCommentaire = uneVisite.getUnCommentaire();
+        String matricule = uneVisite.getUnVisiteur().getMatricule();
+        String codeMedecin = uneVisite.getUnMedecin().getCodeMed();
+        String requete = "INSERT INTO VISITE VALUES ('" + reference + "', '" + date + "', '" + unCommentaire + "', '" + matricule + "', '" + codeMedecin + "')";
+
+        try {
+            result = ConnexionMySql.execReqMaj(requete);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        ConnexionMySql.fermerConnexionBd();
+
+        return result;
     }
 }
