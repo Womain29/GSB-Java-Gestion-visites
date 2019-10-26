@@ -30,10 +30,6 @@ public class VisiteService {
             if (uneReference.length() != 5) {
                 throw new Exception("La référence doit posséder 5 caractères");
             }
-            //La visite correspondant à la référence doit exister dans la base
-            if(VisiteDao.rechercher(uneReference) == null) {
-                throw new Exception(("La visite correspondant à cette référence n'existe pas"));
-            }
             uneVisite = VisiteDao.rechercher(uneReference);
         }
         catch (Exception e) {
