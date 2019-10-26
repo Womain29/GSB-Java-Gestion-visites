@@ -14,7 +14,7 @@ public class Visiteur {
 	protected String login;
 	protected String mdp;
 	protected String adresse;
-	protected int codePostal;
+	protected String codePostal;
 	protected String dateEntrer;
 	protected int prime;
 	protected Unite unite;
@@ -33,7 +33,7 @@ public class Visiteur {
 	 * @param unite
 	 */
 	
-	public Visiteur(String matricule, String nom, String prenom, String login, String mdp, String adresse, int codePostal, String dateEntrer, int prime, Unite unite) {
+	public Visiteur(String matricule, String nom, String prenom, String login, String mdp, String adresse, String codePostal, String dateEntrer, int prime, Unite unite) {
 		this.matricule = matricule;
 		this.nom = nom;
 		this.prenom= prenom;
@@ -127,13 +127,13 @@ public class Visiteur {
 	/**
 	 * @return Renvoie le code postal.
 	 */
-	public int getCodePostal() {
+	public String getCodePostal() {
 		return codePostal;
 	}
 	/**
 	 * @param codePostal à définir.
 	 */
-	public void setCodePostal(int codePostal) {
+	public void setCodePostal(String codePostal) {
 		this.codePostal = codePostal;
 	}
 	
