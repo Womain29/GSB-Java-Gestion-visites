@@ -14,7 +14,7 @@ public class Visiteur {
 	protected String login;
 	protected String mdp;
 	protected String adresse;
-	protected String telephone;
+	protected int codePostal;
 	protected String dateEntrer;
 	protected int prime;
 	protected Unite unite;
@@ -27,20 +27,20 @@ public class Visiteur {
 	 * @param login
 	 * @param mdp
 	 * @param adresse
-	 * @param telephone
+	 * @param codePostal
 	 * @param dateEntrer
 	 * @param prime
 	 * @param unite
 	 */
 	
-	public Visiteur(String matricule, String nom, String prenom, String login, String mdp, String adresse, String telephone, String dateEntrer, int prime, Unite unite) {
+	public Visiteur(String matricule, String nom, String prenom, String login, String mdp, String adresse, int codePostal, String dateEntrer, int prime, Unite unite) {
 		this.matricule = matricule;
 		this.nom = nom;
 		this.prenom= prenom;
 		this.login = login;
 		this.mdp = mdp;
 		this.adresse = adresse;
-		this.telephone = telephone;
+		this.codePostal = codePostal;
 		this.dateEntrer = dateEntrer;
 		this.prime = prime;
 		this.unite = unite;
@@ -125,16 +125,16 @@ public class Visiteur {
 	}
 	
 	/**
-	 * @return Renvoie telephone.
+	 * @return Renvoie le code postal.
 	 */
-	public String getTelephone() {
-		return telephone;
+	public int getCodePostal() {
+		return codePostal;
 	}
 	/**
-	 * @param telephone à définir.
+	 * @param codePostal à définir.
 	 */
-	public void setTelephone(String telephone) {
-		this.telephone = telephone;
+	public void setCodePostal(int codePostal) {
+		this.codePostal = codePostal;
 	}
 	
 	/**
