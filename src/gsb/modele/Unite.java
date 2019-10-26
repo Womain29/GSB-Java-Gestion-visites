@@ -10,17 +10,19 @@ package gsb.modele;
 
 public class Unite {
 
-    //Attributs
     protected String codeUnite;
     protected String nomUnite;
 
-    //Constructeur
+    /**
+     *
+     * @param codeUnite chaine de caracteres
+     * @param nomUnite chaine de caracteres
+     */
+
     public Unite(String codeUnite, String nomUnite) {
         this.codeUnite = codeUnite;
         this.nomUnite = nomUnite;
     }
-
-    //Set et get
 
     /**
      *
