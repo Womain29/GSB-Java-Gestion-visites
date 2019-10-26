@@ -9,5 +9,9 @@ package gsb.modele;
 
 public class Visite {
 
-
+    protected String reference;
+    protected String dateVisite;
+    protected String unCommentaire;
+    protected Visiteur unVisiteur;
+    protected Medecin unMedecin;
 }
