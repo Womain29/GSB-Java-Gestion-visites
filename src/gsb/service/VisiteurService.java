@@ -23,6 +23,9 @@ public class VisiteurService {
             if(matricule.length() != 4) {
                 throw new Exception("Le matricule doit être composé de 4 caractères");
             }
+            if(VisiteurDao.rechercher(matricule) == null) {
+                throw new Exception("Il n'y a pas de visiteur correspondant à ce matricule");
+            }
             unVisiteur = VisiteurDao.rechercher(matricule);
         }
         catch (Exception e) {
