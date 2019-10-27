@@ -7,7 +7,7 @@ public class SQLUtils {
         String mois = uneDate.substring(3,5);
         String jour = uneDate.substring(0,2);
 
-        String dateFormatSql = annee + mois + jour;
+        String dateFormatSql = annee + "-" + mois + "-" + jour;
 
         return dateFormatSql;
     }
