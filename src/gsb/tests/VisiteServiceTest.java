@@ -94,4 +94,10 @@ class VisiteServiceTest {
         System.out.println("--------------------------- creerVisiteDateNull ---------------------------------");
         Assertions.assertEquals(0, uneVisiteService.creerVisite("test", null, "", "a131", "m001"), "Résultat 0 car date null");
     }
+
+    @Test
+    void creerVisiteDateFormatKo() {
+        System.out.println("--------------------------- creerVisiteDateFormatKo ---------------------------------");
+        Assertions.assertEquals(0, uneVisiteService.creerVisite("test", "06-06-1996", "", "a131", "m001"), "Résultat 0 car date au mauvais format");
+    }
 }
