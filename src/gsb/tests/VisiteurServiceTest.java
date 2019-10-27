@@ -1,6 +1,5 @@
 package gsb.tests;
 
-import gsb.modele.Unite;
 import gsb.modele.Visiteur;
 import gsb.service.VisiteurService;
 import org.junit.jupiter.api.AfterEach;
@@ -24,27 +23,43 @@ class VisiteurServiceTest {
     @Test
     void rechercherVisiteurMatriculeVide() {
         System.out.println("--------------------------- rechercherVisiteurMatriculeVide -------------------------------");
-        Assertions.assertNull(unVisiteurService.rechercherVisiteur(null), "RÃ©sultat null");
+        Assertions.assertNull(unVisiteurService.rechercherVisiteur(null), "Résultat null");
     }
 
     @Test
     void rechercherVisiteurMatricule5Caracteres() {
         System.out.println("--------------------------- rechercherVisiteurMatricule5Caracteres -------------------------------");
-        Assertions.assertNull(unVisiteurService.rechercherVisiteur("ABCDE"), "RÃ©sultat null");
+        Assertions.assertNull(unVisiteurService.rechercherVisiteur("ABCDE"), "Résultat null");
     }
 
     @Test
     void rechercherVisiteurMatricule3Caracteres() {
         System.out.println("--------------------------- rechercherVisiteurMatricule3Caracteres -------------------------------");
-        Assertions.assertNull(unVisiteurService.rechercherVisiteur("ABC"), "RÃ©sultat null");
+        Assertions.assertNull(unVisiteurService.rechercherVisiteur("ABC"), "Résultat null");
+    }
+
+    @Test
+    void rechercherVisiteurMatriculeKO() {
+        System.out.println("--------------------------- rechercherVisiteurMatriculeKO -------------------------------");
+        Assertions.assertNull(unVisiteurService.rechercherVisiteur("AAAA"), "Pas de visiteur correspondant donc résultat null");
     }
 
     @Test
     void rechercherVisiteurMatriculeOK() {
         System.out.println("--------------------------- rechercherVisiteurMatriculeOK -------------------------------");
-        Unite uneUnite = new Unite("SW", "SWISS");
-        Visiteur unVisiteur = new Visiteur("a131", "Villechalane", "Louis", "lvillachane", "jux7g", "8 rue des Charmes", "46000", "2005-12-21", 0, uneUnite);
-        Assertions.assertEquals(unVisiteur, unVisiteurService.rechercherVisiteur("a131"), "RÃ©sultat : unVisiteur");
+        Assertions.assertNotNull(unVisiteurService.rechercherVisiteur("a131"), "Résultat non null car visiteur correspondant");
+
+        Visiteur unVisiteur = unVisiteurService.rechercherVisiteur("a131");
+        System.out.println("Matricule : " + unVisiteur.getMatricule());
+        System.out.println("Nom : " + unVisiteur.getNom());
+        System.out.println("Prénom : " + unVisiteur.getPrenom());
+        System.out.println("Login : " + unVisiteur.getLogin());
+        System.out.println("Mdp : " + unVisiteur.getMdp());
+        System.out.println("Adresse : " + unVisiteur.getAdresse());
+        System.out.println("Code Postal : " + unVisiteur.getCodePostal());
+        System.out.println("Date entrée : " + unVisiteur.getDateEntrer());
+        System.out.println("Prime : " + unVisiteur.getPrime());
+        System.out.println("Unité : " + unVisiteur.getUnite().getNomUnite());
     }
 
 }
