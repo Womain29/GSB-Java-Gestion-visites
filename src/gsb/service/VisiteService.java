@@ -28,7 +28,7 @@ public class VisiteService {
             }
             //La référence doit avoir 5 caractères
             if (uneReference.length() > 5) {
-                throw new Exception("La référence ne peut pas dépasser 4 caractères");
+                throw new Exception("La référence ne peut pas dépasser 5 caractères");
             }
             //Une visite correspondante à la référence doit exister
             if(VisiteDao.rechercher(uneReference) == null) {
@@ -55,8 +55,8 @@ public class VisiteService {
                 throw new Exception("Tous les champs sont obligatoires sauf le commentaire");
             }
             //La référence doit avoir 5 caractères
-            if(reference.length() != 5) {
-                throw new Exception("La référence doit être composée de 5 caractères");
+            if(reference.length() > 5) {
+                throw new Exception("La référence ne peut pas dépasser 5 caractères");
             }
             //La visite ne doit pas déjà existé
             if(VisiteDao.rechercher(reference) != null) {
@@ -67,16 +67,16 @@ public class VisiteService {
                 throw new Exception("La date doit être au format dd/MM/yyyy");
             }
             //La matricule doit être de 4 caractères
-            if(matricule.length() != 4) {
-                throw new Exception("Le matricule visiteur doit être composé de 4 caractères");
+            if(matricule.length() > 4) {
+                throw new Exception("Le matricule visiteur ne peut pas dépasser 4 caractères");
             }
             //Le visiteur doit exister dans la base
             if(VisiteurDao.rechercher(matricule) == null) {
                 throw new Exception("Le visiteur possédant cette référence n'existe pas");
             }
             //Le code du médecin doit être de 4 caractères
-            if(codeMedecin.length() != 4) {
-                throw new Exception("Le code du médecin doit être composé de 4 caractères");
+            if(codeMedecin.length() > 4) {
+                throw new Exception("Le code du médecin ne peut pas dépasser 4 caractères");
             }
             //Le médecin doit exister dans la base
             if(MedecinDao.rechercher(codeMedecin) == null) {
