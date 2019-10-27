@@ -106,4 +106,10 @@ class VisiteServiceTest {
         System.out.println("--------------------------- creerVisiteMatriNull ---------------------------------");
         Assertions.assertEquals(0, uneVisiteService.creerVisite("test", "06/06/1996", "", null, "m001"), "Résultat 0 car matricule null");
     }
+
+    @Test
+    void creerVisiteMatri5Carac() {
+        System.out.println("--------------------------- creerVisiteMatri5Carac ---------------------------------");
+        Assertions.assertEquals(0, uneVisiteService.creerVisite("test", "06/06/1996", "", "AAAAA", "m001"), "Résultat 0 car matricule trop long");
+    }
 }
