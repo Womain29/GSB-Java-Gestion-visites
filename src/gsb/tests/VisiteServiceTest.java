@@ -136,4 +136,10 @@ class VisiteServiceTest {
         System.out.println("--------------------------- creerVisiteCodeMedKO ---------------------------------");
         Assertions.assertEquals(0, uneVisiteService.creerVisite("test", "06/06/1996", "", "a131", "BBBB"), "Résultat 0 car le code medecin non existant");
     }
+
+    @Test
+    void creerVisiteOK() {
+        System.out.println("--------------------------- creerVisiteOK ---------------------------------");
+        Assertions.assertEquals(1, uneVisiteService.creerVisite("test", "06/06/1996", "", "a131", "m001"), "Résultat 1 car les paramètres sont corrects");
+    }
 }
