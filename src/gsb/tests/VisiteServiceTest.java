@@ -118,4 +118,10 @@ class VisiteServiceTest {
         System.out.println("--------------------------- creerVisiteMatriKO ---------------------------------");
         Assertions.assertEquals(0, uneVisiteService.creerVisite("test", "06/06/1996", "", "BBBB", "m001"), "Résultat 0 car le matricule visiteur n'existe pas");
     }
+
+    @Test
+    void creerVisiteCodeMedNull() {
+        System.out.println("--------------------------- creerVisiteCodeMedNull ---------------------------------");
+        Assertions.assertEquals(0, uneVisiteService.creerVisite("test", "06/06/1996", "", "a131", null), "Résultat 0 car le matricule visiteur n'existe pas");
+    }
 }
