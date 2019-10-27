@@ -122,6 +122,12 @@ class VisiteServiceTest {
     @Test
     void creerVisiteCodeMedNull() {
         System.out.println("--------------------------- creerVisiteCodeMedNull ---------------------------------");
-        Assertions.assertEquals(0, uneVisiteService.creerVisite("test", "06/06/1996", "", "a131", null), "Résultat 0 car le matricule visiteur n'existe pas");
+        Assertions.assertEquals(0, uneVisiteService.creerVisite("test", "06/06/1996", "", "a131", null), "Résultat 0 car le code medecin null");
+    }
+
+    @Test
+    void creerVisiteCodeMed5Carac() {
+        System.out.println("--------------------------- creerVisiteCodeMed5Carac ---------------------------------");
+        Assertions.assertEquals(0, uneVisiteService.creerVisite("test", "06/06/1996", "", "a131", "AAAAA"), "Résultat 0 car le code medecin trop long");
     }
 }
