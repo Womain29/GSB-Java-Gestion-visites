@@ -1,6 +1,6 @@
 package gsb.tests;
 
-import gsb.modele.Visite;
+import gsb.modele.*;
 import gsb.service.VisiteService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
@@ -10,14 +10,27 @@ import org.junit.jupiter.api.Test;
 class VisiteServiceTest {
 
     private VisiteService uneVisiteService;
+    private Visite uneVisite;
+    private Unite uneUnite;
+    private Visiteur unVisiteur;
+    private Medecin unMedecin;
+    private Localite uneLocalite;
 
     @BeforeEach
     void setUp() {
         uneVisiteService = new VisiteService();
+
+        uneUnite = new Unite("SW", "SWISS");
+        unVisiteur = new Visiteur("a131", "Villechalane", "Louis", "lvillachane", "jux7g", "8 rue des Charmes", "46000", "21/12/2005", 0, uneUnite);
+        uneLocalite = new Localite("23200", "Guéret");
+        unMedecin = new Medecin("m001", "SMITH", "JEAN", "5 rue de la Poste", uneLocalite, "05-55-12-65-45", "", "Cardiologue");
     }
 
     @AfterEach
     void tearDown() {
+        if(uneVisiteService.rechercherVisite("test") != null) {
+            uneVisiteService.supprimerVisite("test");
+        }
     }
 
     @Test
@@ -43,7 +56,7 @@ class VisiteServiceTest {
         System.out.println("--------------------------- rechercherVisiteReferenceOK ---------------------------------");
         Assertions.assertNotNull(uneVisiteService.rechercherVisite("v0001"), "Résultat objet car une visite correspondante");
 
-        Visite uneVisite = uneVisiteService.rechercherVisite("v0001");
+        uneVisite = uneVisiteService.rechercherVisite("v0001");
         System.out.println("Référence : " + uneVisite.getReference());
         System.out.println("Date : " + uneVisite.getDateVisite());
         System.out.println("Commentaire : " + uneVisite.getUnCommentaire());
@@ -52,6 +65,8 @@ class VisiteServiceTest {
     }
 
     @Test
-    void creerVisite() {
+    void creerVisiteAllNull() {
+        System.out.println("--------------------------- creerVisiteAllNull ---------------------------------");
+        Assertions.assertEquals(0, uneVisiteService.creerVisite(null, null, null, null, null), "Résultat 0 car paramètres null");
     }
 }
