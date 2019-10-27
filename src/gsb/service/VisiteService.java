@@ -102,4 +102,28 @@ public class VisiteService {
 
         return result;
     }
+
+    public int supprimerVisite(String uneReference) {
+        int result = 0;
+
+        try {
+            //La référence entrée en paramètre ne peut pas être nulle
+            if(uneReference == null) {
+                throw new Exception("Référence de la visite obligatoire");
+            }
+            //La référence doit avoir 5 caractères
+            if (uneReference.length() > 5) {
+                throw new Exception("La référence ne peut pas dépasser 5 caractères");
+            }
+            //Une visite correspondante à la référence doit exister
+            if(VisiteDao.rechercher(uneReference) == null) {
+                throw new Exception("La visite correspondant à cette référence n'existe pas");
+            }
+            result = VisiteDao.supprimer(uneReference);
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return result;
+    }
 }
