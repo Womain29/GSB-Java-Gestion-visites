@@ -72,6 +72,12 @@ class VisiteServiceTest {
     }
 
     @Test
+    void creerVisiteRefNull() {
+        System.out.println("--------------------------- creerVisiteRefNull ---------------------------------");
+        Assertions.assertEquals(0, uneVisiteService.creerVisite(null, "06/06/1996", "", "a131", "m001"), "Résultat 0 car référence null");
+    }
+
+    @Test
     void creerVisiteRefExistante() {
         System.out.println("--------------------------- creerVisiteRefExistante ---------------------------------");
         Assertions.assertEquals(0, uneVisiteService.creerVisite("v0001", "06/06/1996", "", "a131", "m001"), "Résultat 0 car référence existante");
