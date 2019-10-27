@@ -3,6 +3,7 @@ package gsb.modele.dao;
 import gsb.modele.Medecin;
 import gsb.modele.Visite;
 import gsb.modele.Visiteur;
+import gsb.utils.SQLUtils;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -56,7 +57,7 @@ public class VisiteDao {
         String unCommentaire = uneVisite.getUnCommentaire();
         String matricule = uneVisite.getUnVisiteur().getMatricule();
         String codeMedecin = uneVisite.getUnMedecin().getCodeMed();
-        String requete = "INSERT INTO VISITE VALUES ('" + reference + "', '" + date + "', '" + unCommentaire + "', '" + matricule + "', '" + codeMedecin + "')";
+        String requete = "INSERT INTO VISITE VALUES ('" + reference + "', '" + SQLUtils.dateFormatSql(date) + "', '" + unCommentaire + "', '" + matricule + "', '" + codeMedecin + "')";
 
         try {
             result = ConnexionMySql.execReqMaj(requete);
