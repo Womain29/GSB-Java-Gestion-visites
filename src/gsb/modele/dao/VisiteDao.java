@@ -68,4 +68,19 @@ public class VisiteDao {
 
         return result;
     }
+
+    public static int supprimer(String uneReference) {
+        int result = 0;
+        String requete = "DELETE FROM VISITE WHERE Reference = '" + uneReference + "'";
+
+        try {
+            result = ConnexionMySql.execReqMaj(requete);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        ConnexionMySql.fermerConnexionBd();
+
+        return result;
+    }
 }
