@@ -88,4 +88,10 @@ class VisiteServiceTest {
         System.out.println("--------------------------- creerVisiteRef6Caracteres ---------------------------------");
         Assertions.assertEquals(0, uneVisiteService.creerVisite("AAAAAA", "06/06/1996", "", "a131", "m001"), "Résultat 0 car référence de 6 caracteres");
     }
+
+    @Test
+    void creerVisiteDateNull() {
+        System.out.println("--------------------------- creerVisiteDateNull ---------------------------------");
+        Assertions.assertEquals(0, uneVisiteService.creerVisite("test", null, "", "a131", "m001"), "Résultat 0 car date null");
+    }
 }
