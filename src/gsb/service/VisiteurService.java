@@ -6,6 +6,8 @@ import gsb.modele.dao.VisiteurDao;
 /**
  * @author womain
  * 26/10/2019
+ *
+ * Modifié le 27/10/2019
  */
 public class VisiteurService {
 
@@ -20,8 +22,8 @@ public class VisiteurService {
             if(matricule == null) {
                 throw new Exception("Le matricule ne peut pas être vide");
             }
-            if(matricule.length() != 4) {
-                throw new Exception("Le matricule doit être composé de 4 caractères");
+            if(matricule.length() > 4) {
+                throw new Exception("Le matricule ne peut pas dépasser 4 caractères");
             }
             if(VisiteurDao.rechercher(matricule) == null) {
                 throw new Exception("Il n'y a pas de visiteur correspondant à ce matricule");
