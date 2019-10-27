@@ -43,6 +43,15 @@ public class VisiteService {
         return uneVisite;
     }
 
+    /**
+     *
+     * @param reference chaine de caracteres
+     * @param date chaine de caracteres
+     * @param commentaire chaine de caracteres
+     * @param matricule chaine de caracteres
+     * @param codeMedecin chaine de caracteres
+     * @return
+     */
     public int creerVisite(String reference, String date, String commentaire, String matricule, String codeMedecin) {
         int result = 0;
         Visite uneVisite = null;
