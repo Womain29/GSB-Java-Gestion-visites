@@ -12,6 +12,7 @@
     <file url="file://$PROJECT_DIR$/src/gsb/tests/ConnexionTest.java" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/gsb/tests/MedecinDaoTestRetournerDictionnaire.java" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/gsb/tests/MedecinServiceTest.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/gsb/tests/VisiteurServiceTest.java" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/gsb/vue/JIFMedecin.java" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/gsb/vue/JIFMedecinCons.java" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/gsb/vue/JIFMedecinFiche.java" charset="windows-1252" />
