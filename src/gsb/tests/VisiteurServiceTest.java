@@ -33,12 +33,6 @@ class VisiteurServiceTest {
     }
 
     @Test
-    void rechercherVisiteurMatricule3Caracteres() {
-        System.out.println("--------------------------- rechercherVisiteurMatricule3Caracteres -------------------------------");
-        Assertions.assertNull(unVisiteurService.rechercherVisiteur("ABC"), "Résultat null");
-    }
-
-    @Test
     void rechercherVisiteurMatriculeKO() {
         System.out.println("--------------------------- rechercherVisiteurMatriculeKO -------------------------------");
         Assertions.assertNull(unVisiteurService.rechercherVisiteur("AAAA"), "Pas de visiteur correspondant donc résultat null");
