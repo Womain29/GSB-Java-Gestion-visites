@@ -27,8 +27,12 @@ public class VisiteService {
                 throw new Exception("Référence de la visite obligatoire");
             }
             //La référence doit avoir 5 caractères
-            if (uneReference.length() != 5) {
-                throw new Exception("La référence doit posséder 5 caractères");
+            if (uneReference.length() > 5) {
+                throw new Exception("La référence ne peut pas dépasser 4 caractères");
+            }
+            //Une visite correspondante à la référence doit exister
+            if(VisiteDao.rechercher(uneReference) == null) {
+                throw new Exception("La visite correspondant à cette référence n'existe pas");
             }
             uneVisite = VisiteDao.rechercher(uneReference);
         }
