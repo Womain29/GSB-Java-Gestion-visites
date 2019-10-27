@@ -29,6 +29,7 @@ class VisiteServiceTest {
     @AfterEach
     void tearDown() {
         if(uneVisiteService.rechercherVisite("test") != null) {
+            //Suppresion de la visite de test si existante
             uneVisiteService.supprimerVisite("test");
         }
     }
@@ -68,5 +69,11 @@ class VisiteServiceTest {
     void creerVisiteAllNull() {
         System.out.println("--------------------------- creerVisiteAllNull ---------------------------------");
         Assertions.assertEquals(0, uneVisiteService.creerVisite(null, null, null, null, null), "Résultat 0 car paramètres null");
+    }
+
+    @Test
+    void creerVisiteRefExistante() {
+        System.out.println("--------------------------- creerVisiteRefExistante ---------------------------------");
+        Assertions.assertEquals(0, uneVisiteService.creerVisite("v0001", "06/06/1996", "", "a131", "m001"), "Résultat 0 car référence existante");
     }
 }
