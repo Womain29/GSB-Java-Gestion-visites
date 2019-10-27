@@ -100,4 +100,10 @@ class VisiteServiceTest {
         System.out.println("--------------------------- creerVisiteDateFormatKo ---------------------------------");
         Assertions.assertEquals(0, uneVisiteService.creerVisite("test", "06-06-1996", "", "a131", "m001"), "Résultat 0 car date au mauvais format");
     }
+
+    @Test
+    void creerVisiteMatriNull() {
+        System.out.println("--------------------------- creerVisiteMatriNull ---------------------------------");
+        Assertions.assertEquals(0, uneVisiteService.creerVisite("test", "06/06/1996", "", null, "m001"), "Résultat 0 car matricule null");
+    }
 }
