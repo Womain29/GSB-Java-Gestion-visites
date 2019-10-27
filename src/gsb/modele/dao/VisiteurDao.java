@@ -24,7 +24,7 @@ public class VisiteurDao {
     public static Visiteur rechercher(String matriculeVisiteur) {
         Visiteur unVisiteur = null;
         Unite uneUnite = null;
-        String requete = "SELECT * FROM Visiteur WHERE Matricule = '" + matriculeVisiteur + "'";
+        String requete = "SELECT * FROM VISITEUR WHERE Matricule = '" + matriculeVisiteur + "'";
 
         ResultSet reqSelection = ConnexionMySql.execReqSelection(requete);
         try {
