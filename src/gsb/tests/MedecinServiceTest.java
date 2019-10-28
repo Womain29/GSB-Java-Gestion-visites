@@ -37,4 +37,10 @@ class MedecinServiceTest {
         Assertions.assertNull(unMedecinService.rechercherMedecin("AAAAA"), "Résultat null car code trop long");
     }
 
+    @Test
+    void rechercherMedecinCodeKo() {
+        System.out.println("--------------------------------- rechercherMedecinCodeKo ------------------------------");
+        Assertions.assertNull(unMedecinService.rechercherMedecin("BBBB"), "Résultat null car code non existant dans la BDD");
+    }
+
 }
