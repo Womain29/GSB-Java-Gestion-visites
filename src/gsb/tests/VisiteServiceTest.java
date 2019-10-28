@@ -19,11 +19,6 @@ class VisiteServiceTest {
     @BeforeEach
     void setUp() {
         uneVisiteService = new VisiteService();
-
-        uneUnite = new Unite("SW", "SWISS");
-        unVisiteur = new Visiteur("a131", "Villechalane", "Louis", "lvillachane", "jux7g", "8 rue des Charmes", "46000", "21/12/2005", 0, uneUnite);
-        uneLocalite = new Localite("23200", "Guéret");
-        unMedecin = new Medecin("m001", "SMITH", "JEAN", "5 rue de la Poste", uneLocalite, "05-55-12-65-45", "", "Cardiologue");
     }
 
     @AfterEach
@@ -141,5 +136,11 @@ class VisiteServiceTest {
     void creerVisiteOK() {
         System.out.println("--------------------------- creerVisiteOK ---------------------------------");
         Assertions.assertEquals(1, uneVisiteService.creerVisite("test", "06/06/1996", "", "a131", "m001"), "Résultat 1 car les paramètres sont corrects");
+    }
+
+    @Test
+    void supprimerVisiteRefNull() {
+        System.out.println("--------------------------- supprimerVisiteRefNull ---------------------------------");
+        Assertions.assertEquals(0, uneVisiteService.supprimerVisite(null), "Résultat 0 car référence null");
     }
 }
