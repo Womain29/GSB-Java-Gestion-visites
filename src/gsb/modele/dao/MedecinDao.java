@@ -30,8 +30,8 @@ public class MedecinDao {
 		ResultSet reqSelection = ConnexionMySql.execReqSelection("select * from MEDECIN where CODEMED ='"+codeMedecin+"'");
 		try {
 			if (reqSelection.next()) {
-				uneLocalite = LocaliteDao.rechercher(reqSelection.getString(5));
-				unMedecin = new Medecin(reqSelection.getString(1), reqSelection.getString(2), reqSelection.getString(3), reqSelection.getString(4), uneLocalite, reqSelection.getString(6), reqSelection.getString(7), reqSelection.getString(8) );	
+				uneLocalite = LocaliteDao.rechercher(reqSelection.getString(8));
+				unMedecin = new Medecin(reqSelection.getString(1), reqSelection.getString(2), reqSelection.getString(3), reqSelection.getString(4), uneLocalite, reqSelection.getString(5), reqSelection.getString(6), reqSelection.getString(7) );
 			};
 			}
 		catch(Exception e) {
