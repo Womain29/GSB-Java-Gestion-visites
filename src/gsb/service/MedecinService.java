@@ -22,7 +22,7 @@ public class MedecinService {
 	 * @param unCodeMedecin chaine de caracteres
 	 * @return un objet Medecin ou null
 	 */
-	public static Medecin rechercherMedecin(String unCodeMedecin){
+	public Medecin rechercherMedecin(String unCodeMedecin){
 		Medecin unMedecin = null;
 		try {
 			//Code du médecin obligatoire
