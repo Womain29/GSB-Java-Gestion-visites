@@ -155,4 +155,11 @@ class VisiteServiceTest {
         System.out.println("--------------------------- suppprimerVisiteRefKo ---------------------------------");
         Assertions.assertEquals(0, uneVisiteService.supprimerVisite("test"), "Résultat 0 car référence non existante");
     }
+
+    @Test
+    void suppprimerVisiteRefOk() {
+        System.out.println("--------------------------- suppprimerVisiteRefOk ---------------------------------");
+        uneVisiteService.creerVisite("test", "06/06/1996", "", "a131", "m001");
+        Assertions.assertEquals(1, uneVisiteService.supprimerVisite("test"), "Résultat 1 car référence Ok");
+    }
 }
