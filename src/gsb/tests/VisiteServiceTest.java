@@ -143,4 +143,10 @@ class VisiteServiceTest {
         System.out.println("--------------------------- supprimerVisiteRefNull ---------------------------------");
         Assertions.assertEquals(0, uneVisiteService.supprimerVisite(null), "Résultat 0 car référence null");
     }
+
+    @Test
+    void suppprimerVisiteRef6Carac() {
+        System.out.println("--------------------------- suppprimerVisiteRef6Carac ---------------------------------");
+        Assertions.assertEquals(0, uneVisiteService.supprimerVisite("AAAAAA"), "Résultat 0 car référence trop longue");
+    }
 }
