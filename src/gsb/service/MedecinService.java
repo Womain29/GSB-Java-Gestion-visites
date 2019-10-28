@@ -23,6 +23,12 @@ public class MedecinService {
 		if (unCodeMedecin==null) {
             throw new Exception("Donn?e obligatoire : code");
         }
+		if (unCodeMedecin.length() > 4) {
+			throw new Exception("Le code du médecin ne peut pas dépasser 4 caractères");
+		}
+		if(MedecinDao.rechercher(unCodeMedecin) == null) {
+			throw new Exception("Il n'y a pas de médecin correspondant à ce code");
+		}
 		unMedecin = MedecinDao.rechercher(unCodeMedecin);
 		}
 		catch(Exception e){
