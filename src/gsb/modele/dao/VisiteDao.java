@@ -7,6 +7,7 @@ import gsb.utils.SQLUtils;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 
 /**
  * classe Dao d'une visite
@@ -70,6 +71,11 @@ public class VisiteDao {
         return result;
     }
 
+    /**
+     *
+     * @param uneReference chaine de caracteres
+     * @return 0 si echec, 1 si réussi
+     */
     public static int supprimer(String uneReference) {
         int result = 0;
         String requete = "DELETE FROM VISITE WHERE Reference = '" + uneReference + "'";
@@ -83,5 +89,28 @@ public class VisiteDao {
         ConnexionMySql.fermerConnexionBd();
 
         return result;
+    }
+
+    /**
+     *
+     * @param uneDate chaine de caracteres
+     * @param uneReference chaine de caracteres
+     * @return un dictionnaire
+     */
+    public static HashMap<String, Visite> rechercheDateRef(String uneDate, String uneReference) {
+        HashMap<String, Visite> diccoVisiteDateRef = new HashMap<>();
+        String requete = "SELECT * FROM VISITE WHERE Reference = '" + uneReference + "' AND Date = '" + uneDate + "'";
+        ResultSet reqSelection = ConnexionMySql.execReqSelection(requete);
+
+        try {
+            String reference = reqSelection.getString(1);
+            diccoVisiteDateRef.put(reference, VisiteDao.rechercher(reference));
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Erreur requete SELECT * FROM VISITE WHERE Reference = '" + uneReference + "' AND Date = '" + uneDate + "'");
+        }
+
+        return diccoVisiteDateRef;
     }
 }
