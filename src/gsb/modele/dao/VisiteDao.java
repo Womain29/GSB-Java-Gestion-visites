@@ -103,8 +103,10 @@ public class VisiteDao {
         ResultSet reqSelection = ConnexionMySql.execReqSelection(requete);
 
         try {
-            String reference = reqSelection.getString(1);
-            diccoVisiteDateRef.put(reference, VisiteDao.rechercher(reference));
+            while(reqSelection.next()) {
+                String reference = reqSelection.getString(1);
+                diccoVisiteDateRef.put(reference, VisiteDao.rechercher(reference));
+            }
         }
         catch (SQLException e) {
             e.printStackTrace();
