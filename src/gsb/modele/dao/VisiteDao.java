@@ -110,7 +110,7 @@ public class VisiteDao {
         }
         catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("Erreur requete SELECT * FROM VISITE WHERE Reference = '" + uneReference + "' AND Date = '" + uneDate + "'");
+            System.out.println("Erreur requete SELECT * FROM VISITE WHERE Reference = '" + uneReference + "' AND Date = '" + SQLUtils.dateFormatSql(uneDate) + "'");
         }
 
         return diccoVisiteDateRef;
