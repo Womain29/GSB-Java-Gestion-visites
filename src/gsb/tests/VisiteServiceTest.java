@@ -190,5 +190,12 @@ class VisiteServiceTest {
         Assertions.assertEquals(diccoVisiteDateRef, uneVisiteService.rechercheVisiteDateRef("06-06-1996","v0001"), "Résultat vide car mauvais format date");
     }
 
+    @Test
+    void rechercheVisiteDateRefRef5Carac() {
+        System.out.println("--------------------------- rechercheVisiteDateRefRef5Carac ---------------------------------");
+        diccoVisiteDateRef = new HashMap<>();
+        Assertions.assertEquals(diccoVisiteDateRef, uneVisiteService.rechercheVisiteDateRef("06-06-1996","v00066"), "Résultat vide car ref trop longue");
+    }
+
 
 }
