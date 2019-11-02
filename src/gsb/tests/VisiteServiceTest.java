@@ -170,6 +170,13 @@ class VisiteServiceTest {
     }
 
     @Test
+    void rechercheVisiteDateRefDateNull() {
+        System.out.println("--------------------------- rechercheVisiteDateRefDateNull ---------------------------------");
+        diccoVisiteDateRef = new HashMap<>();
+        Assertions.assertEquals(diccoVisiteDateRef, uneVisiteService.rechercheVisiteDateRef(null,"v0001"), "Résultat vide car date null");
+    }
+
+    @Test
     void rechercheVisiteDateRefDateKo() {
         System.out.println("--------------------------- rechercheVisiteDateRefDateKo ---------------------------------");
         diccoVisiteDateRef = new HashMap<>();
