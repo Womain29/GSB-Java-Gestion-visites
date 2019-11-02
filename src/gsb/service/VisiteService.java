@@ -8,6 +8,8 @@ import gsb.modele.dao.VisiteDao;
 import gsb.modele.dao.VisiteurDao;
 import gsb.utils.ValidationUtils;
 
+import java.util.HashMap;
+
 /**
  * @author womain
  * 26/10/2019
@@ -125,5 +127,40 @@ public class VisiteService {
             System.out.println(e.getMessage());
         }
         return result;
+    }
+
+    /**
+     *
+     * @param uneDate chaine de caracteres
+     * @param uneReference chaine de caracteres
+     * @return un dictionnaire de Visite
+     */
+    public HashMap<String, Visite> rechercheVisiteDateRef(String uneDate, String uneReference) {
+        HashMap<String, Visite> diccoVisiteDateRef = new HashMap<>();
+
+        try {
+            //Les champs ne peuvent pas être null
+            if (uneDate == null || uneReference == null) {
+                throw new Exception("Tous les champs sont obligatoires");
+            }
+            //La référence ne peut pas dépasser 4 caracteres
+            if(uneReference.length() > 4) {
+                throw new Exception("La référence ne peut pas dépasser 5 caractères");
+            }
+            //Une visite correspondante à la référence doit exister
+            if(VisiteDao.rechercher(uneReference) == null) {
+                throw new Exception("La visite correspondant à cette référence n'existe pas");
+            }
+            //La date doit être au format dd/MM/yyyy
+            if(!ValidationUtils.isDateValide(uneDate)){
+                throw new Exception("La date doit être au format dd/MM/yyyy");
+            }
+            diccoVisiteDateRef = VisiteDao.rechercheDateRef(uneDate, uneReference);
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return diccoVisiteDateRef;
     }
 }
