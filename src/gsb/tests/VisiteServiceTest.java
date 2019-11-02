@@ -201,7 +201,23 @@ class VisiteServiceTest {
     void rechercheVisiteDateRefRefKo() {
         System.out.println("--------------------------- rechercheVisiteDateRefRefKo ---------------------------------");
         diccoVisiteDateRef = new HashMap<>();
-        Assertions.assertEquals(diccoVisiteDateRef, uneVisiteService.rechercheVisiteDateRef("06/06/1996","v099"), "Résultat vide car ref trop longue");
+        Assertions.assertEquals(diccoVisiteDateRef, uneVisiteService.rechercheVisiteDateRef("06/06/1996","v099"), "Résultat vide car mauvaise ref");
+    }
+
+    @Test
+    void rechercheVisiteDateRefOk() {
+        System.out.println("--------------------------- rechercheVisiteDateRefOk ---------------------------------");
+        diccoVisiteDateRef = uneVisiteService.rechercheVisiteDateRef("20/01/2002","v0001");
+        int nbElementsAttendus = 1; //Nombre de visite ce jour-là pour le visiteur
+
+        Assertions.assertEquals(nbElementsAttendus, diccoVisiteDateRef.size(), "Un élément correspondant donc résultat ok");
+        if(diccoVisiteDateRef.containsKey("v0001")) {
+            System.out.println("Référence : " + diccoVisiteDateRef.get("v0001").getReference());
+            System.out.println("Date : " + diccoVisiteDateRef.get("v0001").getDateVisite());
+            System.out.println("Commentaire : " + diccoVisiteDateRef.get("v0001").getUnCommentaire());
+            System.out.println("Matricule Médecin : " + diccoVisiteDateRef.get("v0001").getUnVisiteur().getMatricule());
+            System.out.println("Code Médecin : " + diccoVisiteDateRef.get("v0001").getUnMedecin().getCodeMed());
+        }
     }
 
 
