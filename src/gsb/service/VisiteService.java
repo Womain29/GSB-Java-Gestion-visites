@@ -144,7 +144,7 @@ public class VisiteService {
                 throw new Exception("Tous les champs sont obligatoires");
             }
             //La référence ne peut pas dépasser 4 caracteres
-            if(uneReference.length() > 4) {
+            if(uneReference.length() > 5) {
                 throw new Exception("La référence ne peut pas dépasser 5 caractères");
             }
             //Une visite correspondante à la référence doit exister
