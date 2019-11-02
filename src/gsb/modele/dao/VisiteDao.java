@@ -99,7 +99,7 @@ public class VisiteDao {
      */
     public static HashMap<String, Visite> rechercheDateRef(String uneDate, String uneReference) {
         HashMap<String, Visite> diccoVisiteDateRef = new HashMap<>();
-        String requete = "SELECT * FROM VISITE WHERE Reference = '" + uneReference + "' AND Date = '" + uneDate + "'";
+        String requete = "SELECT * FROM VISITE WHERE Reference = '" + uneReference + "' AND Date = '" + SQLUtils.dateFormatSql(uneDate) + "'";
         ResultSet reqSelection = ConnexionMySql.execReqSelection(requete);
 
         try {
@@ -110,7 +110,7 @@ public class VisiteDao {
         }
         catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("Erreur requete SELECT * FROM VISITE WHERE Reference = '" + uneReference + "' AND Date = '" + SQLUtils.dateFormatSql(uneDate) + "'");
+            System.out.println("Erreur requete SELECT * FROM VISITE WHERE Reference = '" + uneReference + "' AND Date = '" + uneDate + "'");
         }
 
         return diccoVisiteDateRef;
