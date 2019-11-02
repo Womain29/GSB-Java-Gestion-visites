@@ -13,6 +13,7 @@ class VisiteServiceTest {
 
     private VisiteService uneVisiteService;
     private Visite uneVisite;
+    private HashMap<String, Visite> diccoVisiteDateRef;
 
     @BeforeEach
     void setUp() {
@@ -164,7 +165,16 @@ class VisiteServiceTest {
     @Test
     void rechercheVisiteDateRefAllNull() {
         System.out.println("--------------------------- rechercheVisiteDateRefAllNull ---------------------------------");
-        HashMap<String, Visite> diccoVisiteDateRef = new HashMap<>();
+        diccoVisiteDateRef = new HashMap<>();
         Assertions.assertEquals(diccoVisiteDateRef, uneVisiteService.rechercheVisiteDateRef(null,null), "Résultat vide car reference et date null");
     }
+
+    @Test
+    void rechercheVisiteDateRefDateKo() {
+        System.out.println("--------------------------- rechercheVisiteDateRefDateKo ---------------------------------");
+        diccoVisiteDateRef = new HashMap<>();
+        Assertions.assertEquals(diccoVisiteDateRef, uneVisiteService.rechercheVisiteDateRef("06-06-1996","v0001"), "Résultat vide car mauvais format date");
+    }
+
+
 }
