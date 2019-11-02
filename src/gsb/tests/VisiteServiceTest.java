@@ -7,14 +7,12 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
+
 class VisiteServiceTest {
 
     private VisiteService uneVisiteService;
     private Visite uneVisite;
-    private Unite uneUnite;
-    private Visiteur unVisiteur;
-    private Medecin unMedecin;
-    private Localite uneLocalite;
 
     @BeforeEach
     void setUp() {
@@ -161,5 +159,12 @@ class VisiteServiceTest {
         System.out.println("--------------------------- suppprimerVisiteRefOk ---------------------------------");
         uneVisiteService.creerVisite("test", "06/06/1996", "", "a131", "m001");
         Assertions.assertEquals(1, uneVisiteService.supprimerVisite("test"), "Résultat 1 car référence Ok");
+    }
+
+    @Test
+    void rechercheVisiteDateRefAllNull() {
+        System.out.println("--------------------------- rechercheVisiteDateRefAllNull ---------------------------------");
+        HashMap<String, Visite> diccoVisiteDateRef = new HashMap<>();
+        Assertions.assertEquals(diccoVisiteDateRef, uneVisiteService.rechercheVisiteDateRef(null,null), "Résultat vide car reference et date null");
     }
 }
