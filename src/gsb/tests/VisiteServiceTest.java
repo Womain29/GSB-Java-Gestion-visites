@@ -194,7 +194,14 @@ class VisiteServiceTest {
     void rechercheVisiteDateRefRef5Carac() {
         System.out.println("--------------------------- rechercheVisiteDateRefRef5Carac ---------------------------------");
         diccoVisiteDateRef = new HashMap<>();
-        Assertions.assertEquals(diccoVisiteDateRef, uneVisiteService.rechercheVisiteDateRef("06-06-1996","v00066"), "Résultat vide car ref trop longue");
+        Assertions.assertEquals(diccoVisiteDateRef, uneVisiteService.rechercheVisiteDateRef("06/06/1996","v00066"), "Résultat vide car ref trop longue");
+    }
+
+    @Test
+    void rechercheVisiteDateRefRefKo() {
+        System.out.println("--------------------------- rechercheVisiteDateRefRefKo ---------------------------------");
+        diccoVisiteDateRef = new HashMap<>();
+        Assertions.assertEquals(diccoVisiteDateRef, uneVisiteService.rechercheVisiteDateRef("06/06/1996","v099"), "Résultat vide car ref trop longue");
     }
 
 
