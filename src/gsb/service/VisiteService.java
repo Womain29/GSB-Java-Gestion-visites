@@ -9,7 +9,6 @@ import gsb.modele.dao.VisiteurDao;
 import gsb.utils.ValidationUtils;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * @author womain
@@ -133,30 +132,30 @@ public class VisiteService {
     /**
      *
      * @param uneDate chaine de caracteres
-     * @param uneReference chaine de caracteres
+     * @param unMatricule chaine de caracteres
      * @return une collection de Visite
      */
-    public ArrayList<Visite> rechercheVisiteDateRef(String uneDate, String uneReference) {
+    public ArrayList<Visite> rechercheVisiteDateMat(String uneDate, String unMatricule) {
         ArrayList<Visite> colVisiteDateRef = new ArrayList<Visite>();
 
         try {
             //Les champs ne peuvent pas être null
-            if (uneDate == null || uneReference == null) {
+            if (uneDate == null || unMatricule == null) {
                 throw new Exception("Tous les champs sont obligatoires");
             }
             //La référence ne peut pas dépasser 4 caracteres
-            if(uneReference.length() > 5) {
+            if(unMatricule.length() > 4) {
                 throw new Exception("La référence ne peut pas dépasser 5 caractères");
             }
             //Une visite correspondante à la référence doit exister
-            if(VisiteDao.rechercher(uneReference) == null) {
+            if(VisiteDao.rechercher(unMatricule) == null) {
                 throw new Exception("La visite correspondant à cette référence n'existe pas");
             }
             //La date doit être au format dd/MM/yyyy
             if(!ValidationUtils.isDateValide(uneDate)){
                 throw new Exception("La date doit être au format dd/MM/yyyy");
             }
-            colVisiteDateRef = VisiteDao.rechercheDateRef(uneDate, uneReference);
+            colVisiteDateRef = VisiteDao.rechercheDateMat(uneDate, unMatricule);
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
