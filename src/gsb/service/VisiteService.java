@@ -148,7 +148,7 @@ public class VisiteService {
                 throw new Exception("La référence ne peut pas dépasser 5 caractères");
             }
             //Une visite correspondante à la référence doit exister
-            if(VisiteDao.rechercher(unMatricule) == null) {
+            if(VisiteurDao.rechercher(unMatricule) == null) {
                 throw new Exception("La visite correspondant à cette référence n'existe pas");
             }
             //La date doit être au format dd/MM/yyyy
