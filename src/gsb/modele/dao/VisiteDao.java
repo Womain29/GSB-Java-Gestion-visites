@@ -7,6 +7,7 @@ import gsb.utils.SQLUtils;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -95,17 +96,17 @@ public class VisiteDao {
      *
      * @param uneDate chaine de caracteres
      * @param uneReference chaine de caracteres
-     * @return un dictionnaire
+     * @return une collection de visite
      */
-    public static HashMap<String, Visite> rechercheDateRef(String uneDate, String uneReference) {
-        HashMap<String, Visite> diccoVisiteDateRef = new HashMap<>();
+    public static ArrayList<Visite> rechercheDateRef(String uneDate, String uneReference) {
+        ArrayList<Visite> colVisiteDateRef = new ArrayList<Visite>();
         String requete = "SELECT * FROM VISITE WHERE Reference = '" + uneReference + "' AND Date = '" + SQLUtils.dateFormatSql(uneDate) + "'";
         ResultSet reqSelection = ConnexionMySql.execReqSelection(requete);
 
         try {
             while(reqSelection.next()) {
                 String reference = reqSelection.getString(1);
-                diccoVisiteDateRef.put(reference, VisiteDao.rechercher(reference));
+                colVisiteDateRef.add(VisiteDao.rechercher(reference));
             }
         }
         catch (SQLException e) {
@@ -113,6 +114,6 @@ public class VisiteDao {
             System.out.println("Erreur requete SELECT * FROM VISITE WHERE Reference = '" + uneReference + "' AND Date = '" + uneDate + "'");
         }
 
-        return diccoVisiteDateRef;
+        return colVisiteDateRef;
     }
 }
