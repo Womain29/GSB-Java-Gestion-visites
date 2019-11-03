@@ -8,7 +8,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 class VisiteServiceTest {
 
@@ -164,51 +163,51 @@ class VisiteServiceTest {
     }
 
     @Test
-    void rechercheVisiteDateRefAllNull() {
-        System.out.println("--------------------------- rechercheVisiteDateRefAllNull ---------------------------------");
+    void rechercheVisiteDateMatAllNull() {
+        System.out.println("--------------------------- rechercheVisiteDateMatAllNull ---------------------------------");
         colVisiteDateRef = new ArrayList<Visite>();
-        Assertions.assertEquals(colVisiteDateRef, uneVisiteService.rechercheVisiteDateRef(null,null), "Résultat vide car reference et date null");
+        Assertions.assertEquals(colVisiteDateRef, uneVisiteService.rechercheVisiteDateMat(null,null), "Résultat vide car matricule et date null");
     }
 
     @Test
-    void rechercheVisiteDateRefDateNull() {
-        System.out.println("--------------------------- rechercheVisiteDateRefDateNull ---------------------------------");
+    void rechercheVisiteDateMatDateNull() {
+        System.out.println("--------------------------- rechercheVisiteDateMatDateNull ---------------------------------");
         colVisiteDateRef = new ArrayList<Visite>();
-        Assertions.assertEquals(colVisiteDateRef, uneVisiteService.rechercheVisiteDateRef(null,"v0001"), "Résultat vide car date null");
+        Assertions.assertEquals(colVisiteDateRef, uneVisiteService.rechercheVisiteDateMat(null,"b59"), "Résultat vide car date null");
     }
 
     @Test
-    void rechercheVisiteDateRefRefNull() {
-        System.out.println("--------------------------- rechercheVisiteDateRefRefNull ---------------------------------");
+    void rechercheVisiteDateMatMatNull() {
+        System.out.println("--------------------------- rechercheVisiteDateMatMatNull ---------------------------------");
         colVisiteDateRef = new ArrayList<Visite>();
-        Assertions.assertEquals(colVisiteDateRef, uneVisiteService.rechercheVisiteDateRef("06/06/1996",null), "Résultat vide car ref null");
+        Assertions.assertEquals(colVisiteDateRef, uneVisiteService.rechercheVisiteDateMat("06/06/1996",null), "Résultat vide car mat null");
     }
 
     @Test
-    void rechercheVisiteDateRefDateKo() {
-        System.out.println("--------------------------- rechercheVisiteDateRefDateKo ---------------------------------");
+    void rechercheVisiteDateMatDateKo() {
+        System.out.println("--------------------------- rechercheVisiteDateMatDateKo ---------------------------------");
         colVisiteDateRef = new ArrayList<Visite>();
-        Assertions.assertEquals(colVisiteDateRef, uneVisiteService.rechercheVisiteDateRef("06-06-1996","v0001"), "Résultat vide car mauvais format date");
+        Assertions.assertEquals(colVisiteDateRef, uneVisiteService.rechercheVisiteDateMat("06-06-1996","b59"), "Résultat vide car mauvais format date");
     }
 
     @Test
-    void rechercheVisiteDateRefRef6Carac() {
-        System.out.println("--------------------------- rechercheVisiteDateRefRef5Carac ---------------------------------");
+    void rechercheVisiteDateMatMat5Carac() {
+        System.out.println("--------------------------- rechercheVisiteDateMatMat5Carac ---------------------------------");
         colVisiteDateRef = new ArrayList<Visite>();
-        Assertions.assertEquals(colVisiteDateRef, uneVisiteService.rechercheVisiteDateRef("06/06/1996","v00066"), "Résultat vide car ref trop longue");
+        Assertions.assertEquals(colVisiteDateRef, uneVisiteService.rechercheVisiteDateMat("06/06/1996","v00066"), "Résultat vide car mat trop long");
     }
 
     @Test
-    void rechercheVisiteDateRefRefKo() {
-        System.out.println("--------------------------- rechercheVisiteDateRefRefKo ---------------------------------");
+    void rechercheVisiteDateMatMatKo() {
+        System.out.println("--------------------------- rechercheVisiteDateMatMatKo ---------------------------------");
         colVisiteDateRef = new ArrayList<Visite>();
-        Assertions.assertEquals(colVisiteDateRef, uneVisiteService.rechercheVisiteDateRef("06/06/1996","v099"), "Résultat vide car mauvaise ref");
+        Assertions.assertEquals(colVisiteDateRef, uneVisiteService.rechercheVisiteDateMat("06/06/1996","a66"), "Résultat vide car mauvais mat");
     }
 
     @Test
-    void rechercheVisiteDateRefOk() {
-        System.out.println("--------------------------- rechercheVisiteDateRefOk ---------------------------------");
-        colVisiteDateRef = uneVisiteService.rechercheVisiteDateRef("20/01/2002","v0001");
+    void rechercheVisiteDateMatOk() {
+        System.out.println("--------------------------- rechercheVisiteDateMatOk ---------------------------------");
+        colVisiteDateRef = uneVisiteService.rechercheVisiteDateMat("20/01/2002","b59");
         int nbElementsAttendus = 1; //Nombre de visite ce jour-là pour le visiteur
 
         Assertions.assertEquals(nbElementsAttendus, colVisiteDateRef.size(), "Un élément correspondant donc résultat ok");
