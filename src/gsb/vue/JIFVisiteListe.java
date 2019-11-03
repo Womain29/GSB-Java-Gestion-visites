@@ -128,6 +128,10 @@ public class JIFVisiteListe extends JInternalFrame implements ActionListener, Mo
                 model.addRow(visite); //Ajoute une visite dans le tableau
             }
         }
+        //Ouvre la fenêtre du récapitulatif
+        if(source == JBDetail) {
+            Visite uneVisite = uneVisiteService.rechercherVisite(JTRefVisite.getText().toString());
+        }
     }
 
     //Ecouteur au clic de la souris
