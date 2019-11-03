@@ -145,11 +145,11 @@ public class VisiteService {
             }
             //La référence ne peut pas dépasser 4 caracteres
             if(unMatricule.length() > 4) {
-                throw new Exception("La référence ne peut pas dépasser 5 caractères");
+                throw new Exception("Le matricule ne peut pas dépasser 5 caractères");
             }
             //Une visite correspondante à la référence doit exister
             if(VisiteurDao.rechercher(unMatricule) == null) {
-                throw new Exception("La visite correspondant à cette référence n'existe pas");
+                throw new Exception("Le visiteur correspondant à ce matricule n'existe pas");
             }
             //La date doit être au format dd/MM/yyyy
             if(!ValidationUtils.isDateValide(uneDate)){
