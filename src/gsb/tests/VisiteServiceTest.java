@@ -7,13 +7,14 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 class VisiteServiceTest {
 
     private VisiteService uneVisiteService;
     private Visite uneVisite;
-    private HashMap<String, Visite> diccoVisiteDateRef;
+    private ArrayList<Visite> colVisiteDateRef;
 
     @BeforeEach
     void setUp() {
@@ -165,58 +166,60 @@ class VisiteServiceTest {
     @Test
     void rechercheVisiteDateRefAllNull() {
         System.out.println("--------------------------- rechercheVisiteDateRefAllNull ---------------------------------");
-        diccoVisiteDateRef = new HashMap<>();
-        Assertions.assertEquals(diccoVisiteDateRef, uneVisiteService.rechercheVisiteDateRef(null,null), "Résultat vide car reference et date null");
+        colVisiteDateRef = new ArrayList<Visite>();
+        Assertions.assertEquals(colVisiteDateRef, uneVisiteService.rechercheVisiteDateRef(null,null), "Résultat vide car reference et date null");
     }
 
     @Test
     void rechercheVisiteDateRefDateNull() {
         System.out.println("--------------------------- rechercheVisiteDateRefDateNull ---------------------------------");
-        diccoVisiteDateRef = new HashMap<>();
-        Assertions.assertEquals(diccoVisiteDateRef, uneVisiteService.rechercheVisiteDateRef(null,"v0001"), "Résultat vide car date null");
+        colVisiteDateRef = new ArrayList<Visite>();
+        Assertions.assertEquals(colVisiteDateRef, uneVisiteService.rechercheVisiteDateRef(null,"v0001"), "Résultat vide car date null");
     }
 
     @Test
     void rechercheVisiteDateRefRefNull() {
         System.out.println("--------------------------- rechercheVisiteDateRefRefNull ---------------------------------");
-        diccoVisiteDateRef = new HashMap<>();
-        Assertions.assertEquals(diccoVisiteDateRef, uneVisiteService.rechercheVisiteDateRef("06/06/1996",null), "Résultat vide car ref null");
+        colVisiteDateRef = new ArrayList<Visite>();
+        Assertions.assertEquals(colVisiteDateRef, uneVisiteService.rechercheVisiteDateRef("06/06/1996",null), "Résultat vide car ref null");
     }
 
     @Test
     void rechercheVisiteDateRefDateKo() {
         System.out.println("--------------------------- rechercheVisiteDateRefDateKo ---------------------------------");
-        diccoVisiteDateRef = new HashMap<>();
-        Assertions.assertEquals(diccoVisiteDateRef, uneVisiteService.rechercheVisiteDateRef("06-06-1996","v0001"), "Résultat vide car mauvais format date");
+        colVisiteDateRef = new ArrayList<Visite>();
+        Assertions.assertEquals(colVisiteDateRef, uneVisiteService.rechercheVisiteDateRef("06-06-1996","v0001"), "Résultat vide car mauvais format date");
     }
 
     @Test
-    void rechercheVisiteDateRefRef5Carac() {
+    void rechercheVisiteDateRefRef6Carac() {
         System.out.println("--------------------------- rechercheVisiteDateRefRef5Carac ---------------------------------");
-        diccoVisiteDateRef = new HashMap<>();
-        Assertions.assertEquals(diccoVisiteDateRef, uneVisiteService.rechercheVisiteDateRef("06/06/1996","v00066"), "Résultat vide car ref trop longue");
+        colVisiteDateRef = new ArrayList<Visite>();
+        Assertions.assertEquals(colVisiteDateRef, uneVisiteService.rechercheVisiteDateRef("06/06/1996","v00066"), "Résultat vide car ref trop longue");
     }
 
     @Test
     void rechercheVisiteDateRefRefKo() {
         System.out.println("--------------------------- rechercheVisiteDateRefRefKo ---------------------------------");
-        diccoVisiteDateRef = new HashMap<>();
-        Assertions.assertEquals(diccoVisiteDateRef, uneVisiteService.rechercheVisiteDateRef("06/06/1996","v099"), "Résultat vide car mauvaise ref");
+        colVisiteDateRef = new ArrayList<Visite>();
+        Assertions.assertEquals(colVisiteDateRef, uneVisiteService.rechercheVisiteDateRef("06/06/1996","v099"), "Résultat vide car mauvaise ref");
     }
 
     @Test
     void rechercheVisiteDateRefOk() {
         System.out.println("--------------------------- rechercheVisiteDateRefOk ---------------------------------");
-        diccoVisiteDateRef = uneVisiteService.rechercheVisiteDateRef("20/01/2002","v0001");
+        colVisiteDateRef = uneVisiteService.rechercheVisiteDateRef("20/01/2002","v0001");
         int nbElementsAttendus = 1; //Nombre de visite ce jour-là pour le visiteur
 
-        Assertions.assertEquals(nbElementsAttendus, diccoVisiteDateRef.size(), "Un élément correspondant donc résultat ok");
-        if(diccoVisiteDateRef.containsKey("v0001")) {
-            System.out.println("Référence : " + diccoVisiteDateRef.get("v0001").getReference());
-            System.out.println("Date : " + diccoVisiteDateRef.get("v0001").getDateVisite());
-            System.out.println("Commentaire : " + diccoVisiteDateRef.get("v0001").getUnCommentaire());
-            System.out.println("Matricule Médecin : " + diccoVisiteDateRef.get("v0001").getUnVisiteur().getMatricule());
-            System.out.println("Code Médecin : " + diccoVisiteDateRef.get("v0001").getUnMedecin().getCodeMed());
+        Assertions.assertEquals(nbElementsAttendus, colVisiteDateRef.size(), "Un élément correspondant donc résultat ok");
+        for(Visite uneVisite : colVisiteDateRef) {
+            if(uneVisite.getReference().equals("v0001")) {
+                System.out.println("Référence : " + uneVisite.getReference());
+                System.out.println("Date : " + uneVisite.getDateVisite());
+                System.out.println("Commentaire : " + uneVisite.getUnCommentaire());
+                System.out.println("Matricule Médecin : " + uneVisite.getUnVisiteur().getMatricule());
+                System.out.println("Code Médecin : " + uneVisite.getUnMedecin().getCodeMed());
+            }
         }
     }
 
