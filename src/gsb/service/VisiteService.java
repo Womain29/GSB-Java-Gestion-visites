@@ -8,6 +8,7 @@ import gsb.modele.dao.VisiteDao;
 import gsb.modele.dao.VisiteurDao;
 import gsb.utils.ValidationUtils;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -133,10 +134,10 @@ public class VisiteService {
      *
      * @param uneDate chaine de caracteres
      * @param uneReference chaine de caracteres
-     * @return un dictionnaire de Visite
+     * @return une collection de Visite
      */
-    public HashMap<String, Visite> rechercheVisiteDateRef(String uneDate, String uneReference) {
-        HashMap<String, Visite> diccoVisiteDateRef = new HashMap<>();
+    public ArrayList<Visite> rechercheVisiteDateRef(String uneDate, String uneReference) {
+        ArrayList<Visite> colVisiteDateRef = new ArrayList<Visite>();
 
         try {
             //Les champs ne peuvent pas être null
@@ -155,12 +156,12 @@ public class VisiteService {
             if(!ValidationUtils.isDateValide(uneDate)){
                 throw new Exception("La date doit être au format dd/MM/yyyy");
             }
-            diccoVisiteDateRef = VisiteDao.rechercheDateRef(uneDate, uneReference);
+            colVisiteDateRef = VisiteDao.rechercheDateRef(uneDate, uneReference);
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
-        return diccoVisiteDateRef;
+        return colVisiteDateRef;
     }
 }
