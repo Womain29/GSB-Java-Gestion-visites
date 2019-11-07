@@ -18,6 +18,7 @@ public class JIFVisite extends JInternalFrame {
     protected JPanel p;
     protected JPanel pTexte;
     protected JPanel pBoutons;
+    protected JPanel pErreur;
 
     //Déclaration des JLabel
     protected JLabel JLReference;
@@ -38,6 +39,7 @@ public class JIFVisite extends JInternalFrame {
         //Instanciation des panneaux
         p = new JPanel();
         pTexte = new JPanel(new GridLayout(5,2,5,5));
+        pErreur = new JPanel();
         pBoutons = new JPanel();
 
         //Instanciation des JLabel
@@ -68,6 +70,7 @@ public class JIFVisite extends JInternalFrame {
 
         //Ajout au panneau principal
         p.add(pTexte);
+        p.add(pErreur);
         p.add(pBoutons);
 
         //Ajout du panneau principal à la fenêtre
