@@ -52,7 +52,7 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 		contentPane.add(desktopPane, BorderLayout.CENTER);
 
 		setTitle("GSB");
-		setSize(500, 400);
+		setSize(1200, 900);
 
 		// Ajout d'une barre de menus ? la fen?tre
 		mbar = new JMenuBar();
@@ -85,6 +85,8 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 		mbar.add(mVisites);
 		setJMenuBar(mbar);
 		this.setVisible(true);
+		this.setResizable(false);
+		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
@@ -126,7 +128,8 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 		myJInternalFrame.setResizable(true);
 		myJInternalFrame.setMaximizable(true);
 		myJInternalFrame.setClosable(true);
-		myJInternalFrame.setSize(480, 380);
+		myJInternalFrame.setSize(1180, 800);
+
 		desktopPane.add(myJInternalFrame);
 	}
 
