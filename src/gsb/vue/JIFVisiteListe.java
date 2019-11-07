@@ -25,9 +25,10 @@ public class JIFVisiteListe extends JInternalFrame implements ActionListener, Mo
     //Déclaration des JPanel
     protected JPanel p;
     protected JPanel pRecherche;
-    protected JPanel pRecherche1;
-    protected JPanel pRecherche2;
-    protected JPanel pRecherche3;
+    protected JPanel pRechercheTexte;
+    protected JPanel pRechercheTexte1;
+    protected JPanel pRechercheBoutons;
+    protected JPanel pErreur;
     protected JPanel pDetail;
 
     //Déclaration des composants du tableau
@@ -64,16 +65,12 @@ public class JIFVisiteListe extends JInternalFrame implements ActionListener, Mo
         //Instanciation des panneaux avec ou sans grille
         p = new JPanel();
         p.setSize(1100, 750);
-        pRecherche = new JPanel(new GridLayout(1,3));
-        pRecherche.setMinimumSize(new Dimension(1100, 250));
-        pRecherche1 = new JPanel(new GridLayout(2,2,10,5));
-        pRecherche1.setMinimumSize(new Dimension(300,250));
-        pRecherche2 = new JPanel();
-        pRecherche2.setMinimumSize(new Dimension(200, 250));
-        pRecherche3 = new JPanel();
-        pRecherche3.setMinimumSize(new Dimension(600,250));
+        pRecherche = new JPanel(new GridLayout(2,1));
+        pRechercheTexte = new JPanel(new GridLayout(1,2));
+        pRechercheTexte1 = new JPanel(new GridLayout(2,2,5, 5));
+        pRechercheBoutons = new JPanel();
+        pErreur = new JPanel();
         pDetail = new JPanel(new GridLayout(1,3,5,5));
-        pDetail.setSize(1100,100);
 
         //Instanciation des JTexField
         JTDateVisite = new JTextField(10);
@@ -86,7 +83,7 @@ public class JIFVisiteListe extends JInternalFrame implements ActionListener, Mo
         JLDate = new JLabel("Date");
         JLMatri = new JLabel("Matricule");
         JLRef = new JLabel("Référence");
-        JLErreurRecherche = new JLabel();
+        JLErreurRecherche = new JLabel("");
         JLErreurRecherche.setForeground(new Color(255,0,0));
 
         //Instanciation des événements
@@ -95,24 +92,6 @@ public class JIFVisiteListe extends JInternalFrame implements ActionListener, Mo
         JBDetail = new JButton("Détail");
         JBDetail.addActionListener(this); //Ecouteur d'événements
 
-        //Ajout des éléments sur les sous-panneaux de recherche
-        pRecherche1.add(JLDate);
-        pRecherche1.add(JTDateVisite);
-        pRecherche1.add(JLMatri);
-        pRecherche1.add(JTMatriVisite);
-        pRecherche2.add(JBRechercher);
-        pRecherche3.add(JLErreurRecherche);
-
-        //Ajout des sous-panneaux sur le panneau principal de recherche
-        pRecherche.add(pRecherche1);
-        pRecherche.add(pRecherche2);
-        pRecherche.add(pRecherche3);
-
-        //Ajout des éléments sur le panneau de détail
-        pDetail.add(JLRef);
-        pDetail.add(JTRefVisite);
-        pDetail.add(JBDetail);
-
         //Variables pour le tableau
         columnNames = new String[]{"Référence", "Date", "Commentaire", "Visiteur", "Médecin"}; //Colonnes du tableau
         model = new DefaultTableModel(columnNames, 0); //Modèle de données du tableau
@@ -120,6 +99,33 @@ public class JIFVisiteListe extends JInternalFrame implements ActionListener, Mo
         table.addMouseListener(this); //Ecouteur de la souris
         scrollPane = new JScrollPane(table); //Ajout du tableau avec barre de défilement
         scrollPane.setPreferredSize(new Dimension(1100, 400));
+
+        //Ajout des éléments sur les sous-sous-panneaux de recherche
+        pRechercheTexte1.add(JLDate);
+        pRechercheTexte1.add(JTDateVisite);
+        pRechercheTexte1.add(JLMatri);
+        pRechercheTexte1.add(JTMatriVisite);
+
+        //Ajout des éléments dans le panneau erreur
+        pErreur.add(JLErreurRecherche);
+
+        //Ajout des éléments dans le sous-sous panneau de recherche
+        pRechercheBoutons.add(JBRechercher);
+
+        //Ajout des éléments dans le sous panneau de recherche
+        pRechercheTexte.add(pRechercheTexte1);
+        pRechercheTexte.add(pRechercheBoutons);
+
+        //AJout des éléments dans le panneau de recherche
+        pRecherche.add(pRechercheTexte);
+        pRecherche.add(pErreur);
+
+        //Ajout des éléments sur le panneau de détail
+        pDetail.add(JLRef);
+        pDetail.add(JTRefVisite);
+        pDetail.add(JBDetail);
+
+
 
         //Ajouts au panbeau principal
         p.add(pRecherche);
