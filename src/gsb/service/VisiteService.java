@@ -105,6 +105,11 @@ public class VisiteService {
         return result;
     }
 
+    /**
+     *
+     * @param uneReference chaine de caracteres
+     * @return 0 si echec ou 1 si réussite
+     */
     public int supprimerVisite(String uneReference) {
         int result = 0;
 
