@@ -3,46 +3,48 @@ package gsb.modele;
 
 /**
  * @author Gwendal
- * 17/10/2019
+ * 7/11/2019
  * 
  */
 
 public class Stock {
 	
-	protected String depotLegal;
-	protected String matricule;
+	protected Visiteur unVisiteur;
+	protected Medicament unMedicament;
 	protected int qteStock;
 	
-	public Stock(String depotLegal, String matricule, int qteStock) {
-		this.depotLegal = depotLegal;
-		this.matricule = matricule;
+	
+	
+	public Stock(Medicament unMedicament, Visiteur unVisiteur, int qteStock) {		
+		this.unVisiteur = unVisiteur;
+		this.unMedicament = unMedicament;		
 		this.qteStock = qteStock;
-	}
-
-	/**
-	 * @return Renvoie depotLegal.
-	 */
-	public String getDepotLegal() {
-		return depotLegal;
-	}
-	/**
-	 * @param depotLegal à définir.
-	 */
-	public void setDepotLegal(String depotLegal) {
-		this.depotLegal = depotLegal;
 	}
 	
 	/**
-	 * @return Renvoie matricule.
+	 * @return Renvoie unMedicament.
 	 */
-	public String getMatricule() {
-		return matricule;
+	public Medicament getUnMedicament() {
+		return unMedicament;
 	}
 	/**
-	 * @param matricule à définir.
+	 * @param unMedicament à définir.
 	 */
-	public void setMatricule(String matricule) {
-		this.matricule = matricule;
+	public void setUnMedicament(Medicament unMedicament) {
+		this.unMedicament = unMedicament;
+	}
+	
+	/**
+	 * @return Renvoie unVisiteur.
+	 */
+	public Visiteur getUnVisiteur() {
+		return unVisiteur;
+	}
+	/**
+	 * @param unVisiteur à définir.
+	 */
+	public void setUnVisiteur(Visiteur unVisiteur) {
+		this.unVisiteur = unVisiteur;
 	}
 	
 	/**
