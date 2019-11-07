@@ -19,12 +19,15 @@ public class VisiteurService {
     public Visiteur rechercherVisiteur (String matricule) {
         Visiteur unVisiteur = null;
         try {
+            //Le matricule ne doit pas être null
             if(matricule == null) {
                 throw new Exception("Le matricule ne peut pas être vide");
             }
+            //4 caracteres maximum pour le matricule du visiteur
             if(matricule.length() > 4) {
                 throw new Exception("Le matricule ne peut pas dépasser 4 caractères");
             }
+            //Le visiteur doit exister dans la base
             if(VisiteurDao.rechercher(matricule) == null) {
                 throw new Exception("Il n'y a pas de visiteur correspondant à ce matricule");
             }
