@@ -8,8 +8,11 @@ import gsb.service.VisiteService;
 import gsb.utils.ValidationUtils;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 /**
  * @author womain
@@ -18,7 +21,7 @@ import java.awt.event.ActionListener;
  *
  * 03/11/2019
  */
-public class JIFVisiteAjout extends JIFVisite implements ActionListener {
+public class JIFVisiteAjout extends JIFVisite implements ActionListener, MouseListener {
 
     //Déclaration des boutons
     private JButton JBValider;
@@ -39,7 +42,15 @@ public class JIFVisiteAjout extends JIFVisite implements ActionListener {
 
         //Instanciation du label d'erreur
         JLErreur = new JLabel("");
+        JLErreur.setForeground(new Color(255,0,0));
 
+        //Ajout écouteur de la souris sur les JTexfields
+        JTMedecin.addMouseListener(this);
+        JTVisiteur.addMouseListener(this);
+        JTReference.addMouseListener(this);
+        JTDate.addMouseListener(this);
+        JTCommentaire.addMouseListener(this);
+        
         //Ajout du label dans le panneau erreur
         pErreur.add(JLErreur);
 
@@ -97,9 +108,37 @@ public class JIFVisiteAjout extends JIFVisite implements ActionListener {
                 JLErreur.setText(erreurAjout.getMessage());
             }
         }
-        //Evenement au clic sur le bouton valider
+        //Evenement au clic sur le bouton annuler
         if (source == JBAnnuler) {
             this.videTexte();
         }
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        Object mouse = e.getSource();
+        if(mouse == JTReference || mouse == JTMedecin || mouse == JTVisiteur || mouse == JTDate || mouse == JTCommentaire) {
+            JLErreur.setText("");
+        }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
     }
 }
