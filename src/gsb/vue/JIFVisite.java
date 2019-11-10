@@ -38,8 +38,9 @@ public class JIFVisite extends JInternalFrame {
 
         //Instanciation des panneaux
         p = new JPanel();
-        pTexte = new JPanel(new GridLayout(5,2,5,5));
+        pTexte = new JPanel(new GridLayout(5,2,10,10));
         pErreur = new JPanel();
+        pErreur.setPreferredSize(new Dimension(1000,50));
         pBoutons = new JPanel();
 
         //Instanciation des JLabel
