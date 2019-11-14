@@ -102,6 +102,7 @@ public class JIFVisiteAjout extends JIFVisite implements ActionListener, MouseLi
                     throw new Exception("Le médecin possédant ce code n'existe pas");
                 }
                 uneVisiteService.creerVisite(JTReference.getText().toString(), JTDate.getText().toString(), JTCommentaire.getText().toString(), JTVisiteur.getText().toString(), JTMedecin.getText().toString());
+                JLErreur.setText("La visite a correctement été ajoutée");
                 this.videTexte();
             }
             catch (Exception erreurAjout) {
