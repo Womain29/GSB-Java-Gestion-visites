@@ -93,7 +93,7 @@ public class JIFVisiteListe extends JInternalFrame implements ActionListener, Mo
         JBDetail.addActionListener(this); //Ecouteur d'événements
 
         //Variables pour le tableau
-        columnNames = new String[]{"Référence", "Date", "Commentaire", "Visiteur", "Médecin"}; //Colonnes du tableau
+        columnNames = new String[]{"Référence", "Commentaire", "Code Médecin", "Lieu"}; //Colonnes du tableau
         model = new DefaultTableModel(columnNames, 0); //Modèle de données du tableau
         table = new JTable(model); //Ajout des données dans le tableau
         table.addMouseListener(this); //Ecouteur de la souris
@@ -168,7 +168,7 @@ public class JIFVisiteListe extends JInternalFrame implements ActionListener, Mo
                 }
                 colVisiteDateRef = uneVisiteService.rechercheVisiteDateMat(date, matricule);
                 for(Visite uneVisite : colVisiteDateRef) {
-                    String[] visite = {uneVisite.getReference(), uneVisite.getDateVisite(), uneVisite.getUnCommentaire(), uneVisite.getUnVisiteur().getMatricule(), uneVisite.getUnMedecin().getCodeMed()};
+                    String[] visite = {uneVisite.getReference(), uneVisite.getUnCommentaire(),uneVisite.getUnMedecin().getCodeMed(), uneVisite.getUnMedecin().getLaLocalite().getVille()};
                     model.addRow(visite); //Ajoute une visite dans le tableau
                 }
             }
