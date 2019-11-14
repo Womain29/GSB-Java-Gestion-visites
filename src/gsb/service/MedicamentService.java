@@ -14,8 +14,13 @@ public class MedicamentService {
 	public static Medicament rechercherMedicament(String unDepotLegal){
 		Medicament unMedicament = null;
 		try{
+		//Un médicament entré en paramètre ne doit pas être nul
 		if (unDepotLegal==null) {
             throw new Exception("Donnée obligatoire : depotLegal");
+        }
+		//Un médicament correspondant au dépot légal doit exister
+        if(MedicamentDao.rechercher(unDepotLegal) == null) {
+            throw new Exception("Le médicament correspondant à ce dépot légal n'existe pas");
         }
 		unMedicament = MedicamentDao.rechercher(unDepotLegal);
 		}
