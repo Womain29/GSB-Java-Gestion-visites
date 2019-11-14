@@ -1,3 +1,4 @@
+/*Créé le 7/11/2019 */
 package gsb.service;
 
 import gsb.modele.Stock;
@@ -8,7 +9,11 @@ import gsb.modele.dao.StockDao;
 import gsb.modele.dao.VisiteurDao;
 import gsb.utils.ValidationUtils;
 
-
+/**
+ * @author Gwendal
+ * 14/11/2019
+ * 
+ */
 public class StockService {
 	
 	
@@ -19,8 +24,17 @@ public class StockService {
         Stock unStock = null;
 
         try{
-    		if (matricule==null) {
-                throw new Exception("Donnée obligatoire : matricule");
+        	//Un dépot légal doit être renseigné 
+        	if (depotLegal==null) {
+                throw new Exception("Donnée obligatoire : Dépot Légal");
+            }
+        	//Un matricule doit être renseigné 
+        	if (matricule==null) {
+                throw new Exception("Donnée obligatoire : Matricule");
+            }
+        	//Une quantité ajoutée ne doit pas être égale à 0
+    		if (qteStock==0) {
+                throw new Exception("Donnée obligatoire : Quantité");
             }
     		unVisiteur = VisiteurDao.rechercher(matricule);
     		unMedicament = MedicamentDao.rechercher(depotLegal);          
