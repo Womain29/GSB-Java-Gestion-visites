@@ -39,5 +39,17 @@ public class MedicamentServiceTest {
 	        Assertions.assertNull(unMedicamentService.rechercherMedicament("AAAA"), "Pas de médicament correspondant donc résultat null");
 	    }
 	 
-	
+	 @Test
+	    void rechercherMedicamentDepotLegalOK() {
+	        System.out.println("--------------------------- rechercherMedicamentDepotLegalOK -------------------------------");
+	        Assertions.assertNotNull(unMedicamentService.rechercherMedicament("3MYC7"), "Résultat non null car visiteur correspondant");
+
+	        Medicament unMedicament = unMedicamentService.rechercherMedicament("3MYC7");
+	        System.out.println("Depot Legal : " + unMedicament.getDepotLegal());
+	        System.out.println("Nom Commercial : " + unMedicament.getNomCommercial());
+	        System.out.println("Composition : " + unMedicament.getComposition());
+	        System.out.println("Effets : " + unMedicament.getEffets());
+	        System.out.println("Contre indications : " + unMedicament.getContreIndication());
+	        System.out.println("Code Famille : " + unMedicament.getUneFamille().getCodeFamille());
+	    }
 }
