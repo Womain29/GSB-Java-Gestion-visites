@@ -44,10 +44,18 @@ public class StockServiceTest {
 	    }
 	    
 	    @Test
+	    void ajoutStockDepotLegalKO() {
+	        System.out.println("--------------------------- ajoutStockDepotLegalKO ---------------------------------");
+	        Assertions.assertEquals(0, unStockService.ajoutStock("AAAA", "a131", 15), "RÃ©sultat 0 car le depot legal n'existe pas");
+	    }
+	    
+	    @Test
 	    void ajoutStockMatriculeNull() {
 	        System.out.println("--------------------------- ajoutStockMatriculeNull ---------------------------------");
 	        Assertions.assertEquals(0, unStockService.ajoutStock("3MYC7", null, 15), "Résultat 0 car matricule null");
 	    }
+	    
+	    
 	    
 	    @Test
 	    void ajoutStockQteStockNull() {
