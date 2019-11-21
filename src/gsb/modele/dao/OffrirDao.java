@@ -44,5 +44,28 @@ public class OffrirDao {
         return unOffrir;
     }
 
+    /**
+     *
+     * @param unOffrir
+     * @return 0 si echec et 1 si réussi
+     */
+    public static int creer(Offrir unOffrir) {
+        int result = 0;
+        String unDepotLegal = unOffrir.getUnMedicament().getDepotLegal();
+        String uneReference = unOffrir.getUneVisite().getReference();
+        int uneQuantite = unOffrir.getQuantiteOfferte();
+        String requete = "INSERT INTO OFFRIR VALUES (" + unDepotLegal + "', '" + uneReference + "', " + uneQuantite + ") ON DUPLICATE KEY UPDATE QteOfferte = QteOfferte + " + uneQuantite;
+
+        try {
+            result = ConnexionMySql.execReqMaj(requete);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Erreur avec la requete INSERT INTO OFFRIR VALUES (" + unDepotLegal + "', '" + uneReference + "', " + uneQuantite + ") ON DUPLICATE KEY UPDATE QteOfferte = QteOfferte " + uneQuantite);
+        }
+
+        return result;
+    }
+
 
 }
