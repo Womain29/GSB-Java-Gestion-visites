@@ -16,5 +16,22 @@ import org.junit.jupiter.api.Test;
  */
 public class MedicamentServiceTest {
 	
+	private MedicamentService unMedicamentService;
+	
+	 @BeforeEach
+	    void setUp() {
+	        unMedicamentService = new MedicamentService();
+	    }
+
+	 @AfterEach
+	    void tearDown() {
+	    }
+	
+	 @Test
+	    void rechercherMedicamentDepotLegalVide() {
+	        System.out.println("--------------------------- rechercherMedicamentDepotLegalVide -------------------------------");
+	        Assertions.assertNull(unMedicamentService.rechercherMedicament(null), "Résultat null");
+	    }
+	 
 	
 }
