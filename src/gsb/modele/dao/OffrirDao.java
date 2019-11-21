@@ -4,6 +4,7 @@ import gsb.modele.Medicament;
 import gsb.modele.Offrir;
 import gsb.modele.Visite;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -41,6 +42,8 @@ public class OffrirDao {
             e.printStackTrace();
             System.out.println("Erreur avec la requete SELECT * FROM OFFRIR WHERE DepotLegal = '" + depotLegal + "' AND Reference = '" + reference + "'");
         }
+        ConnexionMySql.fermerConnexionBd();
+
         return unOffrir;
     }
 
@@ -63,6 +66,7 @@ public class OffrirDao {
             e.printStackTrace();
             System.out.println("Erreur avec la requete INSERT INTO OFFRIR VALUES (" + unDepotLegal + "', '" + uneReference + "', " + uneQuantite + ") ON DUPLICATE KEY UPDATE QteOfferte = QteOfferte " + uneQuantite);
         }
+        ConnexionMySql.fermerConnexionBd();
 
         return result;
     }
@@ -87,6 +91,7 @@ public class OffrirDao {
             e.printStackTrace();
             System.out.println("Erreur avec la requete UPDATE STOCK SET QteStock = QteStock - " + uneQuantite);
         }
+        ConnexionMySql.fermerConnexionBd();
 
         return result;
     }
