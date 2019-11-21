@@ -59,8 +59,12 @@ public class JIFVisiteListe extends JInternalFrame implements ActionListener, Mo
 
     private JOptionPane erreurRecherche;
 
-    public JIFVisiteListe() {
+    protected MenuPrincipal fenetreContainer;
+
+    public JIFVisiteListe(MenuPrincipal uneFenetreContainer) {
         super();
+
+        fenetreContainer = uneFenetreContainer;
 
         //Instanciation des panneaux avec ou sans grille
         p = new JPanel();
@@ -180,6 +184,7 @@ public class JIFVisiteListe extends JInternalFrame implements ActionListener, Mo
         //Ouvre la fenêtre du récapitulatif
         if(source == JBDetail) {
             Visite uneVisite = uneVisiteService.rechercherVisite(JTRefVisite.getText().toString());
+            fenetreContainer.ouvrirFenetre(new JIFVisiteRecap(uneVisite));
         }
     }
 
