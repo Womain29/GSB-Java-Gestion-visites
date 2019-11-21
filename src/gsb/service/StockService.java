@@ -38,7 +38,7 @@ public class StockService {
             }
     		//Le dépot légal doit exister dans la base
     		if (MedicamentDao.rechercher(depotLegal)==null) {
-                throw new Exception("Le médicament n'existe pas");
+                throw new Exception("Le dépot legal n'existe pas");
             }
     		//Le matricule doit exister dans la base
     		if (VisiteurDao.rechercher(matricule)==null) {
