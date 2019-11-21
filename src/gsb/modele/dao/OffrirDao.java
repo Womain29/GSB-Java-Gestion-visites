@@ -67,5 +67,21 @@ public class OffrirDao {
         return result;
     }
 
+    public static int soustraireStock(Offrir unOffrir) {
+        int result = 0;
+        String unDepotLegal = unOffrir.getUnMedicament().getDepotLegal();
+        String uneReference = unOffrir.getUneVisite().getReference();
+        int uneQuantite = unOffrir.getQuantiteOfferte();
+        String requete = "UPDATE STOCK SET QteStock = QteStock - " + uneQuantite;
 
+        try {
+            result = ConnexionMySql.execReqMaj(requete);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Erreur avec la requete UPDATE STOCK SET QteStock = QteStock - " + uneQuantite);
+        }
+
+        return result;
+    }
 }
