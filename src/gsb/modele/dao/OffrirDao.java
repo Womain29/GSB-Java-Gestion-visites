@@ -67,6 +67,12 @@ public class OffrirDao {
         return result;
     }
 
+    /**
+     *
+     * @param unOffrir
+     * @return 0 si echec et 1 si réussi
+     *
+     */
     public static int soustraireStock(Offrir unOffrir) {
         int result = 0;
         String unDepotLegal = unOffrir.getUnMedicament().getDepotLegal();
