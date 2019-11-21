@@ -11,7 +11,7 @@ import gsb.utils.ValidationUtils;
 
 /**
  * @author Gwendal
- * 14/11/2019
+ * 21/11/2019
  * 
  */
 public class StockService {
@@ -35,6 +35,14 @@ public class StockService {
         	//Une quantité ajoutée ne doit pas être égale à 0
     		if (qteStock==0) {
                 throw new Exception("Donnée obligatoire : Quantité");
+            }
+    		//Le dépot légal doit exister dans la base
+    		if (MedicamentDao.rechercher(depotLegal)==null) {
+                throw new Exception("Le médicament n'existe pas");
+            }
+    		//Le matricule doit exister dans la base
+    		if (VisiteurDao.rechercher(matricule)==null) {
+                throw new Exception("Le visiteur n'existe pas");
             }
     		unVisiteur = VisiteurDao.rechercher(matricule);
     		unMedicament = MedicamentDao.rechercher(depotLegal);          
