@@ -55,7 +55,11 @@ public class StockServiceTest {
 	        Assertions.assertEquals(0, unStockService.ajoutStock("3MYC7", null, 15), "Résultat 0 car matricule null");
 	    }
 	    
-	    
+	    @Test
+	    void ajoutStockMatriculeKO() {
+	        System.out.println("--------------------------- ajoutStockMatriculeKO ---------------------------------");
+	        Assertions.assertEquals(0, unStockService.ajoutStock("3MYC7", "AAAA", 15), "Résultat 0 car le matricule visiteur n'existe pas");
+	    }
 	    
 	    @Test
 	    void ajoutStockQteStockNull() {
