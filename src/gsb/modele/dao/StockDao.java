@@ -15,7 +15,7 @@ public class StockDao {
         String unVisiteur = unStock.getUnVisiteur().getMatricule();
         String unMedicament = unStock.getUnMedicament().getDepotLegal();
         int qteStock = unStock.getQteStock();
-        String requete = "INSERT INTO STOCKER VALUES ('" + unMedicament + "', '" + unVisiteur + "', '"  + qteStock + "') ON DUPLICATE KEY UPDATE qteStock = qteStock + '"  + qteStock + "'";
+        String requete = "INSERT INTO STOCKER VALUES ('" + unMedicament + "', '" + unVisiteur + "', "  + qteStock + ") ON DUPLICATE KEY UPDATE QteStock = QteStock + "  + qteStock + "";
 
         try {
             result = ConnexionMySql.execReqMaj(requete);
