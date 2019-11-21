@@ -33,5 +33,11 @@ public class MedicamentServiceTest {
 	        Assertions.assertNull(unMedicamentService.rechercherMedicament(null), "Résultat null");
 	    }
 	 
+	 @Test
+	    void rechercherMedicamentDepotLegalKO() {
+	        System.out.println("--------------------------- rechercherMedicamentDepotLegalKO -------------------------------");
+	        Assertions.assertNull(unMedicamentService.rechercherMedicament("AAAA"), "Pas de médicament correspondant donc résultat null");
+	    }
+	 
 	
 }
