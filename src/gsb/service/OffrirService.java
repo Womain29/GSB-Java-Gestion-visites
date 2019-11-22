@@ -1,9 +1,13 @@
 package gsb.service;
 
+import gsb.modele.Medicament;
 import gsb.modele.Offrir;
+import gsb.modele.Visite;
 import gsb.modele.dao.MedicamentDao;
 import gsb.modele.dao.OffrirDao;
+import gsb.modele.dao.StockDao;
 import gsb.modele.dao.VisiteDao;
+import gsb.utils.ValidationUtils;
 
 /**
  * @author womain
@@ -47,5 +51,39 @@ public class OffrirService {
         }
 
         return unOffrir;
+    }
+
+    public int creerOffrir(String depotLegal, String reference, int uneQuantite) {
+        int result = 0;
+        Visite uneVisite = null;
+        Medicament unMedicament = null;
+        Offrir unOffrir = null;
+
+        try {
+            if(depotLegal == null || reference == null) {
+                throw new Exception("Tous les champs sont obligatoires !");
+            }
+            if(uneQuantite < 1) {
+
+            }
+            //
+            if(depotLegal.length() > 50) {
+
+            }
+            if(MedicamentDao.rechercher(depotLegal) == null) {
+
+            }
+            if(reference.length() > 5){
+
+            }
+            if(VisiteDao.rechercher(reference) == null) {
+
+            }
+            //Exception si quantite offerte > au stock de medicament
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
     }
 }
