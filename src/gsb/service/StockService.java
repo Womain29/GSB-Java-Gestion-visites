@@ -32,13 +32,13 @@ public class StockService {
         	if (matricule==null) {
                 throw new Exception("Donnée obligatoire : Matricule");
             }
-        	//Une quantité ajoutée ne doit pas être égale à 0
-    		if (qteStock==0) {
-                throw new Exception("Donnée obligatoire : Quantité");
+        	//Une quantité ajoutée ne doit pas être inférieure égale à 0
+    		if (qteStock<=0) {
+                throw new Exception("On ne peut pas ajouter une quantité inférieure ou égale à 0");
             }
     		//Le dépot légal doit exister dans la base
     		if (MedicamentDao.rechercher(depotLegal)==null) {
-                throw new Exception("Le médicament n'existe pas");
+                throw new Exception("Le dépot legal n'existe pas");
             }
     		//Le matricule doit exister dans la base
     		if (VisiteurDao.rechercher(matricule)==null) {
