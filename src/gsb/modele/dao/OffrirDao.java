@@ -25,25 +25,23 @@ public class OffrirDao {
      * @param reference la reference de la visite
      * @return un objet Offrir
      */
-    public static Offrir rechercher(String depotLegal, String reference, String matricule) {
+    public static Offrir rechercher(String depotLegal, String reference) {
         Offrir unOffrir = null;
         Medicament unMedicament = null;
         Visite uneVisite = null;
-        Visiteur unVisiteur = null;
-        String requete = "SELECT * FROM OFFRIR WHERE DepotLegal = '" + depotLegal + "' AND Reference = '" + reference + "' AND Matricule = '" + matricule + "'";
+        String requete = "SELECT * FROM OFFRIR WHERE DepotLegal = '" + depotLegal + "' AND Reference = '" + reference + "'";
 
         ResultSet reqSelection = ConnexionMySql.execReqSelection(requete);
         try {
             if(reqSelection.next()) {
                 unMedicament = MedicamentDao.rechercher(reqSelection.getString(1));
                 uneVisite = VisiteDao.rechercher(reqSelection.getString(2));
-                unVisiteur = VisiteurDao.rechercher(reqSelection.getString(3));
-                unOffrir = new Offrir(unMedicament, uneVisite, unVisiteur ,reqSelection.getInt(4));
+                unOffrir = new Offrir(unMedicament, uneVisite, reqSelection.getInt(3));
             }
         }
         catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("Erreur avec la requete SELECT * FROM OFFRIR WHERE DepotLegal = '" + depotLegal + "' AND Reference = '" + reference + "' AND Matricule = '" + matricule + "'");
+            System.out.println("Erreur avec la requete SELECT * FROM OFFRIR WHERE DepotLegal = '" + depotLegal + "' AND Reference = '" + reference + "'");
         }
         ConnexionMySql.fermerConnexionBd();
 
@@ -59,16 +57,15 @@ public class OffrirDao {
         int result = 0;
         String unDepotLegal = unOffrir.getUnMedicament().getDepotLegal();
         String uneReference = unOffrir.getUneVisite().getReference();
-        String unMatricule = unOffrir.getUnVisiteur().getMatricule();
         int uneQuantite = unOffrir.getQuantiteOfferte();
-        String requete = "INSERT INTO OFFRIR VALUES (" + unDepotLegal + "', '" + uneReference + "', '" + unMatricule + "', " + uneQuantite + ")";
+        String requete = "INSERT INTO OFFRIR VALUES (" + unDepotLegal + "', '" + uneReference + "', " + uneQuantite + ")";
 
         try {
             result = ConnexionMySql.execReqMaj(requete);
         }
         catch (Exception e) {
             e.printStackTrace();
-            System.out.println("Erreur avec la requete INSERT INTO OFFRIR VALUES (" + unDepotLegal + "', '" + uneReference + "', '" + unMatricule + "', " + uneQuantite + ")");
+            System.out.println("Erreur avec la requete INSERT INTO OFFRIR VALUES (" + unDepotLegal + "', '" + uneReference + "', " + uneQuantite + ")");
         }
         ConnexionMySql.fermerConnexionBd();
 
@@ -86,7 +83,7 @@ public class OffrirDao {
     public static int soustraireStock(Offrir unOffrir) {
         int result = 0;
         String unDepotLegal = unOffrir.getUnMedicament().getDepotLegal();
-        String unMatricule = unOffrir.getUnVisiteur().getMatricule();
+        String unMatricule = unOffrir.getUneVisite().getUnVisiteur().getMatricule();
         int uneQuantite = unOffrir.getQuantiteOfferte();
         String requete = "UPDATE STOCKER SET QteStock = QteStock - " + uneQuantite + " WHERE DepotLegal = '" + unDepotLegal + "' AND Matricule = '" + unMatricule + "'";
 
