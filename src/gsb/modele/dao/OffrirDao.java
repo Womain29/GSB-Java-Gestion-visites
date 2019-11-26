@@ -80,20 +80,22 @@ public class OffrirDao {
      * @param unOffrir
      * @return 0 si echec et 1 si réussi
      *
+     * Soustrait une quantité offerte du stock de medicament correspondant
+     *
      */
     public static int soustraireStock(Offrir unOffrir) {
         int result = 0;
         String unDepotLegal = unOffrir.getUnMedicament().getDepotLegal();
         String unMatricule = unOffrir.getUnVisiteur().getMatricule();
         int uneQuantite = unOffrir.getQuantiteOfferte();
-        String requete = "UPDATE STOCK SET QteStock = QteStock - " + uneQuantite + " WHERE DepotLegal = '" + unDepotLegal + "' AND Matricule = '" + unMatricule + "'";
+        String requete = "UPDATE STOCKER SET QteStock = QteStock - " + uneQuantite + " WHERE DepotLegal = '" + unDepotLegal + "' AND Matricule = '" + unMatricule + "'";
 
         try {
             result = ConnexionMySql.execReqMaj(requete);
         }
         catch (Exception e) {
             e.printStackTrace();
-            System.out.println("Erreur avec la requete UPDATE STOCK SET QteStock = QteStock - " + uneQuantite + " WHERE DepotLegal = '" + unDepotLegal + "' AND Matricule = '" + unMatricule + "'");
+            System.out.println("Erreur avec la requete UPDATE STOCKER SET QteStock = QteStock - " + uneQuantite + " WHERE DepotLegal = '" + unDepotLegal + "' AND Matricule = '" + unMatricule + "'");
         }
         ConnexionMySql.fermerConnexionBd();
 
