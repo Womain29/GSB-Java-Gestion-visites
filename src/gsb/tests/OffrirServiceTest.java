@@ -75,6 +75,12 @@ class OffrirServiceTest {
     }
 
     @Test
+    void creerOffrirReferenceNull() {
+        System.out.println("---------------------------------- creerOffrirReferenceNull -----------------------------------");
+        Assertions.assertEquals(0,uneOffreService.creerOffrir("3MYC7",null, 4), "Résultat null car reference null");
+    }
+
+    @Test
     void soustraireStock() {
     }
 }
