@@ -51,7 +51,6 @@ public class OffrirService {
             unOffrir = OffrirDao.rechercher(depotLegal, reference);
         }
         catch (Exception e) {
-            e.printStackTrace();
             System.out.println(e.getMessage());
         }
 
@@ -106,7 +105,6 @@ public class OffrirService {
             result = OffrirDao.creer(unOffrir);
         }
         catch (Exception e) {
-            e.printStackTrace();
             System.out.println(e.getMessage());
         }
         return result;
@@ -160,7 +158,6 @@ public class OffrirService {
             result = OffrirDao.soustraireStock(unOffrir);
         }
         catch (Exception e) {
-            e.printStackTrace();
             System.out.println(e.getMessage());
         }
         return result;
@@ -199,7 +196,6 @@ public class OffrirService {
             result = OffrirDao.supprimer(depotLegal, reference);
         }
         catch (Exception e) {
-            e.printStackTrace();
             System.out.println(e.getMessage());
         }
 
