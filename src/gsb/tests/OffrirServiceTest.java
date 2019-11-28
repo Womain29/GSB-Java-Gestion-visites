@@ -87,6 +87,12 @@ class OffrirServiceTest {
     }
 
     @Test
+    void creerOffrirDepot51Carac() {
+        System.out.println("---------------------------------- creerOffrirDepot51Carac -----------------------------------");
+        Assertions.assertEquals(0,uneOffreService.creerOffrir("3MYC7YYYYY3MYC7YYYYY3MYC7YYYYY3MYC7YYYYY3MYC7YYYYY3","v0001", 4), "Résultat null car depot trop long");
+    }
+
+    @Test
     void soustraireStock() {
     }
 }
