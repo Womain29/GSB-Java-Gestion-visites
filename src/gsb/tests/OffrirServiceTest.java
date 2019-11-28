@@ -69,7 +69,9 @@ class OffrirServiceTest {
     }
 
     @Test
-    void creerOffrir() {
+    void creerOffrirDepotNull() {
+        System.out.println("---------------------------------- creerOffrirDepotNull -----------------------------------");
+        Assertions.assertEquals(0,uneOffreService.creerOffrir(null,"v0001", 4), "Résultat null car depot null");
     }
 
     @Test
