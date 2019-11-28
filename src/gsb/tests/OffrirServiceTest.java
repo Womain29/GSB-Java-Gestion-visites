@@ -51,9 +51,15 @@ class OffrirServiceTest {
     }
 
     @Test
-    void rechercherOffrir6carac() {
+    void rechercherOffrirReference6carac() {
         System.out.println("---------------------------------- rechercherOffrirReference6carac -----------------------------------");
         Assertions.assertNull(uneOffreService.rechercherOffrir("3MYC7", "v00066"), "Résultat null car la reference est trop longue");
+    }
+
+    @Test
+    void rechercherOffrirReferenceKO() {
+        System.out.println("---------------------------------- rechercherOffrirReferenceKO -----------------------------------");
+        Assertions.assertNull(uneOffreService.rechercherOffrir("3MYC7", "v7777"), "Résultat null car la reference n'existe pas");
     }
 
     @Test
