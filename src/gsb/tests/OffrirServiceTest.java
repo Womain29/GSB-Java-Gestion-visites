@@ -33,6 +33,12 @@ class OffrirServiceTest {
     }
 
     @Test
+    void rechercherOffrirReferenceNull() {
+        System.out.println("---------------------------------- rechercherOffrirDepotNull -----------------------------------");
+        Assertions.assertNull(uneOffreService.rechercherOffrir("3MYC7", null), "Résultat null car reference null");
+    }
+
+    @Test
     void creerOffrir() {
     }
 
