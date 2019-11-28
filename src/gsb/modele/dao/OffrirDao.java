@@ -58,7 +58,7 @@ public class OffrirDao {
         String unDepotLegal = unOffrir.getUnMedicament().getDepotLegal();
         String uneReference = unOffrir.getUneVisite().getReference();
         int uneQuantite = unOffrir.getQuantiteOfferte();
-        String requete = "INSERT INTO OFFRIR VALUES (" + unDepotLegal + "', '" + uneReference + "', " + uneQuantite + ")";
+        String requete = "INSERT INTO OFFRIR VALUES ('" + unDepotLegal + "', '" + uneReference + "', " + uneQuantite + ")";
 
         try {
             result = ConnexionMySql.execReqMaj(requete);
