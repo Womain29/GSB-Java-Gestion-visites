@@ -63,6 +63,12 @@ class OffrirServiceTest {
     }
 
     @Test
+    void rechercherOffrirOK() {
+        System.out.println("---------------------------------- rechercherOffrirOK -----------------------------------");
+        Assertions.assertNotNull(uneOffreService.rechercherOffrir("3MYC7", "v0001"), "Résultat OK");
+    }
+
+    @Test
     void creerOffrir() {
     }
 
