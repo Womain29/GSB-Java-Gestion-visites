@@ -93,6 +93,12 @@ class OffrirServiceTest {
     }
 
     @Test
+    void creerOffrirDepotKO() {
+        System.out.println("---------------------------------- creerOffrirDepotKO -----------------------------------");
+        Assertions.assertEquals(0,uneOffreService.creerOffrir("AAAAAA","v0001", 4), "Résultat null car le depot n'existe pas dans la base");
+    }
+
+    @Test
     void soustraireStock() {
     }
 }
