@@ -99,6 +99,12 @@ class OffrirServiceTest {
     }
 
     @Test
+    void creerOffrirRef6Carac() {
+        System.out.println("---------------------------------- creerOffrirRef6Carac -----------------------------------");
+        Assertions.assertEquals(0,uneOffreService.creerOffrir("3MYC7","v00066", 4), "Résultat null car la reference est trop longue");
+    }
+
+    @Test
     void soustraireStock() {
     }
 }
