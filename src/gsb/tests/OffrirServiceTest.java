@@ -65,6 +65,7 @@ class OffrirServiceTest {
     @Test
     void rechercherOffrirOK() {
         System.out.println("---------------------------------- rechercherOffrirOK -----------------------------------");
+        uneOffreService.creerOffrir("3MYC7", "v0001", 4);
         Assertions.assertNotNull(uneOffreService.rechercherOffrir("3MYC7", "v0001"), "Résultat OK");
     }
 
@@ -123,6 +124,56 @@ class OffrirServiceTest {
     }
 
     @Test
-    void soustraireStock() {
+    void soustraireStockDepotNull() {
+        System.out.println("---------------------------------- soustraireStockDepotNull -----------------------------------");
+        Assertions.assertEquals(0,uneOffreService.soustraireStock(null,"v0001", 4), "Résultat null car depot null");
+    }
+
+    @Test
+    void soustraireStockReferenceNull() {
+        System.out.println("---------------------------------- soustraireStockReferenceNull -----------------------------------");
+        Assertions.assertEquals(0,uneOffreService.soustraireStock("3MYC7",null, 4), "Résultat null car reference null");
+    }
+
+    @Test
+    void soustraireStockQuantiteInf1() {
+        System.out.println("---------------------------------- soustraireStockQuantiteInf1 -----------------------------------");
+        Assertions.assertEquals(0,uneOffreService.soustraireStock("3MYC7","v0001", 0), "Résultat null car quantité inférieur à 1");
+    }
+
+    @Test
+    void soustraireStockDepot51Carac() {
+        System.out.println("---------------------------------- soustraireStockDepot51Carac -----------------------------------");
+        Assertions.assertEquals(0,uneOffreService.soustraireStock("3MYC7YYYYY3MYC7YYYYY3MYC7YYYYY3MYC7YYYYY3MYC7YYYYY3","v0001", 4), "Résultat null car depot trop long");
+    }
+
+    @Test
+    void soustraireStockDepotKO() {
+        System.out.println("---------------------------------- soustraireStockDepotKO -----------------------------------");
+        Assertions.assertEquals(0,uneOffreService.soustraireStock("AAAAAA","v0001", 4), "Résultat null car le depot n'existe pas dans la base");
+    }
+
+    @Test
+    void soustraireStockRef6Carac() {
+        System.out.println("---------------------------------- soustraireStockRef6Carac -----------------------------------");
+        Assertions.assertEquals(0,uneOffreService.soustraireStock("3MYC7","v00066", 4), "Résultat null car la reference est trop longue");
+    }
+
+    @Test
+    void soustraireStockRefKO() {
+        System.out.println("---------------------------------- soustraireStockRefKO -----------------------------------");
+        Assertions.assertEquals(0,uneOffreService.soustraireStock("3MYC7","v6666", 4), "Résultat null car la reference n'existe pas");
+    }
+
+    @Test
+    void soustraireStockQuantiteKO() {
+        System.out.println("---------------------------------- soustraireStockQuantiteKO -----------------------------------");
+        Assertions.assertEquals(0,uneOffreService.soustraireStock("3MYC7","v0001", 1000), "Résultat null car quantité offerte > quantité possédée");
+    }
+
+    @Test
+    void soustraireStockOK() {
+        System.out.println("---------------------------------- soustraireStockOK -----------------------------------");
+        Assertions.assertEquals(1,uneOffreService.soustraireStock("3MYC7","v0001", 4), "Résultat OK");
     }
 }
