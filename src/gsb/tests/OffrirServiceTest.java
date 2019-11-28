@@ -45,6 +45,12 @@ class OffrirServiceTest {
     }
 
     @Test
+    void rechercherOffrirDepotKO() {
+        System.out.println("---------------------------------- rechercherOffrirDepotKO -----------------------------------");
+        Assertions.assertNull(uneOffreService.rechercherOffrir("AAAAA", "v0001"), "Résultat null car le dépot n'existe pas dans la base");
+    }
+
+    @Test
     void creerOffrir() {
     }
 
