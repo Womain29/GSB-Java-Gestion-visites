@@ -98,4 +98,26 @@ public class OffrirDao {
 
         return result;
     }
+
+    /**
+     *
+     * @param depotLegal le depot legal du medicament
+     * @param reference la reference de la visite
+     * @return 0 si réusie, 1 si échec
+     */
+    public static int supprimer(String depotLegal, String reference) {
+        int result = 0;
+        String requete = "DELETE FROM OFFRIR WHERE DepotLegal = '" + depotLegal + "' AND Reference = '" + reference + "'";
+
+        try {
+            result = ConnexionMySql.execReqMaj(requete);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Erreur requete DELETE FROM OFFRIR WHERE DepotLegal = '" + depotLegal + "' AND Reference = '" + reference + "'");
+        }
+        ConnexionMySql.fermerConnexionBd();
+
+        return result;
+    }
 }
