@@ -81,6 +81,12 @@ class OffrirServiceTest {
     }
 
     @Test
+    void creerOffrirQuantiteInf1() {
+        System.out.println("---------------------------------- creerOffrirQuantitéInf1 -----------------------------------");
+        Assertions.assertEquals(0,uneOffreService.creerOffrir("3MYC7","v0001", 0), "Résultat null car quantité inférieur à 1");
+    }
+
+    @Test
     void soustraireStock() {
     }
 }
