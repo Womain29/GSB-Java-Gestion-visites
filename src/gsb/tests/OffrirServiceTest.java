@@ -105,6 +105,12 @@ class OffrirServiceTest {
     }
 
     @Test
+    void creerOffrirRefKO() {
+        System.out.println("---------------------------------- creerOffrirRefKO -----------------------------------");
+        Assertions.assertEquals(0,uneOffreService.creerOffrir("3MYC7","v6666", 4), "Résultat null car la reference n'existe pas");
+    }
+
+    @Test
     void soustraireStock() {
     }
 }
