@@ -34,8 +34,14 @@ class OffrirServiceTest {
 
     @Test
     void rechercherOffrirReferenceNull() {
-        System.out.println("---------------------------------- rechercherOffrirDepotNull -----------------------------------");
+        System.out.println("---------------------------------- rechercherOffrirReferenceNull -----------------------------------");
         Assertions.assertNull(uneOffreService.rechercherOffrir("3MYC7", null), "Résultat null car reference null");
+    }
+
+    @Test
+    void rechercherOffrirDepot50carac() {
+        System.out.println("---------------------------------- rechercherOffrirDepot50carac -----------------------------------");
+        Assertions.assertNull(uneOffreService.rechercherOffrir("3MYC7YYYYY3MYC7YYYYY3MYC7YYYYY3MYC7YYYYY3MYC7YYYYY3", "v0001"), "Résultat null car depot trop long");
     }
 
     @Test
