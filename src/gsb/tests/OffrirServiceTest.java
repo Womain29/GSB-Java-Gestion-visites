@@ -111,6 +111,12 @@ class OffrirServiceTest {
     }
 
     @Test
+    void creerOffrirQuantiteKO() {
+        System.out.println("---------------------------------- creerOffrirQuantiteKO -----------------------------------");
+        Assertions.assertEquals(0,uneOffreService.creerOffrir("3MYC7","v0001", 1000), "Résultat null car quantité offerte > quantité possédée");
+    }
+
+    @Test
     void soustraireStock() {
     }
 }
