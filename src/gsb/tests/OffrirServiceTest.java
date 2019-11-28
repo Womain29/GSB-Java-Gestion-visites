@@ -176,4 +176,49 @@ class OffrirServiceTest {
         System.out.println("---------------------------------- soustraireStockOK -----------------------------------");
         Assertions.assertEquals(1,uneOffreService.soustraireStock("3MYC7","v0001", 4), "Résultat OK");
     }
+
+    @Test
+    void supprimerOffrirDepotNull() {
+        System.out.println("---------------------------------- supprimerOffrirDepotNull -----------------------------------");
+        Assertions.assertEquals(0, uneOffreService.supprimerOffre(null, "v0001"), "Résultat null car Depot null");
+    }
+
+    @Test
+    void supprimerOffrirReferenceNull() {
+        System.out.println("---------------------------------- supprimerOffrirReferenceNull -----------------------------------");
+        Assertions.assertEquals(0, uneOffreService.supprimerOffre("3MYC7", null), "Résultat null car reference null");
+    }
+
+    @Test
+    void supprimerOffrirDepot50carac() {
+        System.out.println("---------------------------------- supprimerOffrirDepot50carac -----------------------------------");
+        Assertions.assertEquals(0, uneOffreService.supprimerOffre("3MYC7YYYYY3MYC7YYYYY3MYC7YYYYY3MYC7YYYYY3MYC7YYYYY3", "v0001"), "Résultat null car depot trop long");
+    }
+
+    @Test
+    void supprimerOffrirDepotKO() {
+        System.out.println("---------------------------------- supprimerOffrirDepotKO -----------------------------------");
+        Assertions.assertEquals(0, uneOffreService.supprimerOffre("AAAAA", "v0001"), "Résultat null car le dépot n'existe pas dans la base");
+    }
+
+    @Test
+    void supprimerOffrirReference6carac() {
+        System.out.println("---------------------------------- supprimerOffrirReference6carac -----------------------------------");
+        Assertions.assertEquals(0, uneOffreService.supprimerOffre("3MYC7", "v00066"), "Résultat null car la reference est trop longue");
+    }
+
+    @Test
+    void supprimerOffrirReferenceKO() {
+        System.out.println("---------------------------------- supprimerOffrirReferenceKO -----------------------------------");
+        Assertions.assertEquals(0, uneOffreService.supprimerOffre("3MYC7", "v7777"), "Résultat null car la reference n'existe pas");
+    }
+
+    @Test
+    void supprimerOffrirOK() {
+        System.out.println("---------------------------------- supprimerOffrirOK -----------------------------------");
+        uneOffreService.creerOffrir("3MYC7", "v0001", 4);
+        Assertions.assertEquals(1, uneOffreService.supprimerOffre("3MYC7", "v0001"), "Résultat OK");
+    }
+
+
 }
