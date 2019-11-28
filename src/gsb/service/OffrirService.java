@@ -7,6 +7,8 @@ import gsb.modele.Visiteur;
 import gsb.modele.dao.*;
 import gsb.utils.ValidationUtils;
 
+import java.util.concurrent.ExecutionException;
+
 /**
  * @author womain
  *
@@ -161,6 +163,46 @@ public class OffrirService {
             e.printStackTrace();
             System.out.println(e.getMessage());
         }
+        return result;
+    }
+
+    /**
+     *
+     * @param depotLegal le depot du medicament
+     * @param reference la reference de la visite
+     * @return 0 si échec, 1 si réussi
+     */
+    public int supprimerOffre(String depotLegal, String reference) {
+        int result = 0;
+
+        try {
+            //Les champs ne peuvent pas être null
+            if(depotLegal == null || reference == null) {
+                throw new Exception("Tous les champs sont obligatoires !");
+            }
+            //Longueur du dépôt dans la bdd : 50 caractères max
+            if(depotLegal.length() > 50) {
+                throw new Exception("La longueur du dépôt doit être inférieur à 50 caractères");
+            }
+            //Le médicament doit exister dans la bdd
+            if(MedicamentDao.rechercher(depotLegal) == null) {
+                throw new Exception("Aucun médicament ne correspond à ce dépôt ");
+            }
+            //Longueur d'une référence dans la bdd : 5 caractères max
+            if(reference.length() > 5) {
+                throw new Exception("La référence ne peut pas dépasser 5 caractères");
+            }
+            //La visite doit exister dans la bdd
+            if(VisiteDao.rechercher(reference) == null) {
+                throw new Exception("La visite correspondant à cette référence n'existe pas");
+            }
+            result = OffrirDao.supprimer(depotLegal, reference);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+
         return result;
     }
 }
