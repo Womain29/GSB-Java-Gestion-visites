@@ -21,8 +21,8 @@ class OffrirServiceTest {
 
     @AfterEach
     void tearDown() {
-        if(uneOffreService.rechercherOffrir("3MYC7", "a131") != null) {
-            uneOffreService.supprimerOffre("3MYC7", "a131");
+        if(uneOffreService.rechercherOffrir("3MYC7", "v0001") != null) {
+            uneOffreService.supprimerOffre("3MYC7", "v0001");
         }
     }
 
@@ -114,6 +114,12 @@ class OffrirServiceTest {
     void creerOffrirQuantiteKO() {
         System.out.println("---------------------------------- creerOffrirQuantiteKO -----------------------------------");
         Assertions.assertEquals(0,uneOffreService.creerOffrir("3MYC7","v0001", 1000), "Résultat null car quantité offerte > quantité possédée");
+    }
+
+    @Test
+    void creerOffrirOK() {
+        System.out.println("---------------------------------- creerOffrirOK -----------------------------------");
+        Assertions.assertEquals(1,uneOffreService.creerOffrir("3MYC7","v0001", 4), "Résultat OK");
     }
 
     @Test
