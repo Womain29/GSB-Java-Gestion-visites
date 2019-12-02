@@ -3,11 +3,10 @@ package gsb.modele.dao;
 import gsb.modele.Medicament;
 import gsb.modele.Offrir;
 import gsb.modele.Visite;
-import gsb.modele.Visiteur;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  * @author womain
@@ -119,5 +118,35 @@ public class OffrirDao {
         ConnexionMySql.fermerConnexionBd();
 
         return result;
+    }
+
+    /**
+     *
+     * @param reference la reference d'une visite
+     * @return une collection d'objet Offrir correspondant à la visite
+     */
+    public static ArrayList<Offrir> rechercherOffreVisite(String reference) {
+        Offrir unOffrir = null;
+        Medicament unMedicament = null;
+        Visite uneVisite = null;
+        String requete = "SELECT * FROM OFFRIR WHERE Reference = '" + reference + "'";
+        ArrayList<Offrir> colOffre = new ArrayList<Offrir>();
+
+        ResultSet reqSelection = ConnexionMySql.execReqSelection(requete);
+
+        try {
+            while(reqSelection.next()) {
+                unMedicament = MedicamentDao.rechercher(reqSelection.getString(1));
+                uneVisite = VisiteDao.rechercher(reqSelection.getString(2));
+                unOffrir = new Offrir(unMedicament, uneVisite, reqSelection.getInt(3));
+                colOffre.add(unOffrir);
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Erreur requete SELECT * FROM OFFRIR WHERE Reference = '" + reference + "'");
+        }
+
+        return colOffre;
     }
 }
