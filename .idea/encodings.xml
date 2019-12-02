@@ -22,6 +22,7 @@
     <file url="file://$PROJECT_DIR$/src/gsb/vue/JIFVisite.java" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/gsb/vue/JIFVisiteAjout.java" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/gsb/vue/JIFVisiteListe.java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/gsb/vue/JIFVisiteRecap.java" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/gsb/vue/MenuPrincipal.java" charset="windows-1252" />
   </component>
 </project>
