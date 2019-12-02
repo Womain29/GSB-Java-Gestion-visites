@@ -7,6 +7,7 @@ import gsb.modele.Visiteur;
 import gsb.modele.dao.*;
 import gsb.utils.ValidationUtils;
 
+import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -200,5 +201,35 @@ public class OffrirService {
         }
 
         return result;
+    }
+
+    /**
+     *
+     * @param reference la reference d'une visite
+     * @return une collection d'offre correspondant àa la visite
+     */
+    public ArrayList<Offrir> rechercherOffreVisite(String reference) {
+        ArrayList<Offrir> colVisite = new ArrayList<Offrir>();
+
+        try {
+            //Les champs ne peuvent pas être null
+            if(reference == null) {
+                throw new Exception("La reference est obligatoire!");
+            }
+            //Longueur d'une référence dans la bdd : 5 caractères max
+            if(reference.length() > 5) {
+                throw new Exception("La référence ne peut pas dépasser 5 caractères");
+            }
+            //La visite doit exister dans la bdd
+            if(VisiteDao.rechercher(reference) == null) {
+                throw new Exception("La visite correspondant à cette référence n'existe pas");
+            }
+            colVisite = OffrirDao.rechercherOffreVisite(reference);
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return colVisite;
     }
 }
