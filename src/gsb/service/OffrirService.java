@@ -209,7 +209,7 @@ public class OffrirService {
      * @return une collection d'offre correspondant àa la visite
      */
     public ArrayList<Offrir> rechercherOffreVisite(String reference) {
-        ArrayList<Offrir> colVisite = new ArrayList<Offrir>();
+        ArrayList<Offrir> colOffreVisite = new ArrayList<Offrir>();
 
         try {
             //Les champs ne peuvent pas être null
@@ -224,12 +224,12 @@ public class OffrirService {
             if(VisiteDao.rechercher(reference) == null) {
                 throw new Exception("La visite correspondant à cette référence n'existe pas");
             }
-            colVisite = OffrirDao.rechercherOffreVisite(reference);
+            colOffreVisite = OffrirDao.rechercherOffreVisite(reference);
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
-        return colVisite;
+        return colOffreVisite;
     }
 }
