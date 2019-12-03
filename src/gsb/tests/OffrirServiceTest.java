@@ -1,6 +1,7 @@
 package gsb.tests;
 
 import gsb.modele.Offrir;
+import gsb.modele.Visite;
 import gsb.service.OffrirService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
@@ -228,7 +229,13 @@ class OffrirServiceTest {
     @Test
     void rechercherOffreVisiteReferenceNull() {
         System.out.println("---------------------------------- rechercherOffreVisiteReferenceNull -----------------------------------");
-        Assertions.assertEquals(colOffreVisite,uneOffreService.rechercherOffreVisite(null), "Résultat null car reference null");
+        Assertions.assertEquals(colOffreVisite,uneOffreService.rechercherOffreVisite(null), "Résultat vide car reference null");
+    }
+
+    @Test
+    void rechercheOffreVisiteReference6Carac() {
+        System.out.println("--------------------------- rechercheOffreVisiteReference6Carac ---------------------------------");
+        Assertions.assertEquals(colOffreVisite, uneOffreService.rechercherOffreVisite("v00001"), "Résultat vide car mat trop long");
     }
 
 
