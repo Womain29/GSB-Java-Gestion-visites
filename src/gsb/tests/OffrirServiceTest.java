@@ -238,6 +238,14 @@ class OffrirServiceTest {
         Assertions.assertEquals(colOffreVisite, uneOffreService.rechercherOffreVisite("v00001"), "Résultat vide car mat trop long");
     }
 
+    @Test
+    void rechercheOffreVisiteReferenceKO() {
+        System.out.println("--------------------------- rechercheOffreVisiteReferenceKO ---------------------------------");
+        Assertions.assertEquals(colOffreVisite, uneOffreService.rechercherOffreVisite("v0066"), "Résultat vide car ref KO");
+    }
+
+
+
 
 
 }
