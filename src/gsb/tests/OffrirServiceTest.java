@@ -244,6 +244,14 @@ class OffrirServiceTest {
         Assertions.assertEquals(colOffreVisite, uneOffreService.rechercherOffreVisite("v0066"), "Résultat vide car ref KO");
     }
 
+    @Test
+    void rechercheOffreVisiteOK() {
+        System.out.println("--------------------------- rechercheOffreVisiteOK ---------------------------------");
+        uneOffreService.creerOffrir("3MYC7", "v0001", 4);
+        int nbElementsAttendus = 1;
+        Assertions.assertEquals(nbElementsAttendus, uneOffreService.rechercherOffreVisite("v0001").size(), "Résultat 1 car une offre lors de cette visite");
+    }
+
 
 
 
