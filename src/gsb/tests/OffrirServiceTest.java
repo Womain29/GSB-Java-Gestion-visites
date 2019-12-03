@@ -7,16 +7,21 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class OffrirServiceTest {
 
     private OffrirService uneOffreService;
     private Offrir uneOffre;
+    private ArrayList<Offrir> colOffreVisite;
 
     @BeforeEach
     void setUp() {
+
         uneOffreService = new OffrirService();
+        colOffreVisite = new ArrayList<>();
     }
 
     @AfterEach
@@ -219,6 +224,13 @@ class OffrirServiceTest {
         uneOffreService.creerOffrir("3MYC7", "v0001", 4);
         Assertions.assertEquals(1, uneOffreService.supprimerOffre("3MYC7", "v0001"), "Résultat OK");
     }
+
+    @Test
+    void rechercherOffreVisiteReferenceNull() {
+        System.out.println("---------------------------------- rechercherOffreVisiteReferenceNull -----------------------------------");
+        Assertions.assertEquals(colOffreVisite,uneOffreService.rechercherOffreVisite(null), "Résultat null car reference null");
+    }
+
 
 
 }
