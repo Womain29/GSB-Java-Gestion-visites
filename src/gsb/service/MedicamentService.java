@@ -11,7 +11,7 @@ import gsb.modele.dao.MedicamentDao;
  */
 public class MedicamentService {
 	
-	public static Medicament rechercherMedicament(String unDepotLegal){
+	public Medicament rechercherMedicament(String unDepotLegal){
 		Medicament unMedicament = null;
 		try{
 			//Un médicament entré en paramètre ne doit pas être nul
