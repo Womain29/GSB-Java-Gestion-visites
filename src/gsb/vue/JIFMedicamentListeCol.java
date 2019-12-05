@@ -6,42 +6,39 @@ import gsb.modele.dao.MedicamentDao;
 import gsb.service.MedicamentService;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
  * @author Gwendal
  *
- * Fenêtre de consultation des information d'un médicament
- *
  * 05/12/2019
  */
 
 public class JIFMedicamentListeCol extends JInternalFrame implements ActionListener{
-	
+
 	private static final long serialVersionUID = 1L;
 
 	private ArrayList<Medicament> lesMedicaments;
 
-	
-	//Déclaration des JPanel	
+	//Déclaration des JPanel
 	protected JPanel p;
 	protected JPanel pSaisie;
+	protected JPanel pErreur;
 	
-	//Déclaration des composants du tableau
 	protected JScrollPane scrollPane;
 	
 	//Déclaration des JTextField
 	protected JTextField JTdepotLegal;
 	
-	//Déclaration des boutons 
+	//Déclaration des JLabel
+	protected JLabel JLErreurRecherche;
+	
+	//Déclaration des JButton
 	protected JButton JBafficherFiche;
 	
-	
+	//Déclaration du Menu principal
 	protected MenuPrincipal fenetreContainer;
 
 	public JIFMedicamentListeCol(MenuPrincipal uneFenetreContainer) {
@@ -53,6 +50,11 @@ public class JIFMedicamentListeCol extends JInternalFrame implements ActionListe
 		int nbLignes = lesMedicaments.size();
 
 		JTable table;
+
+		//Instanciation des JPanel
+		p = new JPanel(); // panneau principal de la fen?tre
+		pSaisie = new JPanel();
+		pErreur = new JPanel();
 		
 		int i=0;
 		String[][] data = new String[nbLignes][3] ;
@@ -64,32 +66,34 @@ public class JIFMedicamentListeCol extends JInternalFrame implements ActionListe
 			}
 		String[] columnNames = {"Depot Legal", "Nom Commercial","Code Famille"};
 		table = new JTable(data, columnNames);
-		
-		
-		//Variables pour le tableau
+
 		scrollPane = new JScrollPane(table);
-		scrollPane.setPreferredSize(new Dimension(400, 200));
-		
-		//Instanciation des panneaux 
-		p = new JPanel(); // panneau principal de la fen?tre
-		pSaisie = new JPanel();
-		
-		//Ajout des éléments sur le tableau
-		p.add(scrollPane);
-		pSaisie.add(JTdepotLegal);
-		pSaisie.add(JBafficherFiche);
-		p.add(pSaisie);
-		
+		scrollPane.setPreferredSize(new Dimension(400, 200));	
+
 		//Instanciation des JTextField
 		JTdepotLegal = new JTextField(20);
 		JTdepotLegal.setMaximumSize(JTdepotLegal.getPreferredSize());
 		
-		//Instanciation des boutons
+		//Instanciation des JButton
 		JBafficherFiche = new JButton("Afficher Fiche mdicament");
 		JBafficherFiche.addActionListener(this);
 		
+		//Instanciation des JLabel
+		JLErreurRecherche = new JLabel("");
+        JLErreurRecherche.setForeground(new Color(255,0,0));
 		
-		// mise en forme de la fen?tre
+        //Ajout des éléments au panneau saisie
+		pSaisie.add(JTdepotLegal);
+		pSaisie.add(JBafficherFiche);
+		
+		//Ajout des éléments dans le panneau erreur
+        pErreur.add(JLErreurRecherche);
+		
+		//Ajout des éléments au panneau principal
+		p.add(scrollPane);
+		p.add(pSaisie);
+        p.add(pErreur);
+      //Ajout du panneau principal à la fenêtre
 		Container contentPane = getContentPane();
 		contentPane.add(p);
 	}
@@ -101,11 +105,27 @@ public class JIFMedicamentListeCol extends JInternalFrame implements ActionListe
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
    		if (source == JBafficherFiche){
+   			String depotLegal = JTdepotLegal.getText().toString();
+   			try {
+                //Les champs ne peuvent pas être null
+                if (depotLegal.equals("")) {
+                    throw new Exception("Tous les champs sont obligatoires");
+                }
+                //Une visite correspondante à la référence doit exister
+                if (MedicamentDao.rechercher(depotLegal) == null) {
+                    throw new Exception("Le medicament correspondant à ce depot legal n'existe pas");
+                }
+            }
+            catch (Exception erreur) {
+                System.out.println(erreur.getMessage());
+                JLErreurRecherche.setText(erreur.getMessage());
+            }
+   			
    			Medicament unMedicament = MedicamentService.rechercherMedicament(JTdepotLegal.getText());
    			if (unMedicament!=null){
    	   			fenetreContainer.ouvrirFenetre(new JIFMedicamentFiche(unMedicament));
    			}
    		}	
 	}
-    
+
 }
