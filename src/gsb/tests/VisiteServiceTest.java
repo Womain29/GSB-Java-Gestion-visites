@@ -234,5 +234,12 @@ class VisiteServiceTest {
         Assertions.assertEquals(0, uneVisiteService.updateVisiteCommentaire("Test", null));
     }
 
+    @Test
+    void updateVisiteCommentaireRef6Carac() {
+        System.out.println("--------------------------- updateVisiteCommentaireRef6Carac ---------------------------------");
+        uneVisiteService.creerVisite("test", "06/06/1996", "", "a131", "m001");
+        Assertions.assertEquals(0, uneVisiteService.updateVisiteCommentaire("Test", "AAAAAA"));
+    }
+
 
 }
