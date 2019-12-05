@@ -66,4 +66,11 @@ public class StockServiceTest {
 	        System.out.println("--------------------------- ajoutStockQteStockNull ---------------------------------");
 	        Assertions.assertEquals(0, unStockService.ajoutStock("3MYC7", "a131", 0), "Résultat 0 car qteStock null");
 	    }
+	    
+	    @Test
+	    void ajoutStockQteStockNegative() {
+	        System.out.println("--------------------------- ajoutStockQteStockNegative ---------------------------------");
+	        Assertions.assertEquals(0, unStockService.ajoutStock("3MYC7", "a131", -15), "Résultat 0 car qteStock négative");
+	    }
+	    
 }
