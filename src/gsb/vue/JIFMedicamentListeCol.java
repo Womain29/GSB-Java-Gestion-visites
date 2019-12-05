@@ -121,7 +121,8 @@ public class JIFMedicamentListeCol extends JInternalFrame implements ActionListe
                 JLErreurRecherche.setText(erreur.getMessage());
             }
    			
-   			Medicament unMedicament = MedicamentService.rechercherMedicament(JTDepotLegal.getText());
+   			MedicamentService unMedicamentService = new MedicamentService();
+   			Medicament unMedicament = unMedicamentService.rechercherMedicament(JTDepotLegal.getText());
    			if (unMedicament!=null){
    	   			fenetreContainer.ouvrirFenetre(new JIFMedicamentFiche(unMedicament));
    			}
