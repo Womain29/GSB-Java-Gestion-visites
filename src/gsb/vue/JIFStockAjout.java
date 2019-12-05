@@ -3,6 +3,7 @@ package gsb.vue;
 import gsb.modele.dao.MedicamentDao;
 import gsb.modele.dao.VisiteurDao;
 import gsb.service.StockService;
+import gsb.utils.ValidationUtils;
 
 import javax.swing.*;
 
@@ -33,7 +34,7 @@ public class JIFStockAjout extends JIFStock implements ActionListener {
 	protected JLabel JLErreurAjout;
 	
 	//Déclaration des JTextFields
-	protected JTextField JTdepotLegal;
+	protected JTextField JTDepotLegal;
 	protected JTextField JTMatricule;
 	protected JTextField JTQteStock;
 	
@@ -77,7 +78,7 @@ public class JIFStockAjout extends JIFStock implements ActionListener {
         pSaisie.add(JLMatricule);
         pSaisie.add(JTMatricule);
         pSaisie.add(JLDepotLegal);
-        pSaisie.add(JTdepotLegal);
+        pSaisie.add(JTDepotLegal);
         pSaisie.add(JLQteStock);
         pSaisie.add(JTQteStock);
         
@@ -105,10 +106,11 @@ public class JIFStockAjout extends JIFStock implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
         if(source == JBValider) {
-        	String qte = JTQteStock.getText();
+        	String qte = JTQteStock.getText();   	
         	String depotLegal = JTDepotLegal.getText();
         	String matricule = JTMatricule.getText();
-        	int quantite = Integer.parseInt(qte);
+        	int quantite = 0;
+        	
         	
         	try {
                 //Les champs ne peuvent pas être null
@@ -124,9 +126,17 @@ public class JIFStockAjout extends JIFStock implements ActionListener {
                     throw new Exception("Le visiteur correspondant à ce matricule n'existe pas");
                 }
               //Un visiteur correspondant au matricule doit exister
-                if (quantite <=0) {
+                
+                if (!ValidationUtils.estUnEntier(qte)) {
+                	throw new Exception("La quantité ajoutée doit être un entier");
+                }
+                else {
+                	quantite = Integer.parseInt(qte);
+                }
+                if (quantite <= 0) {
                     throw new Exception("On ne peut pas ajouter un stock inférieur ou égal à 0");
                 }
+                
                 unStockService.ajoutStock(JTDepotLegal.getText().toString(),JTMatricule.getText().toString(), quantite);
                 this.videTexte();
                 JLErreurAjout.setText("");
