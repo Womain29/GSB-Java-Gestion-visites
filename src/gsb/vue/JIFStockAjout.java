@@ -1,29 +1,102 @@
 package gsb.vue;
 
+import gsb.modele.dao.MedicamentDao;
+import gsb.modele.dao.VisiteurDao;
 import gsb.service.StockService;
 
 import javax.swing.*;
+
+import java.awt.Color;
+import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * @author Gwendal
+ *
+ * Fenêtre d'ajout d'un médicament
+ *
+ * 05/12/2019
+ */
+
 public class JIFStockAjout extends JIFStock implements ActionListener {
 
+	//Déclaration des JPanels
+	protected JPanel p;
+	protected JPanel pSaisie;
+	protected JPanel pErreur;
+	
+	//Déclaration des JLabels
+	protected JLabel JLMatricule;
+	protected JLabel JLdepotLegal;
+	protected JLabel JLQteStock;
+	protected JLabel JLErreurAjout;
+	
+	//Déclaration des JTextFields
+	protected JTextField JTdepotLegal;
+	protected JTextField JTMatricule;
+	protected JTextField JTQteStock;
+	
+	//Déclaration des JButtons
     private JButton JBValider;
-    private JButton JBAnnuler;
-
+    private JButton JBAnnuler;    
+    
     private StockService unStockService = new StockService();
 
     public JIFStockAjout() {
         super();
-
+        
+        //Instanciation des JPanel
+        p = new JPanel();
+        pSaisie = new JPanel();
+        pErreur = new JPanel();
+        
+        //Instanciation des JTextField
+        JTdepotLegal = new JTextField(20);
+		JTdepotLegal.setMaximumSize(JTdepotLegal.getPreferredSize());
+		JTMatricule = new JTextField(20);
+		JTMatricule.setMaximumSize(JTMatricule.getPreferredSize());
+		JTQteStock = new JTextField(20);
+		JTQteStock.setMaximumSize(JTMatricule.getPreferredSize());
+        
+		//Instanciation des JLabels
+        JLMatricule = new JLabel("Matricule");
+        JLdepotLegal = new JLabel("Dépot Légal");
+        JLQteStock = new JLabel("Quantité");
+        JLErreurAjout = new JLabel("");
+        JLErreurAjout.setForeground(new Color(255,0,0));
+		
+        //Instanciation des JButtons
         JBValider = new JButton("Valider");
         JBValider.addActionListener(this);
         JBAnnuler = new JButton("Annuler");
         JBAnnuler.addActionListener(this);
-
+        
+        
+        //Ajout des éléments sur le panneau saisie
+        pSaisie.add(JLMatricule);
+        pSaisie.add(JTMatricule);
+        pSaisie.add(JLdepotLegal);
+        pSaisie.add(JTdepotLegal);
+        pSaisie.add(JLQteStock);
+        pSaisie.add(JTQteStock);
+        
+        //Ajout de éléments sur le panneau boutons
         pBoutons.add(JBValider);
         pBoutons.add(JBAnnuler);
-
+        
+      //Ajout des éléments dans le panneau erreur
+        pErreur.add(JLErreurAjout);
+        
+        //Ajout des éléments sur le panneau principal
+        p.add(pSaisie);
+        p.add(pBoutons);
+        p.add(pErreur);
+        
+      //Ajout du panneau principal à la fenêtre
+     	Container contentPane = getContentPane();
+     	contentPane.add(p);
+        
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setTitle("Ajout d'un stock");
     }
@@ -33,10 +106,36 @@ public class JIFStockAjout extends JIFStock implements ActionListener {
         Object source = e.getSource();
         if(source == JBValider) {
         	String qte = JTQteStock.getText();
-        	
+        	String depotLegal = JTdepotLegal.getText();
+        	String matricule = JTMatricule.getText();
         	int quantite = Integer.parseInt(qte);
-            unStockService.ajoutStock(JTDepotLegal.getText().toString(),JTMatricule.getText().toString(), quantite);
-            this.videTexte();
+        	
+        	try {
+                //Les champs ne peuvent pas être null
+                if (matricule.equals("") || depotLegal.equals("") || qte.equals("")) {
+                    throw new Exception("Tous les champs sont obligatoires");
+                }
+                //Un medicament correspondant au dépot légal doit exister
+                if (MedicamentDao.rechercher(depotLegal) == null) {
+                    throw new Exception("Le medicament correspondant à ce dépot légal n'existe pas");
+                }
+              //Un visiteur correspondant au matricule doit exister
+                if (VisiteurDao.rechercher(matricule) == null) {
+                    throw new Exception("Le visiteur correspondant à ce matricule n'existe pas");
+                }
+              //Un visiteur correspondant au matricule doit exister
+                if (quantite <=0) {
+                    throw new Exception("On ne peut pas ajouter un stock inférieur ou égal à 0");
+                }
+                unStockService.ajoutStock(JTdepotLegal.getText().toString(),JTMatricule.getText().toString(), quantite);
+                this.videTexte();
+                JLErreurAjout.setText("");
+            }
+            catch (Exception erreur) {
+                System.out.println(erreur.getMessage());
+                JLErreurAjout.setText(erreur.getMessage());
+            }        
+        	
         }
         if(source == JBAnnuler) {
             this.videTexte();
