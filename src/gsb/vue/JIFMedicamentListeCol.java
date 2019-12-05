@@ -30,7 +30,7 @@ public class JIFMedicamentListeCol extends JInternalFrame implements ActionListe
 	protected JScrollPane scrollPane;
 	
 	//Déclaration des JTextField
-	protected JTextField JTdepotLegal;
+	protected JTextField JTDepotLegal;
 	
 	//Déclaration des JLabel
 	protected JLabel JLErreurRecherche;
@@ -71,8 +71,8 @@ public class JIFMedicamentListeCol extends JInternalFrame implements ActionListe
 		scrollPane.setPreferredSize(new Dimension(400, 200));	
 
 		//Instanciation des JTextField
-		JTdepotLegal = new JTextField(20);
-		JTdepotLegal.setMaximumSize(JTdepotLegal.getPreferredSize());
+		JTDepotLegal = new JTextField(20);
+		JTDepotLegal.setMaximumSize(JTDepotLegal.getPreferredSize());
 		
 		//Instanciation des JButton
 		JBafficherFiche = new JButton("Afficher Fiche mdicament");
@@ -83,7 +83,7 @@ public class JIFMedicamentListeCol extends JInternalFrame implements ActionListe
         JLErreurRecherche.setForeground(new Color(255,0,0));
 		
         //Ajout des éléments au panneau saisie
-		pSaisie.add(JTdepotLegal);
+		pSaisie.add(JTDepotLegal);
 		pSaisie.add(JBafficherFiche);
 		
 		//Ajout des éléments dans le panneau erreur
@@ -105,7 +105,7 @@ public class JIFMedicamentListeCol extends JInternalFrame implements ActionListe
 	public void actionPerformed(ActionEvent arg0) {
 		Object source = arg0.getSource();
    		if (source == JBafficherFiche){
-   			String depotLegal = JTdepotLegal.getText().toString();
+   			String depotLegal = JTDepotLegal.getText().toString();
    			try {
                 //Les champs ne peuvent pas être null
                 if (depotLegal.equals("")) {
@@ -121,7 +121,7 @@ public class JIFMedicamentListeCol extends JInternalFrame implements ActionListe
                 JLErreurRecherche.setText(erreur.getMessage());
             }
    			
-   			Medicament unMedicament = MedicamentService.rechercherMedicament(JTdepotLegal.getText());
+   			Medicament unMedicament = MedicamentService.rechercherMedicament(JTDepotLegal.getText());
    			if (unMedicament!=null){
    	   			fenetreContainer.ouvrirFenetre(new JIFMedicamentFiche(unMedicament));
    			}

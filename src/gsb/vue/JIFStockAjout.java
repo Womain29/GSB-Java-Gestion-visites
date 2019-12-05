@@ -28,7 +28,7 @@ public class JIFStockAjout extends JIFStock implements ActionListener {
 	
 	//Déclaration des JLabels
 	protected JLabel JLMatricule;
-	protected JLabel JLdepotLegal;
+	protected JLabel JLDepotLegal;
 	protected JLabel JLQteStock;
 	protected JLabel JLErreurAjout;
 	
@@ -52,8 +52,8 @@ public class JIFStockAjout extends JIFStock implements ActionListener {
         pErreur = new JPanel();
         
         //Instanciation des JTextField
-        JTdepotLegal = new JTextField(20);
-		JTdepotLegal.setMaximumSize(JTdepotLegal.getPreferredSize());
+        JTDepotLegal = new JTextField(20);
+		JTDepotLegal.setMaximumSize(JTDepotLegal.getPreferredSize());
 		JTMatricule = new JTextField(20);
 		JTMatricule.setMaximumSize(JTMatricule.getPreferredSize());
 		JTQteStock = new JTextField(20);
@@ -61,7 +61,7 @@ public class JIFStockAjout extends JIFStock implements ActionListener {
         
 		//Instanciation des JLabels
         JLMatricule = new JLabel("Matricule");
-        JLdepotLegal = new JLabel("Dépot Légal");
+        JLDepotLegal = new JLabel("Dépot Légal");
         JLQteStock = new JLabel("Quantité");
         JLErreurAjout = new JLabel("");
         JLErreurAjout.setForeground(new Color(255,0,0));
@@ -76,7 +76,7 @@ public class JIFStockAjout extends JIFStock implements ActionListener {
         //Ajout des éléments sur le panneau saisie
         pSaisie.add(JLMatricule);
         pSaisie.add(JTMatricule);
-        pSaisie.add(JLdepotLegal);
+        pSaisie.add(JLDepotLegal);
         pSaisie.add(JTdepotLegal);
         pSaisie.add(JLQteStock);
         pSaisie.add(JTQteStock);
@@ -106,7 +106,7 @@ public class JIFStockAjout extends JIFStock implements ActionListener {
         Object source = e.getSource();
         if(source == JBValider) {
         	String qte = JTQteStock.getText();
-        	String depotLegal = JTdepotLegal.getText();
+        	String depotLegal = JTDepotLegal.getText();
         	String matricule = JTMatricule.getText();
         	int quantite = Integer.parseInt(qte);
         	
@@ -127,7 +127,7 @@ public class JIFStockAjout extends JIFStock implements ActionListener {
                 if (quantite <=0) {
                     throw new Exception("On ne peut pas ajouter un stock inférieur ou égal à 0");
                 }
-                unStockService.ajoutStock(JTdepotLegal.getText().toString(),JTMatricule.getText().toString(), quantite);
+                unStockService.ajoutStock(JTDepotLegal.getText().toString(),JTMatricule.getText().toString(), quantite);
                 this.videTexte();
                 JLErreurAjout.setText("");
             }
