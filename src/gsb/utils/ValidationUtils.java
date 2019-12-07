@@ -73,7 +73,7 @@ public class ValidationUtils {
      * @param chaine
      * @return
      */
-    public boolean estUnEntier(String chaine) {
+    public static boolean estUnEntier(String chaine) {
         try {
             Integer.parseInt(chaine);
         } catch (NumberFormatException e){
