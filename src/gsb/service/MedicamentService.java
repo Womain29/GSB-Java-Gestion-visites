@@ -1,4 +1,4 @@
-/*Créé le 17/10/2019 */
+/*Crï¿½ï¿½ le 17/10/2019 */
 package gsb.service;
 
 import gsb.modele.Medicament;
@@ -11,16 +11,16 @@ import gsb.modele.dao.MedicamentDao;
  */
 public class MedicamentService {
 	
-	public Medicament rechercherMedicament(String unDepotLegal){
+	public static Medicament rechercherMedicament(String unDepotLegal){
 		Medicament unMedicament = null;
 		try{
-			//Un médicament entré en paramètre ne doit pas être nul
+			//Un mï¿½dicament entrï¿½ en paramï¿½tre ne doit pas ï¿½tre nul
 			if (unDepotLegal==null) {
-	            throw new Exception("Donnée obligatoire : depotLegal");
+	            throw new Exception("Donnï¿½e obligatoire : depotLegal");
 	        }
-			//Un médicament correspondant au dépot légal doit exister
+			//Un mï¿½dicament correspondant au dï¿½pot lï¿½gal doit exister
 	        if(MedicamentDao.rechercher(unDepotLegal) == null) {
-	            throw new Exception("Le médicament correspondant à ce dépot légal n'existe pas");
+	            throw new Exception("Le mï¿½dicament correspondant ï¿½ ce dï¿½pot lï¿½gal n'existe pas");
 	        }
 			unMedicament = MedicamentDao.rechercher(unDepotLegal);
 		}

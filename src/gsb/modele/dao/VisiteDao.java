@@ -113,7 +113,28 @@ public class VisiteDao {
             e.printStackTrace();
             System.out.println("Erreur requete SELECT * FROM VISITE WHERE Reference = '" + unMatricule + "' AND Date = '" + uneDate + "'");
         }
+        ConnexionMySql.fermerConnexionBd();
 
         return colVisiteDateRef;
+    }
+
+    /**
+     *
+     * @param commentaire le commentaire d'une visite
+     * @return 0 si echec, 1 si réussie
+     */
+    public static int updateCommentaire (String commentaire, String reference) {
+        int result = 0;
+
+        String requete = "UPDATE VISITE SET Commentaire = '" + commentaire + "' WHERE reference = '" + reference + "'";
+
+        try {
+            result = ConnexionMySql.execReqMaj(requete);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        ConnexionMySql.fermerConnexionBd();
+        return result;
     }
 }

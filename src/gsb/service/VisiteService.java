@@ -168,4 +168,38 @@ public class VisiteService {
 
         return colVisiteDateRef;
     }
+
+    /**
+     *
+     * @param commentaire le commentaire d'une visite
+     * @param reference la reference
+     * @return 0 si echec, 1 si réussie
+     */
+    public int updateVisiteCommentaire(String commentaire, String reference) {
+        int result = 0;
+
+        try {
+            //La référence entrée en paramètre ne peut pas être nulle
+            if(reference == null) {
+                throw new Exception("Référence de la visite obligatoire");
+            }
+            //La référence doit avoir 5 caractères
+            if (reference.length() > 5) {
+                throw new Exception("La référence ne peut pas dépasser 5 caractères");
+            }
+            //Une visite correspondante à la référence doit exister
+            if(VisiteDao.rechercher(reference) == null) {
+                throw new Exception("La visite correspondant à cette référence n'existe pas");
+            }
+            if(commentaire.length() > 255) {
+                throw new Exception("Le commentaire ne peut pas dépasser 255 caractères");
+            }
+            result = VisiteDao.updateCommentaire(commentaire, reference);
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return result;
+    }
 }

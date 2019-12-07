@@ -227,5 +227,40 @@ class VisiteServiceTest {
         }
     }
 
+    @Test
+    void updateVisiteCommentaireRefNull() {
+        System.out.println("--------------------------- updateVisiteCommentaireRefNull ---------------------------------");
+        uneVisiteService.creerVisite("test", "06/06/1996", "", "a131", "m001");
+        Assertions.assertEquals(0, uneVisiteService.updateVisiteCommentaire("Test", null));
+    }
+
+    @Test
+    void updateVisiteCommentaireRef6Carac() {
+        System.out.println("--------------------------- updateVisiteCommentaireRef6Carac ---------------------------------");
+        uneVisiteService.creerVisite("test", "06/06/1996", "", "a131", "m001");
+        Assertions.assertEquals(0, uneVisiteService.updateVisiteCommentaire("Test", "AAAAAA"));
+    }
+
+    @Test
+    void updateVisiteCommentaireRefKO() {
+        System.out.println("--------------------------- updateVisiteCommentaireRefKO ---------------------------------");
+        uneVisiteService.creerVisite("test", "06/06/1996", "", "a131", "m001");
+        Assertions.assertEquals(0, uneVisiteService.updateVisiteCommentaire("Test", "BBBBB"));
+    }
+
+    @Test
+    void updateVisiteCommentaireCarac256Carac() {
+        System.out.println("--------------------------- updateVisiteCommentaireCarac256Carac ---------------------------------");
+        uneVisiteService.creerVisite("test", "06/06/1996", "", "a131", "m001");
+        Assertions.assertEquals(0, uneVisiteService.updateVisiteCommentaire("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", "test"));
+    }
+
+    @Test
+    void updateVisiteCommentaireOK() {
+        System.out.println("--------------------------- updateVisiteCommentaireOK ---------------------------------");
+        uneVisiteService.creerVisite("test", "06/06/1996", "", "a131", "m001");
+        Assertions.assertEquals(0, uneVisiteService.updateVisiteCommentaire("Test", "test"));
+    }
+
 
 }
