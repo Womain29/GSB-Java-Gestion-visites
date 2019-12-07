@@ -5,7 +5,12 @@ package gsb.modele.dao;
  * 7/11/2019
  * 
  */
+import gsb.modele.Medicament;
 import gsb.modele.Stock;
+import gsb.modele.Visiteur;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class StockDao {
 	
@@ -26,6 +31,29 @@ public class StockDao {
         ConnexionMySql.fermerConnexionBd();
 
         return result;
+    }
+
+    public static Stock rechercher(String depotLegal, String matricule) {
+        Stock unStock = null;
+        Visiteur unVisiteur = null;
+        Medicament unMedicament = null;
+        String requete = "SELECT * FROM STOCKER WHERE DepotLegal = '" + depotLegal + "' AND Matricule = '" + matricule + "'";
+
+        ResultSet reqSelection = ConnexionMySql.execReqSelection(requete);
+
+        try {
+            if(reqSelection.next()) {
+                unMedicament = MedicamentDao.rechercher(reqSelection.getString(1));
+                unVisiteur = VisiteurDao.rechercher(reqSelection.getString(2));
+                unStock = new Stock(unMedicament, unVisiteur, reqSelection.getInt(3));
+
+            }
+        }
+        catch(SQLException e) {
+            e.printStackTrace();
+            System.out.println("Erreur avec la requete SELECT * FROM STOCKER WHERE DepotLegal = '" + depotLegal + "' AND Matricule = '" + matricule + "'");
+        }
+        return unStock;
     }
 	
 	
