@@ -1,4 +1,4 @@
-/*Créé le 7/11/2019 */
+/*Crï¿½ï¿½ le 7/11/2019 */
 package gsb.service;
 
 import gsb.modele.Stock;
@@ -24,21 +24,21 @@ public class StockService {
         Stock unStock = null;
 
         try{
-        	//Un dépot légal doit être renseigné 
+        	//Un dï¿½pot lï¿½gal doit ï¿½tre renseignï¿½ 
         	if (depotLegal==null) {
-                throw new Exception("Donnée obligatoire : Dépot Légal");
+                throw new Exception("Donnï¿½e obligatoire : Dï¿½pot Lï¿½gal");
             }
-        	//Un matricule doit être renseigné 
+        	//Un matricule doit ï¿½tre renseignï¿½ 
         	if (matricule==null) {
-                throw new Exception("Donnée obligatoire : Matricule");
+                throw new Exception("Donnï¿½e obligatoire : Matricule");
             }
-        	//Une quantité ajoutée ne doit pas être inférieure égale à 0
+        	//Une quantitï¿½ ajoutï¿½e ne doit pas ï¿½tre infï¿½rieure ï¿½gale ï¿½ 0
     		if (qteStock<=0) {
-                throw new Exception("On ne peut pas ajouter une quantité inférieure ou égale à 0");
+                throw new Exception("On ne peut pas ajouter une quantitï¿½ infï¿½rieure ou ï¿½gale ï¿½ 0");
             }
-    		//Le dépot légal doit exister dans la base
+    		//Le dï¿½pot lï¿½gal doit exister dans la base
     		if (MedicamentDao.rechercher(depotLegal)==null) {
-                throw new Exception("Le dépot legal n'existe pas");
+                throw new Exception("Le dï¿½pot legal n'existe pas");
             }
     		//Le matricule doit exister dans la base
     		if (VisiteurDao.rechercher(matricule)==null) {
@@ -54,6 +54,34 @@ public class StockService {
         }
 
         return result;
+    }
+
+    public Stock rechercherStock(String depotLegal, String matricule) {
+        Stock unStock = null;
+
+        try {
+            if(depotLegal == null || matricule == null) {
+                throw new Exception("Tous les champs sont obligatoires !");
+            }
+            if(matricule.length() > 4) {
+                throw new Exception("Le matricule du visiteur ne doit pas dÃ©passer 4 caractÃ¨res");
+            }
+            if(VisiteurDao.rechercher(matricule) == null) {
+                throw new Exception("Pas de visiteur correspondant Ã  ce matricule");
+            }
+            if(depotLegal.length() > 50) {
+                throw new Exception("Le dÃ©pot lÃ©gal ne peut pas dÃ©passer 50 caractÃ¨res");
+            }
+            if(MedicamentDao.rechercher(depotLegal) == null) {
+                throw new Exception("Pas de mÃ©dicament correspondant Ã  ce dÃ©pot lÃ©gal");
+            }
+
+            unStock = StockDao.rechercher(depotLegal,matricule);
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return unStock;
     }
 	
 }
