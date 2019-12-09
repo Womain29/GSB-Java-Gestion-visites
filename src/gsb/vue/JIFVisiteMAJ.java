@@ -6,6 +6,7 @@ import gsb.modele.dao.StockDao;
 import gsb.modele.dao.VisiteDao;
 import gsb.service.MedicamentService;
 import gsb.service.OffrirService;
+import gsb.service.StockService;
 import gsb.service.VisiteService;
 import gsb.utils.ValidationUtils;
 
@@ -62,6 +63,7 @@ public class JIFVisiteMAJ extends JInternalFrame implements ActionListener, Mous
     private Offrir uneOffre;
     private OffrirService uneOffreService;
     private MedicamentService unMedicamentService;
+    private StockService unStockService;
 
     private Visite uneVisite;
     Container contentPane = getContentPane();
@@ -71,6 +73,7 @@ public class JIFVisiteMAJ extends JInternalFrame implements ActionListener, Mous
         uneVisiteService = new VisiteService();
         uneOffreService = new OffrirService();
         unMedicamentService = new MedicamentService();
+        unStockService = new StockService();
 
         //Instanciation des panneaux
         p = new JPanel();
@@ -273,10 +276,10 @@ public class JIFVisiteMAJ extends JInternalFrame implements ActionListener, Mous
                 if(uneVisiteService.rechercherVisite(reference) == null) {
                     throw new Exception("Aucune visite correspondant à cette référence");
                 }
-                if(StockDao.rechercher(depotLegal, reference) == null) {
+                if(unStockService.rechercherStock(depotLegal, reference) == null) {
                     throw new Exception("Vous ne posséder pas ce médicament en stock");
                 }
-                if(StockDao.rechercher(depotLegal, VisiteDao.rechercher(reference).getUnVisiteur().getMatricule()).getQteStock() < quantiteOfferte) {
+                if(unStockService.rechercherStock(depotLegal, VisiteDao.rechercher(reference).getUnVisiteur().getMatricule()).getQteStock() < quantiteOfferte) {
                     throw new Exception("Votre stock de ce médicament est insuffisant");
                 }
                 if(uneOffreService.rechercherOffrir(depotLegal,reference) != null) {
