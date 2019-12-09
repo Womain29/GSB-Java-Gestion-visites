@@ -1,5 +1,5 @@
 /*
- * Créé le 21/11/2019
+ * Crï¿½ï¿½ le 21/11/2019
 */
 
 package gsb.tests;
@@ -34,13 +34,13 @@ public class StockServiceTest {
 	    @Test
 	    void ajoutStockAllNull() {
 	        System.out.println("--------------------------- ajoutStockAllNull ---------------------------------");
-	        Assertions.assertEquals(0, unStockService.ajoutStock(null, null, 0), "Résultat 0 car paramètres null");
+	        Assertions.assertEquals(0, unStockService.ajoutStock(null, null, 0), "Rï¿½sultat 0 car paramï¿½tres null");
 	    }
 	    
 	    @Test
 	    void ajoutStockDepotLegalNull() {
 	        System.out.println("--------------------------- ajoutStockDepotLegalNull ---------------------------------");
-	        Assertions.assertEquals(0, unStockService.ajoutStock(null, "a131", 15), "Résultat 0 car depotLegal null");
+	        Assertions.assertEquals(0, unStockService.ajoutStock(null, "a131", 15), "Rï¿½sultat 0 car depotLegal null");
 	    }
 	    
 	    @Test
@@ -52,25 +52,73 @@ public class StockServiceTest {
 	    @Test
 	    void ajoutStockMatriculeNull() {
 	        System.out.println("--------------------------- ajoutStockMatriculeNull ---------------------------------");
-	        Assertions.assertEquals(0, unStockService.ajoutStock("3MYC7", null, 15), "Résultat 0 car matricule null");
+	        Assertions.assertEquals(0, unStockService.ajoutStock("3MYC7", null, 15), "Rï¿½sultat 0 car matricule null");
 	    }
 	    
 	    @Test
 	    void ajoutStockMatriculeKO() {
 	        System.out.println("--------------------------- ajoutStockMatriculeKO ---------------------------------");
-	        Assertions.assertEquals(0, unStockService.ajoutStock("3MYC7", "AAAA", 15), "Résultat 0 car le matricule visiteur n'existe pas");
+	        Assertions.assertEquals(0, unStockService.ajoutStock("3MYC7", "AAAA", 15), "Rï¿½sultat 0 car le matricule visiteur n'existe pas");
 	    }
 	    
 	    @Test
 	    void ajoutStockQteStockNull() {
 	        System.out.println("--------------------------- ajoutStockQteStockNull ---------------------------------");
-	        Assertions.assertEquals(0, unStockService.ajoutStock("3MYC7", "a131", 0), "Résultat 0 car qteStock null");
+	        Assertions.assertEquals(0, unStockService.ajoutStock("3MYC7", "a131", 0), "Rï¿½sultat 0 car qteStock null");
 	    }
 	    
 	    @Test
 	    void ajoutStockQteStockNegative() {
 	        System.out.println("--------------------------- ajoutStockQteStockNegative ---------------------------------");
-	        Assertions.assertEquals(0, unStockService.ajoutStock("3MYC7", "a131", -15), "Résultat 0 car qteStock négative");
+	        Assertions.assertEquals(0, unStockService.ajoutStock("3MYC7", "a131", -15), "Rï¿½sultat 0 car qteStock nï¿½gative");
 	    }
+
+	    @Test
+		void rechercherStockAllNull() {
+			System.out.println("--------------------------- rechercherStockAllNull ---------------------------------");
+			Assertions.assertNull(unStockService.rechercherStock(null,null), "RÃ©sultat null car tous les paramÃ¨tres sont nuls");
+		}
+
+		@Test
+		void rechercherStockDepotNull() {
+			System.out.println("--------------------------- rechercherStockDepotNull ---------------------------------");
+			Assertions.assertNull(unStockService.rechercherStock(null,"b59"), "RÃ©sultat null car depot lÃ©gal null");
+		}
+
+		@Test
+		void rechercherStockMatriNull() {
+			System.out.println("--------------------------- rechercherStockMatriNull ---------------------------------");
+			Assertions.assertNull(unStockService.rechercherStock("3MYC7",null), "RÃ©sultat null car depot matricule null");
+		}
+
+		@Test
+		void rechercherStockMatri5Carac() {
+			System.out.println("--------------------------- rechercherStockMatri5Carac ---------------------------------");
+			Assertions.assertNull(unStockService.rechercherStock("3MYC7","AAAAA"), "RÃ©sultat null car depot matricule trop long");
+		}
+
+	@Test
+	void rechercherStockMatriKO() {
+		System.out.println("--------------------------- rechercherStockMatriKO ---------------------------------");
+		Assertions.assertNull(unStockService.rechercherStock("3MYC7","BBB"), "RÃ©sultat null car pas de visiteur correspondant au matricule");
+	}
+
+	@Test
+	void rechercherStockDepot51Carac() {
+		System.out.println("--------------------------- rechercherStockDepot51Carac ---------------------------------");
+		Assertions.assertNull(unStockService.rechercherStock("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","b59"), "RÃ©sultat null car depot legal trop long");
+	}
+
+	@Test
+	void rechercherStockDepotKO() {
+		System.out.println("--------------------------- rechercherStockDepotKO ---------------------------------");
+		Assertions.assertNull(unStockService.rechercherStock("BBBBBAAAA","b59"), "RÃ©sultat null car pas de mÃ©dicament correspondant au dÃ©pot lÃ©gal");
+	}
+
+	@Test
+	void rechercherStockOK() {
+		System.out.println("--------------------------- rechercherStockOK ---------------------------------");
+		Assertions.assertNotNull(unStockService.rechercherStock("3MYC7","b59"), "RÃ©sultat non null");
+	}
 	    
 }
