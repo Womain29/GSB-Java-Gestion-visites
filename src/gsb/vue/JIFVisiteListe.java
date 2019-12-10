@@ -30,6 +30,7 @@ public class JIFVisiteListe extends JInternalFrame implements ActionListener, Mo
     protected JPanel pRechercheBoutons;
     protected JPanel pErreur;
     protected JPanel pDetail;
+    protected JPanel pErreurVisite;
 
     //Déclaration des composants du tableau
     protected JScrollPane scrollPane;
@@ -45,6 +46,7 @@ public class JIFVisiteListe extends JInternalFrame implements ActionListener, Mo
     protected JLabel JLMatri;
     protected JLabel JLRef;
     protected JLabel JLErreurRecherche;
+    protected JLabel JLErreurVisite;
 
     //Déclaration des boutons
     protected JButton JBRechercher;
@@ -73,6 +75,8 @@ public class JIFVisiteListe extends JInternalFrame implements ActionListener, Mo
         pRechercheBoutons = new JPanel();
         pErreur = new JPanel();
         pDetail = new JPanel(new GridLayout(1,3,5,5));
+        pErreurVisite = new JPanel();
+        pErreurVisite.setPreferredSize(new Dimension(1000,20));
 
         //Instanciation des JTexField
         JTDateVisite = new JTextField(10);
@@ -87,6 +91,8 @@ public class JIFVisiteListe extends JInternalFrame implements ActionListener, Mo
         JLRef = new JLabel("Référence");
         JLErreurRecherche = new JLabel("");
         JLErreurRecherche.setForeground(new Color(255,0,0));
+        JLErreurVisite = new JLabel("");
+        JLErreurVisite.setForeground(new Color(255,0,0));
 
         //Instanciation des événements
         JBRechercher = new JButton("Rechercher");
@@ -127,10 +133,13 @@ public class JIFVisiteListe extends JInternalFrame implements ActionListener, Mo
         pDetail.add(JTRefVisite);
         pDetail.add(JBDetail);
 
+        pErreurVisite.add(JLErreurVisite);
+
         //Ajouts au panbeau principal
         p.add(pRecherche);
         p.add(scrollPane);
         p.add(pDetail);
+        p.add(pErreurVisite);
 
         //Ajout du panneau principal à la fenêtre
         Container contentPane = getContentPane();
@@ -179,8 +188,26 @@ public class JIFVisiteListe extends JInternalFrame implements ActionListener, Mo
         }
         //Ouvre la fenêtre du récapitulatif
         if(source == JBDetail) {
-            Visite uneVisite = uneVisiteService.rechercherVisite(JTRefVisite.getText().toString());
-            fenetreContainer.ouvrirFenetre(new JIFVisiteRecap(uneVisite));
+            String reference = JTRefVisite.getText().toString();
+            try {
+                //La référence ne peut pas être vide
+                if(reference.equals("")) {
+                    throw new Exception("La référence est obligatoire");
+                }
+                //La référence ne peut pas dépasser 5 caractères
+                if(reference.length() > 5) {
+                    throw new Exception("La référence ne peut pas dépasser 5 caractères");
+                }
+                //La visite correpondant à la référence doit exister
+                if(uneVisiteService.rechercherVisite(reference) == null) {
+                    throw new Exception("Pas de visite correspondant à cette référence");
+                }
+                Visite uneVisite = uneVisiteService.rechercherVisite(reference);
+                fenetreContainer.ouvrirFenetre(new JIFVisiteRecap(uneVisite));
+            }
+            catch (Exception er) {
+                JLErreurVisite.setText(er.getMessage());
+            }
         }
     }
 
