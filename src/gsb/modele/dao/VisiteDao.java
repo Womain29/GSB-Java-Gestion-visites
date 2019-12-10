@@ -11,36 +11,38 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * classe Dao d'une visite
  *
  * @author womain
- * 26/10/2019
+ *
+ * Créée 26/10/2019
+ *
+ * Classe dao de la classe Visite
  */
 
 public class VisiteDao {
 
     /**
      *
-     * @param uneReference chaine de caracteres
+     * @param uneReference la reference d'une visite
      * @return un objet Visite ou null
      */
     public static Visite rechercher(String uneReference) {
         Visite uneVisite = null;
-        Medecin unMedecin = null;
-        Visiteur unVisiteur = null;
+        Medecin unMedecin;
+        Visiteur unVisiteur;
         String requete = "SELECT * FROM VISITE WHERE Reference = '" + uneReference + "'";
-
         ResultSet reqSelection = ConnexionMySql.execReqSelection(requete);
+
         try {
             if (reqSelection.next()) {
                 unMedecin = MedecinDao.rechercher(reqSelection.getString(5));
                 unVisiteur = VisiteurDao.rechercher(reqSelection.getString(4));
-
                 uneVisite = new Visite(reqSelection.getString(1), reqSelection.getString(2), reqSelection.getString(3),unVisiteur, unMedecin);
             }
         }
         catch (SQLException e) {
             e.printStackTrace();
+            System.out.println("Erreur avec la requete SELECT * FROM VISITE WHERE Reference = '" + uneReference + "'");
         }
         ConnexionMySql.fermerConnexionBd();
 
@@ -66,6 +68,7 @@ public class VisiteDao {
         }
         catch (Exception e) {
             e.printStackTrace();
+            System.out.println("Erreur avec la requete INSERT INTO VISITE VALUES ('" + reference + "', '" + SQLUtils.dateFormatSql(date) + "', '" + unCommentaire + "', '" + matricule + "', '" + codeMedecin + "')");
         }
         ConnexionMySql.fermerConnexionBd();
 
@@ -74,8 +77,8 @@ public class VisiteDao {
 
     /**
      *
-     * @param uneReference chaine de caracteres
-     * @return 0 si echec, 1 si réussi
+     * @param uneReference la reference d'une visite
+     * @return 0 si echec, 1 si réussie
      */
     public static int supprimer(String uneReference) {
         int result = 0;
@@ -86,6 +89,7 @@ public class VisiteDao {
         }
         catch (Exception e) {
             e.printStackTrace();
+            System.out.println("Erreur avec la requete DELETE FROM VISITE WHERE Reference = '" + uneReference + "'");
         }
         ConnexionMySql.fermerConnexionBd();
 
@@ -94,8 +98,8 @@ public class VisiteDao {
 
     /**
      *
-     * @param uneDate chaine de caracteres
-     * @param unMatricule chaine de caracteres
+     * @param uneDate la date d'une visite
+     * @param unMatricule le matricule d'un visiteur
      * @return une collection de visite
      */
     public static ArrayList<Visite> rechercheDateMat(String uneDate, String unMatricule) {
@@ -125,7 +129,6 @@ public class VisiteDao {
      */
     public static int updateCommentaire (String commentaire, String reference) {
         int result = 0;
-
         String requete = "UPDATE VISITE SET Commentaire = '" + commentaire + "' WHERE reference = '" + reference + "'";
 
         try {
@@ -133,8 +136,10 @@ public class VisiteDao {
         }
         catch (Exception e) {
             e.printStackTrace();
+            System.out.println("Erreur sur la requete UPDATE VISITE SET Commentaire = '" + commentaire + "' WHERE reference = '" + reference + "'");
         }
         ConnexionMySql.fermerConnexionBd();
+
         return result;
     }
 }

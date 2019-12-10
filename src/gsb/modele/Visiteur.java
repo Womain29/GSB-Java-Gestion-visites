@@ -3,7 +3,8 @@
 package gsb.modele;
 /**
  * @author Gwendal
- * 15/10/2019
+ *
+ * Créée le 15/10/2019
  * 
  */
 public class Visiteur {
@@ -21,16 +22,16 @@ public class Visiteur {
 
 	/**
 	 *
-	 * @param matricule
-	 * @param nom
-	 * @param prenom
-	 * @param login
-	 * @param mdp
-	 * @param adresse
-	 * @param codePostal
-	 * @param dateEntrer
-	 * @param prime
-	 * @param unite
+	 * @param matricule le matricule d'un visiteur
+	 * @param nom le nom d'un visiteur
+	 * @param prenom le prenom d'un visiteur
+	 * @param login le login d'un visiteur
+	 * @param mdp le mot de passe d'un visiteur
+	 * @param adresse l'adresse du visiteur
+	 * @param codePostal le code postal d'un visiteur
+	 * @param dateEntrer la date d'entrée du visiteur
+	 * @param prime la prime du visiteur
+	 * @param unite l'unite à laquelle le visiteur appartient
 	 */
 	
 	public Visiteur(String matricule, String nom, String prenom, String login, String mdp, String adresse, String codePostal, String dateEntrer, int prime, Unite unite) {

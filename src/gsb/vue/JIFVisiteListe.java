@@ -57,8 +57,6 @@ public class JIFVisiteListe extends JInternalFrame implements ActionListener, Mo
 
     private VisiteService uneVisiteService = new VisiteService();
 
-    private JOptionPane erreurRecherche;
-
     protected MenuPrincipal fenetreContainer;
 
     public JIFVisiteListe(MenuPrincipal uneFenetreContainer) {
@@ -129,8 +127,6 @@ public class JIFVisiteListe extends JInternalFrame implements ActionListener, Mo
         pDetail.add(JTRefVisite);
         pDetail.add(JBDetail);
 
-
-
         //Ajouts au panbeau principal
         p.add(pRecherche);
         p.add(scrollPane);
@@ -192,11 +188,13 @@ public class JIFVisiteListe extends JInternalFrame implements ActionListener, Mo
     @Override
     public void mouseClicked(MouseEvent e) {
         Object mouse = e.getSource();
+        //AJoute la référence de la visite correspondant au clic dans le tableau
         if(mouse == table) {
             int ligne = table.getSelectedRow(); //Récupère la ligne du tableau
             String ref = table.getModel().getValueAt(ligne, 0).toString(); //Récupère la référence de la ligne
             JTRefVisite.setText(ref); //Initialise le JTextfield sur la référence
         }
+        //Réinialise le label d'erreur au clic dans un des JTextfield
         if(mouse == JTDateVisite || mouse == JTMatriVisite) {
             JLErreurRecherche.setText("");
         }

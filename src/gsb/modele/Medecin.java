@@ -8,10 +8,10 @@ package gsb.modele;
 
 /**
  * @author Isabelle
- * 22 f?vr. 2015
- * TODO Pour changer le mod?le de ce commentaire de type g?n?r?, allez ? :
- * Fen?tre - Pr?f?rences - Java - Style de code - Mod?les de code
+ *
+ * Créée le 22 février 2015
  */
+
 public class Medecin {
 	protected String codeMed ;
 	protected String nom;
@@ -21,19 +21,18 @@ public class Medecin {
 	protected String telephone;
 	protected String potentiel;
 	protected String specialite;
+
 	/**
-	 * @param codeMed
-	 * @param nom
-	 * @param prenom
-	 * @param adresse
-	 * @param laLocalite
-	 * @param telephone
-	 * @param potentiel
-	 * @param specialite
+	 * @param codeMed Le code du medecin
+	 * @param nom le nom du medecin
+	 * @param prenom le prenom du medecin
+	 * @param adresse l'adresse du medecin
+	 * @param laLocalite la localite du medecin
+	 * @param telephone le telephone du medecin
+	 * @param potentiel le potentiel du medin
+	 * @param specialite la specialite du medecin
 	 */
-	public Medecin(String codeMed, String nom, String prenom,
-			String adresse, Localite laLocalite, String telephone,
-			String potentiel, String specialite) {
+	public Medecin(String codeMed, String nom, String prenom, String adresse, Localite laLocalite, String telephone, String potentiel, String specialite) {
 		this.codeMed = codeMed;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -139,8 +138,4 @@ public class Medecin {
 	public void setSpecialite(String specialite) {
 		this.specialite = specialite;
 	}
-	
-	
-	
-
 }

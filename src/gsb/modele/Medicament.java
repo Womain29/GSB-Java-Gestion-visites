@@ -4,7 +4,8 @@ package gsb.modele;
 
 /**
  * @author Gwendal
- * 17/10/2019
+ *
+ * Créée le 17/10/2019
  * 
  */
 
@@ -18,7 +19,17 @@ public class Medicament {
 	protected String contreIndication;
 	protected float prixEchantillion;
 	protected Famille uneFamille;
-	
+
+	/**
+	 *
+	 * @param depotLegal le depot legal du medicament
+	 * @param nomCommercial le nom commercial du medicament
+	 * @param composition la composition du medicament
+	 * @param effets les effets du medicament
+	 * @param contreIndication une contre indication d'un medicament
+	 * @param prixEchantillion le prix du medicament
+	 * @param uneFamille la famille à laquelle le medicament appartient
+	 */
 	public Medicament(String depotLegal, String nomCommercial, String composition, String effets, String contreIndication, float prixEchantillion, Famille uneFamille) {
 		this.depotLegal = depotLegal;
 		this.nomCommercial = nomCommercial;

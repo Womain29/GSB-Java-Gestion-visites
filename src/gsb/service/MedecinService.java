@@ -11,7 +11,8 @@ import gsb.modele.dao.MedecinDao;
 
 /**
  * @author Isabelle
- * 23 f?vr. 2015
+ *
+ * Créee le 23 février 2015
  *
  * Modifié le 28/10/2019
  */
@@ -19,11 +20,12 @@ public class MedecinService {
 
 	/**
 	 *
-	 * @param unCodeMedecin chaine de caracteres
+	 * @param unCodeMedecin le code d'un médecin
 	 * @return un objet Medecin ou null
 	 */
 	public Medecin rechercherMedecin(String unCodeMedecin){
 		Medecin unMedecin = null;
+
 		try {
 			//Code du médecin obligatoire
 			if (unCodeMedecin==null) {
@@ -40,7 +42,7 @@ public class MedecinService {
 			unMedecin = MedecinDao.rechercher(unCodeMedecin);
 		}
 		catch(Exception e){
-			System.out.println( e.getMessage());
+			System.out.println(e.getMessage());
 		}
 		return unMedecin;
 	}

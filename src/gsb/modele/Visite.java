@@ -1,10 +1,10 @@
 package gsb.modele;
 
 /**
- * Classe Visite
  *
  * @author womain
- * 26/10/2019
+ *
+ * Créée le 26/10/2019
  */
 
 public class Visite {
@@ -19,7 +19,7 @@ public class Visite {
      *
      * @param reference code de la visite
      * @param dateVisite date de la visite
-     * @param unCommentaire commenaitaire concernant la visite
+     * @param unCommentaire commentaire concernant la visite
      * @param unVisiteur visiteur qui effectue la visite
      * @param unMedecin medecin chez qui la visite est effectuée
      */

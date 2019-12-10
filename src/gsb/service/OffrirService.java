@@ -13,7 +13,7 @@ import java.util.concurrent.ExecutionException;
 /**
  * @author womain
  *
- * 21/11/2019
+ * CRéée le 21/11/2019
  *
  * Classe service de OffrirDao
  */
@@ -24,10 +24,11 @@ public class OffrirService {
      *
      * @param depotLegal le depot du medicament
      * @param reference la reference de la visite
-     * @return un objet Offrir
+     * @return un objet Offrir ou null
      */
     public Offrir rechercherOffrir(String depotLegal, String reference) {
         Offrir unOffrir = null;
+
         try {
             //Les champs ne peuvent pas être vides
             if(depotLegal == null || reference == null) {
@@ -67,9 +68,9 @@ public class OffrirService {
      */
     public int creerOffrir(String depotLegal, String reference, int uneQuantiteOfferte) {
         int result = 0;
-        Visite uneVisite = null;
-        Medicament unMedicament = null;
-        Offrir unOffrir = null;
+        Visite uneVisite;
+        Medicament unMedicament;
+        Offrir unOffrir;
 
         try {
             //Les champs ne peuvent pas être null
@@ -95,6 +96,10 @@ public class OffrirService {
             //La visite doit exister dans la bdd
             if(VisiteDao.rechercher(reference) == null) {
                 throw new Exception("La visite correspondant à cette référence n'existe pas");
+            }
+            //Le stock de ce médicament doit exister pour être offert
+            if(StockDao.rechercher(depotLegal,VisiteDao.rechercher(reference).getUnVisiteur().getMatricule()) == null) {
+                throw new Exception("Il n'y a pas de stock correspondant à ce médicament");
             }
             //Le stock du médoc doit être supérieur à la quantité offerte
             if(StockDao.rechercher(depotLegal, VisiteDao.rechercher(reference).getUnVisiteur().getMatricule()).getQteStock() < uneQuantiteOfferte) {
@@ -108,6 +113,7 @@ public class OffrirService {
         catch (Exception e) {
             System.out.println(e.getMessage());
         }
+
         return result;
     }
 
@@ -120,9 +126,9 @@ public class OffrirService {
      */
     public int soustraireStock(String depotLegal, String reference, int uneQuantiteOfferte) {
         int result = 0;
-        Visite uneVisite = null;
-        Medicament unMedicament = null;
-        Offrir unOffrir = null;
+        Visite uneVisite;
+        Medicament unMedicament;
+        Offrir unOffrir;
 
         try {
             //Les champs ne peuvent pas être null
@@ -149,6 +155,10 @@ public class OffrirService {
             if(VisiteDao.rechercher(reference) == null) {
                 throw new Exception("La visite correspondant à cette référence n'existe pas");
             }
+            //le stock de ce médicament doit exister pour être offert
+            if(StockDao.rechercher(depotLegal,VisiteDao.rechercher(reference).getUnVisiteur().getMatricule()) == null) {
+                throw new Exception("Il n'y a pas de stock correspondant à ce médicament");
+            }
             //Le stock du médoc doit être supérieur à la quantité offerte
             if(StockDao.rechercher(depotLegal, VisiteDao.rechercher(reference).getUnVisiteur().getMatricule()).getQteStock() < uneQuantiteOfferte) {
                 throw new Exception("Votre stock de ce médicament est insuffisant");
@@ -161,6 +171,7 @@ public class OffrirService {
         catch (Exception e) {
             System.out.println(e.getMessage());
         }
+
         return result;
     }
 

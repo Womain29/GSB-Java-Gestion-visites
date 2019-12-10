@@ -30,7 +30,6 @@ public class JIFVisiteRecap extends JIFVisite {
     private ArrayList<Offrir> colOffreVisite;
     private OffrirService uneOffreService;
 
-
     /**
      *
      * @param uneVisite objet Visite
@@ -42,6 +41,7 @@ public class JIFVisiteRecap extends JIFVisite {
         colOffreVisite = new ArrayList<Offrir>();
         uneOffreService = new OffrirService();
 
+        //Permet de griser les JTextfield
         JTReference.setEditable(false);
         JTMedecin.setEditable(false);
         JTVisiteur.setEditable(false);
@@ -61,6 +61,7 @@ public class JIFVisiteRecap extends JIFVisite {
             model.addRow(offre);
         }
 
+        //Ajout du tableau dans le panneau principal
         p.add(scrollPane);
         
     }

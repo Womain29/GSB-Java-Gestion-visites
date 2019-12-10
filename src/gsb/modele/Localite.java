@@ -8,16 +8,17 @@ package gsb.modele;
 
 /**
  * @author Isabelle
- * 22 f?vr. 2015
- * TODO Pour changer le mod?le de ce commentaire de type g?n?r?, allez ? :
- * Fen?tre - Pr?f?rences - Java - Style de code - Mod?les de code
+ *
+ * Créée le 22 février 2015
  */
+
 public class Localite {
+
 	protected String codePostal;
 	protected String ville;
 	/**
-	 * @param codePostal
-	 * @param ville
+	 * @param codePostal le code postal de la ville
+	 * @param ville le nom de la ville
 	 */
 	public Localite(String codePostal, String ville) {
 		this.codePostal = codePostal;

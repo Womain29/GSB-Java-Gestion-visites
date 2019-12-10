@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
  * Classe utilitaire d'expression régulière
  *
  * @author womain
+ *
  * 26/10/2019
  */
 public class ValidationUtils {

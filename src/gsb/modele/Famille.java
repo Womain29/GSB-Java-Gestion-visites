@@ -1,9 +1,10 @@
-/*Créé le 17/10/2019*/
+/*Crï¿½ï¿½ le 17/10/2019*/
 package gsb.modele;
 
 /**
  * @author Gwendal
- * 17/10/2019
+ *
+ * CrÃ©Ã©e le 17/10/2019
  * 
  */
 
@@ -11,7 +12,12 @@ public class Famille {
 	
 	protected String codeFamille;
 	protected String libelleFamille;
-	
+
+	/**
+	 *
+	 * @param codeFamille le code la famille de mÃ©dicaments
+	 * @param libelleFamille le libelle de la famille
+	 */
 	public Famille(String codeFamille, String libelleFamille) {
 		this.codeFamille = codeFamille;
 		this.libelleFamille = libelleFamille;
@@ -24,7 +30,7 @@ public class Famille {
 		return codeFamille;
 	}
 	/**
-	 * @param codeFamille à définir.
+	 * @param codeFamille ï¿½ dï¿½finir.
 	 */
 	public void setCodeFamille(String codeFamille) {
 		this.codeFamille = codeFamille;
@@ -37,7 +43,7 @@ public class Famille {
 		return libelleFamille;
 	}
 	/**
-	 * @param libelleFamille à définir.
+	 * @param libelleFamille ï¿½ dï¿½finir.
 	 */
 	public void setLibelleFamille(String libelleFamille) {
 		this.libelleFamille = libelleFamille;

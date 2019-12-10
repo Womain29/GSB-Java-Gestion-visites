@@ -27,6 +27,7 @@ public class JIFVisiteAjout extends JIFVisite implements ActionListener, MouseLi
     private JButton JBValider;
     private JButton JBAnnuler;
 
+    //Déclaration du label
     private JLabel JLErreur;
 
     private VisiteService uneVisiteService = new VisiteService();
@@ -118,6 +119,7 @@ public class JIFVisiteAjout extends JIFVisite implements ActionListener, MouseLi
     @Override
     public void mouseClicked(MouseEvent e) {
         Object mouse = e.getSource();
+        //Réinitialise le label d'erreur au clic dans un des JTextfield
         if(mouse == JTReference || mouse == JTMedecin || mouse == JTVisiteur || mouse == JTDate || mouse == JTCommentaire) {
             JLErreur.setText("");
         }

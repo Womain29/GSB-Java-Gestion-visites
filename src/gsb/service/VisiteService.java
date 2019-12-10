@@ -12,14 +12,15 @@ import java.util.ArrayList;
 
 /**
  * @author womain
- * 26/10/2019
+ *
+ * Créée 26/10/2019
  */
 public class VisiteService {
 
     /**
      *
-     * @param uneReference chaine de caractères
-     * @return un objet Visite
+     * @param uneReference la référence d'une visite
+     * @return un objet Visite ou null
      */
     public Visite rechercherVisite(String uneReference) {
         Visite uneVisite = null;
@@ -56,9 +57,9 @@ public class VisiteService {
      */
     public int creerVisite(String reference, String date, String commentaire, String matricule, String codeMedecin) {
         int result = 0;
-        Visite uneVisite = null;
-        Visiteur unVisiteur = null;
-        Medecin unMedecin = null;
+        Visite uneVisite;
+        Visiteur unVisiteur;
+        Medecin unMedecin;
 
         try {
             //Les champs ne peuvent pas être vides excepté le champ commentaire
@@ -107,7 +108,7 @@ public class VisiteService {
 
     /**
      *
-     * @param uneReference chaine de caracteres
+     * @param uneReference la référence d'une visite
      * @return 0 si echec ou 1 si réussite
      */
     public int supprimerVisite(String uneReference) {

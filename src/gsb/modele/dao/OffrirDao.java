@@ -11,9 +11,9 @@ import java.util.ArrayList;
 /**
  * @author womain
  *
- * 21/11/2019
+ * Créée le 21/11/2019
  *
- * Classe DAO de Offrir
+ * Classe Dao de la classe offrir
  */
 
 public class OffrirDao {
@@ -22,15 +22,15 @@ public class OffrirDao {
      *
      * @param depotLegal le depot legal du medicament
      * @param reference la reference de la visite
-     * @return un objet Offrir
+     * @return un objet Offrir ou null
      */
     public static Offrir rechercher(String depotLegal, String reference) {
         Offrir unOffrir = null;
-        Medicament unMedicament = null;
-        Visite uneVisite = null;
+        Medicament unMedicament;
+        Visite uneVisite;
         String requete = "SELECT * FROM OFFRIR WHERE DepotLegal = '" + depotLegal + "' AND Reference = '" + reference + "'";
-
         ResultSet reqSelection = ConnexionMySql.execReqSelection(requete);
+
         try {
             if(reqSelection.next()) {
                 unMedicament = MedicamentDao.rechercher(reqSelection.getString(1));
@@ -49,7 +49,7 @@ public class OffrirDao {
 
     /**
      *
-     * @param unOffrir
+     * @param unOffrir un objet Offrir
      * @return 0 si echec et 1 si réussi
      */
     public static int creer(Offrir unOffrir) {
@@ -73,10 +73,10 @@ public class OffrirDao {
 
     /**
      *
-     * @param unOffrir
+     * @param unOffrir un objet Offrir
      * @return 0 si echec et 1 si réussi
      *
-     * Soustrait une quantité offerte du stock de medicament correspondant
+     * Soustrait une quantité offerte du stock de medicament correspondant du visiteur
      *
      */
     public static int soustraireStock(Offrir unOffrir) {
@@ -102,7 +102,7 @@ public class OffrirDao {
      *
      * @param depotLegal le depot legal du medicament
      * @param reference la reference de la visite
-     * @return 0 si réusie, 1 si échec
+     * @return 1 si réussie, 0 si échec
      */
     public static int supprimer(String depotLegal, String reference) {
         int result = 0;
@@ -126,12 +126,11 @@ public class OffrirDao {
      * @return une collection d'objet Offrir correspondant à la visite
      */
     public static ArrayList<Offrir> rechercherOffreVisite(String reference) {
-        Offrir unOffrir = null;
-        Medicament unMedicament = null;
-        Visite uneVisite = null;
+        Offrir unOffrir;
+        Medicament unMedicament;
+        Visite uneVisite;
         String requete = "SELECT * FROM OFFRIR WHERE Reference = '" + reference + "'";
         ArrayList<Offrir> colOffre = new ArrayList<Offrir>();
-
         ResultSet reqSelection = ConnexionMySql.execReqSelection(requete);
 
         try {
@@ -146,6 +145,7 @@ public class OffrirDao {
             e.printStackTrace();
             System.out.println("Erreur requete SELECT * FROM OFFRIR WHERE Reference = '" + reference + "'");
         }
+        ConnexionMySql.fermerConnexionBd();
 
         return colOffre;
     }

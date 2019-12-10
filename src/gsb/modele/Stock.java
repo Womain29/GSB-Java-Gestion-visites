@@ -1,9 +1,10 @@
-/*Créé le 17/10/2019 */
+/*Crï¿½ï¿½ le 17/10/2019 */
 package gsb.modele;
 
 /**
  * @author Gwendal
- * 7/11/2019
+ *
+ * CrÃ©Ã©e le 7/11/2019
  * 
  */
 
@@ -12,9 +13,15 @@ public class Stock {
 	protected Visiteur unVisiteur;
 	protected Medicament unMedicament;
 	protected int qteStock;
-	
-	
-	
+
+
+	/**
+	 *
+	 * @param unMedicament un medicament
+	 * @param unVisiteur un visiteur
+	 * @param qteStock une quantite de medicament
+	 */
+
 	public Stock(Medicament unMedicament, Visiteur unVisiteur, int qteStock) {		
 		this.unVisiteur = unVisiteur;
 		this.unMedicament = unMedicament;		
@@ -28,7 +35,7 @@ public class Stock {
 		return unMedicament;
 	}
 	/**
-	 * @param unMedicament à définir.
+	 * @param unMedicament ï¿½ dï¿½finir.
 	 */
 	public void setUnMedicament(Medicament unMedicament) {
 		this.unMedicament = unMedicament;
@@ -41,7 +48,7 @@ public class Stock {
 		return unVisiteur;
 	}
 	/**
-	 * @param unVisiteur à définir.
+	 * @param unVisiteur ï¿½ dï¿½finir.
 	 */
 	public void setUnVisiteur(Visiteur unVisiteur) {
 		this.unVisiteur = unVisiteur;
@@ -53,12 +60,12 @@ public class Stock {
 	public int getQteStock() {
 		return qteStock;
 	}
+
 	/**
-	 * @param qteStock à définir.
+	 * @param qteStock ï¿½ dï¿½finir.
 	 */
 	public void setQteStock(int qteStock) {
 		this.qteStock = qteStock;
 	}
-	
-	
+
 }

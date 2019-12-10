@@ -5,7 +5,8 @@ import gsb.modele.dao.VisiteurDao;
 
 /**
  * @author womain
- * 26/10/2019
+ *
+ * Créée 26/10/2019
  *
  * Modifié le 27/10/2019
  */
@@ -18,6 +19,7 @@ public class VisiteurService {
      */
     public Visiteur rechercherVisiteur (String matricule) {
         Visiteur unVisiteur = null;
+
         try {
             //Le matricule ne doit pas être null
             if(matricule == null) {

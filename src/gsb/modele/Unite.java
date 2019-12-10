@@ -1,11 +1,12 @@
 package gsb.modele;
 
 /**
- * Classe Unite
- * Les visiteurs font partis d'une unite
  *
  * @author womain
- * 26/10/2019
+ *
+ * Créée le 26/10/2019
+ *
+ * Classe Unite, les visiteurs font partis d'une unite
  */
 
 public class Unite {

@@ -12,6 +12,10 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * @author womain
+ *
+ */
 class OffrirServiceTest {
 
     private OffrirService uneOffreService;
