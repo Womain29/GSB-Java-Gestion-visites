@@ -175,6 +175,10 @@ public class JIFVisiteListe extends JInternalFrame implements ActionListener, Mo
                 if (matricule.length() > 4) {
                     throw new Exception("Le matricule ne peut pas dépasser 5 caractères");
                 }
+                //On vérifie qu'une visite existe pour cette date
+                if(uneVisiteService.rechercheVisiteDateMat(date, matricule).size() < 1) {
+                    throw new Exception("Pas de visite à cette date");
+                }
                 colVisiteDateRef = uneVisiteService.rechercheVisiteDateMat(date, matricule);
                 for(Visite uneVisite : colVisiteDateRef) {
                     String[] visite = {uneVisite.getReference(), uneVisite.getUnCommentaire(),uneVisite.getUnMedecin().getCodeMed(), uneVisite.getUnMedecin().getLaLocalite().getVille()};
