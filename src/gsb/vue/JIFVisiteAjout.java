@@ -90,6 +90,10 @@ public class JIFVisiteAjout extends JIFVisite implements ActionListener, MouseLi
                 if(JTVisiteur.getText().toString().length() > 4) {
                     throw new Exception("Le matricule visiteur ne peut pas dépasser 4 caractères");
                 }
+                //255 caractères maximum pour le commentaire
+                if(JTCommentaire.getText().toString().length() > 255) {
+                    throw new Exception("Le commentaire ne peut pas dépasser 255 caractères");
+                }
                 //Le visiteur doit exister dans la base
                 if(VisiteurDao.rechercher(JTVisiteur.getText().toString()) == null) {
                     throw new Exception("Le visiteur possédant cette référence n'existe pas");
