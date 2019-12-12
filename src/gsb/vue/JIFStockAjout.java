@@ -7,9 +7,7 @@ import gsb.utils.ValidationUtils;
 
 import javax.swing.*;
 
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -18,30 +16,30 @@ import java.awt.event.MouseListener;
 /**
  * @author Gwendal
  *
- * Fenêtre d'ajout d'un médicament
+ * Fenï¿½tre d'ajout d'un mï¿½dicament
  *
  * 05/12/2019
  */
 
 public class JIFStockAjout extends JIFStock implements ActionListener, MouseListener {
 
-	//Déclaration des JPanels
+	//Dï¿½claration des JPanels
 	protected JPanel p;
 	protected JPanel pSaisie;
 	protected JPanel pErreur;
 	
-	//Déclaration des JLabels
+	//Dï¿½claration des JLabels
 	protected JLabel JLMatricule;
 	protected JLabel JLDepotLegal;
 	protected JLabel JLQteStock;
 	protected JLabel JLErreurAjout;
 	
-	//Déclaration des JTextFields
+	//Dï¿½claration des JTextFields
 	protected JTextField JTDepotLegal;
 	protected JTextField JTMatricule;
 	protected JTextField JTQteStock;
 	
-	//Déclaration des JButtons
+	//Dï¿½claration des JButtons
     private JButton JBValider;
     private JButton JBAnnuler;    
     
@@ -54,7 +52,8 @@ public class JIFStockAjout extends JIFStock implements ActionListener, MouseList
         p = new JPanel();
         pSaisie = new JPanel(new GridLayout(4, 2, 5, 5));
         pErreur = new JPanel();
-        pBoutons = new JPanel();
+        pErreur.setPreferredSize(new Dimension(1000, 20));
+        pBoutons = new JPanel(new GridLayout(1,2,5,5));
         
         //Instanciation des JTextField
         JTDepotLegal = new JTextField(20);
@@ -66,8 +65,8 @@ public class JIFStockAjout extends JIFStock implements ActionListener, MouseList
         
 		//Instanciation des JLabels
         JLMatricule = new JLabel("Matricule");
-        JLDepotLegal = new JLabel("Dépot Légal");
-        JLQteStock = new JLabel("Quantité");
+        JLDepotLegal = new JLabel("Dï¿½pot Lï¿½gal");
+        JLQteStock = new JLabel("Quantitï¿½");
         JLErreurAjout = new JLabel("");
         JLErreurAjout.setForeground(new Color(255,0,0));
 		
@@ -78,13 +77,13 @@ public class JIFStockAjout extends JIFStock implements ActionListener, MouseList
         JBAnnuler.addActionListener(this);
         JBAnnuler.addMouseListener(this);
         
-      //Ajout écouteur de la souris sur les JTexfields
+      //Ajout ï¿½couteur de la souris sur les JTexfields
         JTMatricule.addMouseListener(this);
         JTDepotLegal.addMouseListener(this);
         JTQteStock.addMouseListener(this);
         
         
-        //Ajout des éléments sur le panneau saisie
+        //Ajout des ï¿½lï¿½ments sur le panneau saisie
         pSaisie.add(JLMatricule);
         pSaisie.add(JTMatricule);
         pSaisie.add(JLDepotLegal);
@@ -92,19 +91,19 @@ public class JIFStockAjout extends JIFStock implements ActionListener, MouseList
         pSaisie.add(JLQteStock);
         pSaisie.add(JTQteStock);
         
-        //Ajout de éléments sur le panneau boutons
+        //Ajout de ï¿½lï¿½ments sur le panneau boutons
         pBoutons.add(JBValider);
         pBoutons.add(JBAnnuler);
         
-      //Ajout des éléments dans le panneau erreur
+      //Ajout des ï¿½lï¿½ments dans le panneau erreur
         pErreur.add(JLErreurAjout);
         
-        //Ajout des éléments sur le panneau principal
+        //Ajout des ï¿½lï¿½ments sur le panneau principal
         p.add(pSaisie);
-        p.add(pBoutons);
         p.add(pErreur);
-        
-      //Ajout du panneau principal à la fenêtre
+        p.add(pBoutons);
+
+      //Ajout du panneau principal ï¿½ la fenï¿½tre
      	Container contentPane = getContentPane();
      	contentPane.add(p);
         
@@ -123,28 +122,28 @@ public class JIFStockAjout extends JIFStock implements ActionListener, MouseList
         	
         	
         	try {
-                //Les champs ne peuvent pas être null
+                //Les champs ne peuvent pas ï¿½tre null
                 if (matricule.equals("") || depotLegal.equals("") || qte.equals("")) {
                     throw new Exception("Tous les champs sont obligatoires");
                 }
-                //Un medicament correspondant au dépot légal doit exister
+                //Un medicament correspondant au dï¿½pot lï¿½gal doit exister
                 if (MedicamentDao.rechercher(depotLegal) == null) {
-                    throw new Exception("Le medicament correspondant à ce dépot légal n'existe pas");
+                    throw new Exception("Le medicament correspondant ï¿½ ce dï¿½pot lï¿½gal n'existe pas");
                 }
               //Un visiteur correspondant au matricule doit exister
                 if (VisiteurDao.rechercher(matricule) == null) {
-                    throw new Exception("Le visiteur correspondant à ce matricule n'existe pas");
+                    throw new Exception("Le visiteur correspondant ï¿½ ce matricule n'existe pas");
                 }
               //Un visiteur correspondant au matricule doit exister
                 
                 if (!ValidationUtils.estUnEntier(qte)) {
-                	throw new Exception("La quantité ajoutée doit être un entier");
+                	throw new Exception("La quantitï¿½ ajoutï¿½e doit ï¿½tre un entier");
                 }
                 else {
                 	quantite = Integer.parseInt(qte);
                 }
                 if (quantite <= 0) {
-                    throw new Exception("On ne peut pas ajouter un stock inférieur ou égal à 0");
+                    throw new Exception("On ne peut pas ajouter un stock infï¿½rieur ou ï¿½gal ï¿½ 0");
                 }
                 
                 unStockService.ajoutStock(JTDepotLegal.getText().toString(),JTMatricule.getText().toString(), quantite);
@@ -165,7 +164,7 @@ public class JIFStockAjout extends JIFStock implements ActionListener, MouseList
     @Override
     public void mouseClicked(MouseEvent e) {
         Object mouse = e.getSource();
-        //Réinitialise le label d'erreur au clic dans un des JTextfield
+        //Rï¿½initialise le label d'erreur au clic dans un des JTextfield
         if(mouse == JTMatricule || mouse == JTDepotLegal || mouse == JTQteStock) {
             JLErreurAjout.setText("");
         }
