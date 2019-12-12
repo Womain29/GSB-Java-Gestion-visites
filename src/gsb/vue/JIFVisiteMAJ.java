@@ -334,6 +334,7 @@ public class JIFVisiteMAJ extends JInternalFrame implements ActionListener, Mous
             pTexteOffre.setVisible(false);
             pErreurOffre.setVisible(false);
             pBoutonsModif.setVisible(false);
+            JLErreurCommentaire.setText("");
         }
         //Réinitialise le label d'erreur au clic dans les JTextfield
         if(source == JTDepotLegal || source == JTQuantite) {
