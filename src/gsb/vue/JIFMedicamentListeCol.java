@@ -22,23 +22,23 @@ public class JIFMedicamentListeCol extends JInternalFrame implements ActionListe
 
 	private ArrayList<Medicament> lesMedicaments;
 
-	//Déclaration des JPanel
+	//Dï¿½claration des JPanel
 	protected JPanel p;
 	protected JPanel pSaisie;
 	protected JPanel pErreur;
 	
 	protected JScrollPane scrollPane;
 	
-	//Déclaration des JTextField
+	//Dï¿½claration des JTextField
 	protected JTextField JTDepotLegal;
 	
-	//Déclaration des JLabel
+	//Dï¿½claration des JLabel
 	protected JLabel JLErreurRecherche;
 	
-	//Déclaration des JButton
+	//Dï¿½claration des JButton
 	protected JButton JBafficherFiche;
 	
-	//Déclaration du Menu principal
+	//Dï¿½claration du Menu principal
 	protected MenuPrincipal fenetreContainer;
 
 	public JIFMedicamentListeCol(MenuPrincipal uneFenetreContainer) {
@@ -55,6 +55,7 @@ public class JIFMedicamentListeCol extends JInternalFrame implements ActionListe
 		p = new JPanel(); // panneau principal de la fen?tre
 		pSaisie = new JPanel();
 		pErreur = new JPanel();
+		pErreur.setPreferredSize(new Dimension(1000,20));
 		
 		int i=0;
 		String[][] data = new String[nbLignes][3] ;
@@ -68,7 +69,7 @@ public class JIFMedicamentListeCol extends JInternalFrame implements ActionListe
 		table = new JTable(data, columnNames);
 
 		scrollPane = new JScrollPane(table);
-		scrollPane.setPreferredSize(new Dimension(400, 200));	
+		scrollPane.setPreferredSize(new Dimension(800, 400));
 
 		//Instanciation des JTextField
 		JTDepotLegal = new JTextField(20);
@@ -82,18 +83,18 @@ public class JIFMedicamentListeCol extends JInternalFrame implements ActionListe
 		JLErreurRecherche = new JLabel("");
         JLErreurRecherche.setForeground(new Color(255,0,0));
 		
-        //Ajout des éléments au panneau saisie
+        //Ajout des ï¿½lï¿½ments au panneau saisie
 		pSaisie.add(JTDepotLegal);
 		pSaisie.add(JBafficherFiche);
 		
-		//Ajout des éléments dans le panneau erreur
+		//Ajout des ï¿½lï¿½ments dans le panneau erreur
         pErreur.add(JLErreurRecherche);
 		
-		//Ajout des éléments au panneau principal
+		//Ajout des ï¿½lï¿½ments au panneau principal
 		p.add(scrollPane);
 		p.add(pSaisie);
         p.add(pErreur);
-      //Ajout du panneau principal à la fenêtre
+      //Ajout du panneau principal ï¿½ la fenï¿½tre
 		Container contentPane = getContentPane();
 		contentPane.add(p);
 	}
@@ -107,13 +108,13 @@ public class JIFMedicamentListeCol extends JInternalFrame implements ActionListe
    		if (source == JBafficherFiche){
    			String depotLegal = JTDepotLegal.getText().toString();
    			try {
-                //Les champs ne peuvent pas être null
+                //Les champs ne peuvent pas ï¿½tre null
                 if (depotLegal.equals("")) {
                     throw new Exception("Tous les champs sont obligatoires");
                 }
-                //Une visite correspondante à la référence doit exister
+                //Une visite correspondante ï¿½ la rï¿½fï¿½rence doit exister
                 if (MedicamentDao.rechercher(depotLegal) == null) {
-                    throw new Exception("Le medicament correspondant à ce depot legal n'existe pas");
+                    throw new Exception("Le medicament correspondant ï¿½ ce depot legal n'existe pas");
                 }
             }
             catch (Exception erreur) {
