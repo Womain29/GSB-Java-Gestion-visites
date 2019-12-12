@@ -65,8 +65,8 @@ public class JIFStockAjout extends JIFStock implements ActionListener, MouseList
         
 		//Instanciation des JLabels
         JLMatricule = new JLabel("Matricule");
-        JLDepotLegal = new JLabel("Dï¿½pot Lï¿½gal");
-        JLQteStock = new JLabel("Quantitï¿½");
+        JLDepotLegal = new JLabel("Dépot Légal");
+        JLQteStock = new JLabel("Quantité");
         JLErreurAjout = new JLabel("");
         JLErreurAjout.setForeground(new Color(255,0,0));
 		
@@ -128,27 +128,27 @@ public class JIFStockAjout extends JIFStock implements ActionListener, MouseList
                 }
                 //Un medicament correspondant au dï¿½pot lï¿½gal doit exister
                 if (MedicamentDao.rechercher(depotLegal) == null) {
-                    throw new Exception("Le medicament correspondant ï¿½ ce dï¿½pot lï¿½gal n'existe pas");
+                    throw new Exception("Le medicament correspondant à ce dépot légal n'existe pas");
                 }
               //Un visiteur correspondant au matricule doit exister
                 if (VisiteurDao.rechercher(matricule) == null) {
-                    throw new Exception("Le visiteur correspondant ï¿½ ce matricule n'existe pas");
+                    throw new Exception("Le visiteur correspondant à ce matricule n'existe pas");
                 }
               //Un visiteur correspondant au matricule doit exister
                 
                 if (!ValidationUtils.estUnEntier(qte)) {
-                	throw new Exception("La quantitï¿½ ajoutï¿½e doit ï¿½tre un entier");
+                	throw new Exception("La quantité ajouté doit être un entier");
                 }
                 else {
                 	quantite = Integer.parseInt(qte);
                 }
                 if (quantite <= 0) {
-                    throw new Exception("On ne peut pas ajouter un stock infï¿½rieur ou ï¿½gal ï¿½ 0");
+                    throw new Exception("On ne peut pas ajouter un stock inférieur ou égal à 0");
                 }
                 
                 unStockService.ajoutStock(JTDepotLegal.getText().toString(),JTMatricule.getText().toString(), quantite);
                 this.videTexte();
-                JLErreurAjout.setText("");
+                JLErreurAjout.setText("Stock ajouté avec succès");
             }
             catch (Exception erreur) {
                 System.out.println(erreur.getMessage());
