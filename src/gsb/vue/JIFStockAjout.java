@@ -9,8 +9,11 @@ import javax.swing.*;
 
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 /**
  * @author Gwendal
@@ -20,7 +23,7 @@ import java.awt.event.ActionListener;
  * 05/12/2019
  */
 
-public class JIFStockAjout extends JIFStock implements ActionListener {
+public class JIFStockAjout extends JIFStock implements ActionListener, MouseListener {
 
 	//Déclaration des JPanels
 	protected JPanel p;
@@ -49,8 +52,9 @@ public class JIFStockAjout extends JIFStock implements ActionListener {
         
         //Instanciation des JPanel
         p = new JPanel();
-        pSaisie = new JPanel();
+        pSaisie = new JPanel(new GridLayout(4, 2, 5, 5));
         pErreur = new JPanel();
+        pBoutons = new JPanel();
         
         //Instanciation des JTextField
         JTDepotLegal = new JTextField(20);
@@ -72,6 +76,12 @@ public class JIFStockAjout extends JIFStock implements ActionListener {
         JBValider.addActionListener(this);
         JBAnnuler = new JButton("Annuler");
         JBAnnuler.addActionListener(this);
+        JBAnnuler.addMouseListener(this);
+        
+      //Ajout écouteur de la souris sur les JTexfields
+        JTMatricule.addMouseListener(this);
+        JTDepotLegal.addMouseListener(this);
+        JTQteStock.addMouseListener(this);
         
         
         //Ajout des éléments sur le panneau saisie
@@ -150,5 +160,40 @@ public class JIFStockAjout extends JIFStock implements ActionListener {
         if(source == JBAnnuler) {
             this.videTexte();
         }
+    }
+    
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        Object mouse = e.getSource();
+        //Réinitialise le label d'erreur au clic dans un des JTextfield
+        if(mouse == JTMatricule || mouse == JTDepotLegal || mouse == JTQteStock) {
+            JLErreurAjout.setText("");
+        }
+        if(mouse == JBAnnuler) {
+        	JTMatricule.setText("");
+        	JTQteStock.setText("");
+        	JTDepotLegal.setText("");
+        	JLErreurAjout.setText("");
+        }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
     }
 }
