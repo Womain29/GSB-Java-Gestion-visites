@@ -24,11 +24,11 @@ public class ConnexionMySql { // DAO = Data Access Object
 	 * pour utiliser cette méthode écrire : ConnexionMySql.connecterBd()
 	 */
 	public static void connecterBd(){
-		String url = "jdbc:mysql://localhost:3306/gsbJava?useSSL=false"; // url : Chaine de connexion
+		String url = "jdbc:mysql://192.178.1.13:3306/gsbJava"; // url : Chaine de connexion
 		// try permet d'essayer de lancer la connexion
 		try {
 			Class.forName("com.mysql.jdbc.Driver"); //Utilisation du connecteur JDBC
-			cnx = DriverManager.getConnection(url,"AdminGsb","password");
+			cnx = DriverManager.getConnection(url,"admindbppe","password");
 		} 
 		// si la connexion échoue un message d'erreur est affiché dans la console
         catch(Exception e) {
