@@ -300,7 +300,7 @@ public class JIFVisiteMAJ extends JInternalFrame implements ActionListener, Mous
                     throw new Exception("Aucune visite correspondant à cette référence");
                 }
                 //Le visiteur doit posséder le médicament offert en stock
-                if(unStockService.rechercherStock(depotLegal, reference) == null) {
+                if(unStockService.rechercherStock(depotLegal, JTVisiteur.getText().toString()) == null) {
                     throw new Exception("Vous ne posséder pas ce médicament en stock");
                 }
                 //La quantié offerte doit être inférieur au stock du visiteur
