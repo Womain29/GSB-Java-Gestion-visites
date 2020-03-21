@@ -17,11 +17,11 @@ public class SQLUtils {
      */
 
     public static String dateFormatSql(String uneDate) {
-        String annee = uneDate.substring(6,10);
+        String annee = uneDate.substring(8,10);
         String mois = uneDate.substring(3,5);
         String jour = uneDate.substring(0,2);
 
-        String dateFormatSql = annee + "-" + mois + "-" + jour;
+        String dateFormatSql = jour + "/" + mois + "/" + annee;
 
         return dateFormatSql;
     }
