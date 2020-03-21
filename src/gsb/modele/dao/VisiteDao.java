@@ -104,7 +104,7 @@ public class VisiteDao {
      */
     public static ArrayList<Visite> rechercheDateMat(String uneDate, String unMatricule) {
         ArrayList<Visite> colVisiteDateRef = new ArrayList<Visite>();
-        String requete = "SELECT * FROM VISITE WHERE Matricule = '" + unMatricule + "' AND Date = '" + SQLUtils.dateFormatSql(uneDate) + "'";
+        String requete = "SELECT * FROM VISITE WHERE Matricule = '" + unMatricule + "' AND DateVisite = '" + SQLUtils.dateFormatSql(uneDate) + "'";
         ResultSet reqSelection = ConnexionMySql.execReqSelection(requete);
 
         try {
@@ -115,7 +115,7 @@ public class VisiteDao {
         }
         catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("Erreur requete SELECT * FROM VISITE WHERE Reference = '" + unMatricule + "' AND Date = '" + uneDate + "'");
+            System.out.println("Erreur requete SELECT * FROM VISITE WHERE Reference = '" + unMatricule + "' AND DateVisite = '" + uneDate + "'");
         }
         ConnexionMySql.fermerConnexionBd();
 
