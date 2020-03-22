@@ -35,6 +35,20 @@ public class ConnexionMySql { // DAO = Data Access Object
 			System.out.println("Echec lors de la connexion");
 		}
 	}
+
+	public static Connection ConnexionCallOracle(){
+		String url = "jdbc:oracle:thin:@192.168.56.104:1521:XE"; // url : Chaine de connexion
+		// try permet d'essayer de lancer la connexion
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver"); //Utilisation du connecteur JDBC
+			cnx = DriverManager.getConnection(url,"gsbjavaproc","password");
+		}
+		// si la connexion échoue un message d'erreur est affiché dans la console
+		catch(Exception e) {
+			System.out.println("Echec lors de la connexion");
+		}
+		return cnx;
+	}
 	
 	/**
 	 * @param laRequete requête SQL de type SELECT
