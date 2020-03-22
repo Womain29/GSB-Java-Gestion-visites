@@ -53,7 +53,34 @@ public class PodiumDao {
         return unPodium;
     }
 
+    /**
+     *
+     * @return une collection contenant le podium du mois précédent
+     */
+    public static ArrayList<Podium> podiumMoisPrecedent() {
+        ArrayList<Podium> podium = new ArrayList<Podium>();
+        Connection cnx = ConnexionMySql.ConnexionCallOracle();
 
+        try {
+            CallableStatement myCall = cnx.prepareCall("{CALL PR_PODIUM_SELECT(?)}");
+            myCall.registerOutParameter(1, OracleTypes.CURSOR);
+            myCall.execute();
+
+            ResultSet reqSelection = (ResultSet) myCall.getObject(1);
+            while (reqSelection.next()) {
+                podium.add(PodiumDao.rechercher(reqSelection.getInt(1)));
+            }
+            myCall.close();
+            reqSelection.close();
+            cnx.close();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println();
+        }
+
+        return podium;
+    }
 
 
 }
