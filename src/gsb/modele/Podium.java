@@ -8,6 +8,7 @@ package gsb.modele;
 
 public class Podium {
 
+    protected int idPodium;
     protected int rang;
     protected int nbVisite;
     protected String mois;
@@ -22,12 +23,13 @@ public class Podium {
      * @param annee l'année
      * @param unVisiteur le visiteur
      */
-    public Podium(int rang, int nbVisite, String mois, int annee, Visiteur unVisiteur) {
+    public Podium(int idPodium, int rang, int nbVisite, String mois, int annee, Visiteur unVisiteur) {
         this.rang = rang;
         this.nbVisite = nbVisite;
         this.mois = mois;
         this.annee = annee;
         this.unVisiteur = unVisiteur;
+        this.idPodium = idPodium;
     }
 
     /**
@@ -108,5 +110,21 @@ public class Podium {
      */
     public void setUnVisiteur(Visiteur unVisiteur) {
         this.unVisiteur = unVisiteur;
+    }
+
+    /**
+     *
+     * @return l'identifiant du podium
+     */
+    public int getIdPodium() {
+        return idPodium;
+    }
+
+    /**
+     *
+     * @param idPodium un entier
+     */
+    public void setIdPodium(int idPodium) {
+        this.idPodium = idPodium;
     }
 }
