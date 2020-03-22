@@ -18,6 +18,41 @@ import java.util.ArrayList;
  */
 public class PodiumDao {
 
+    /**
+     *
+     * @param id un entier
+     * @return un podium
+     */
+    public static Podium rechercher(int id) {
+        Podium unPodium = null;
+        Visiteur unVisiteur = null;
+        Connection cnx = ConnexionMySql.ConnexionCallOracle();
+
+        try {
+            CallableStatement myCall = cnx.prepareCall("{CALL PR_PODIUM_RECHERCHER(?,?)}");
+            myCall.setInt(1, id);
+            myCall.registerOutParameter(2, OracleTypes.CURSOR);
+            myCall.execute();
+
+            ResultSet reqSelection = (ResultSet) myCall.getObject(2);
+
+            if(reqSelection.next()) {
+                unVisiteur = VisiteurDao.rechercher(reqSelection.getString(6));
+                unPodium = new Podium(reqSelection.getInt(1), reqSelection.getInt(2), reqSelection.getInt(3), reqSelection.getString(4), reqSelection.getInt(5), unVisiteur);
+            }
+            myCall.close();
+            reqSelection.close();
+            cnx.close();
+
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("CALL PR_PODIUM_RECHERCHER(" + id + ")");
+        }
+
+        return unPodium;
+    }
+
 
 
 
