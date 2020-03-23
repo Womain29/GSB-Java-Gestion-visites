@@ -3,6 +3,8 @@ package gsb.service;
 import gsb.modele.Podium;
 import gsb.modele.dao.PodiumDao;
 
+import java.util.ArrayList;
+
 /**
  * @author womain
  *
@@ -13,6 +15,11 @@ import gsb.modele.dao.PodiumDao;
 
 public class PodiumService {
 
+    /**
+     *
+     * @param id un entier
+     * @return un Podium
+     */
     public Podium rechercherPodium(int id) {
 
         Podium unPodium = null;
@@ -31,5 +38,24 @@ public class PodiumService {
         }
 
         return unPodium;
+    }
+
+    /**
+     *
+     * @return la collection des 3 meilleurs visiteurs en terme de visite du mois précédent
+     */
+    public ArrayList<Podium> podiumMoisPrecedent() {
+
+        ArrayList<Podium> podiumMoisPrecedent = new ArrayList<Podium>();
+
+        try {
+            podiumMoisPrecedent = PodiumDao.podiumMoisPrecedent();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+
+        return podiumMoisPrecedent;
     }
 }
