@@ -52,6 +52,9 @@ class PodiumServiceTest {
     }
 
     @Test
-    void podiumMoisPrecedent() {
+    void podiumMoisPrecedentOK() {
+        System.out.println("--------------------------- podiumMoisPrecedentOK ---------------------------------");
+        podium = podiumService.podiumMoisPrecedent();
+        Assertions.assertEquals(3, podium.size(), "Résultat attendu 3");
     }
 }
