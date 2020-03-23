@@ -47,7 +47,7 @@ public class PodiumDao {
         }
         catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("CALL PR_PODIUM_RECHERCHER(" + id + ")");
+            System.out.println("Erreur CALL PR_PODIUM_RECHERCHER(" + id + ")");
         }
 
         return unPodium;
@@ -76,7 +76,7 @@ public class PodiumDao {
         }
         catch (SQLException e) {
             e.printStackTrace();
-            System.out.println();
+            System.out.println("Erreur CALL PR_PODIUM_SELECT()");
         }
 
         return podium;
