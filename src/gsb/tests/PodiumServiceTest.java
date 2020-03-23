@@ -20,5 +20,38 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class PodiumServiceTest {
 
+    private ArrayList<Podium> podium;
+    private PodiumService podiumService;
 
+    @BeforeEach
+    void setUp() {
+        podium = new ArrayList<Podium>();
+        podiumService = new PodiumService();
+    }
+
+    @AfterEach
+    void tearDown() {
+    }
+
+    @Test
+    void rechercherPodiumIdInferieur1() {
+        System.out.println("--------------------------- rechercherPodiumIdInferieur1 ---------------------------------");
+        Assertions.assertNull(podiumService.rechercherPodium(0), "Résultat null car identifiant inférieur à 1");
+    }
+
+    @Test
+    void rechercherPodiumIdKo() {
+        System.out.println("--------------------------- rechercherPodiumIdKo ---------------------------------");
+        Assertions.assertNull(podiumService.rechercherPodium(10), "Résultat null car pas d'identifiant correspondant");
+    }
+
+    @Test
+    void rechercherPodiumOK() {
+        System.out.println("--------------------------- rechercherPodiumOK ---------------------------------");
+        Assertions.assertNotNull(podiumService.rechercherPodium(43), "Résultat non null");
+    }
+
+    @Test
+    void podiumMoisPrecedent() {
+    }
 }
