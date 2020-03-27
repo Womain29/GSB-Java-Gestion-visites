@@ -1,10 +1,14 @@
 package gsb.modele.dao;
 
 import gsb.modele.Medecin;
+import gsb.modele.Podium;
 import gsb.modele.Visite;
 import gsb.modele.Visiteur;
 import gsb.utils.SQLUtils;
+import oracle.jdbc.OracleTypes;
 
+import java.sql.CallableStatement;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -142,4 +146,63 @@ public class VisiteDao {
 
         return result;
     }
+    
+    /**
+    *
+    * @return une collection contenant les medecins non visités depuis plus de six mois
+    */
+   public static ArrayList<Visite> NonVisiteSixMois() {
+       ArrayList<Visite> visite = new ArrayList<Visite>();
+       Connection cnx = ConnexionMySql.ConnexionCallOracle();
+
+       try {
+           CallableStatement myCall = cnx.prepareCall("{CALL MEDECIN_NON_VISITE_SIX_MOIS()}");
+           myCall.registerOutParameter(1, OracleTypes.CURSOR);
+           myCall.execute();
+
+           ResultSet reqSelection = (ResultSet) myCall.getObject(1);
+           while (reqSelection.next()) {
+               visite.add(VisiteDao.rechercher(reqSelection.getString(1)));
+           }
+           myCall.close();
+           reqSelection.close();
+           cnx.close();
+       }
+       catch (SQLException e) {
+           e.printStackTrace();
+           System.out.println("Erreur CALL MEDECIN_NON_VISITE_SIX_MOIS()");
+       }
+
+       return visite;
+   }
+   
+   /**
+   *
+   * @return une collection contenant les medecins non visités depuis plus de six mois
+   */
+  public static ArrayList<Visite> NonVisiteDouzeMois() {
+      ArrayList<Visite> visite = new ArrayList<Visite>();
+      Connection cnx = ConnexionMySql.ConnexionCallOracle();
+
+      try {
+          CallableStatement myCall = cnx.prepareCall("{CALL MEDECIN_NON_VISITE_DOUZE_MOIS()}");
+          myCall.registerOutParameter(1, OracleTypes.CURSOR);
+          myCall.execute();
+
+          ResultSet reqSelection = (ResultSet) myCall.getObject(1);
+          while (reqSelection.next()) {
+              visite.add(VisiteDao.rechercher(reqSelection.getString(1)));
+          }
+          myCall.close();
+          reqSelection.close();
+          cnx.close();
+      }
+      catch (SQLException e) {
+          e.printStackTrace();
+          System.out.println("Erreur CALL MEDECIN_NON_VISITE_DOUZE_MOIS()");
+      }
+
+      return visite;
+  }
+
 }
