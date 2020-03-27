@@ -156,7 +156,7 @@ public class VisiteDao {
        Connection cnx = ConnexionMySql.ConnexionCallOracle();
 
        try {
-           CallableStatement myCall = cnx.prepareCall("{CALL MEDECIN_NON_VISITE_SIX_MOIS()}");
+           CallableStatement myCall = cnx.prepareCall("{CALL MEDECIN_NON_VISITE_SIX_MOIS(?)}");
            myCall.registerOutParameter(1, OracleTypes.CURSOR);
            myCall.execute();
 
@@ -185,7 +185,7 @@ public class VisiteDao {
       Connection cnx = ConnexionMySql.ConnexionCallOracle();
 
       try {
-          CallableStatement myCall = cnx.prepareCall("{CALL MEDECIN_NON_VISITE_DOUZE_MOIS()}");
+          CallableStatement myCall = cnx.prepareCall("{CALL MEDECIN_NON_VISITE_DOUZE_MOIS(?)}");
           myCall.registerOutParameter(1, OracleTypes.CURSOR);
           myCall.execute();
 
