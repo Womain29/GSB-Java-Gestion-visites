@@ -85,6 +85,9 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 		JMenuItem mA4 = new JMenuItem("Podium");
 		mA4.addActionListener(this);
 		mVisites.add(mA4);
+		JMenuItem mA5 = new JMenuItem("Non visité");
+		mA5.addActionListener(this);
+		mVisites.add(mA5);
 
 		mbar.add(mMedecins);
 		mbar.add(mMedicaments);
@@ -127,6 +130,9 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 			}
 			else if (ChoixOption.equals("Podium")) {
 				ouvrirFenetre(new JIFVisitePodium(this));
+			}
+			else if (ChoixOption.equals("Non visité")) {
+				ouvrirFenetre(new JIFNonVisité(this));
 			}
 		}
 
